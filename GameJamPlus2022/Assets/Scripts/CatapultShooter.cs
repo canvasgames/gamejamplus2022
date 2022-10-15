@@ -8,6 +8,7 @@ public class CatapultShooter : MonoBehaviour
 
     [SerializeField] SpriteRenderer foodSpriteRenderer;
     [SerializeField] Animator animator;
+    [SerializeField] Animator animatorCamera;
     [SerializeField] Transform spawnPivot;
     [SerializeField] float spawnRangeX;
     [SerializeField] float animationTime;
@@ -50,6 +51,7 @@ public class CatapultShooter : MonoBehaviour
 
         Debug.Log("Shoot");
         animator.SetTrigger("Shoot");
+        animatorCamera.SetTrigger("Shoot");
         isShooting = true;
         xPosTarget = spawnPivot.position.x + Random.Range(-spawnRangeX, spawnRangeX);
         StartCoroutine(AnimateXAxis());
@@ -77,11 +79,17 @@ public class CatapultShooter : MonoBehaviour
     public void DeployFood()
     {
         Debug.Log("Deploy food");
-        isShooting = false;
-        foodSpriteRenderer.transform.localPosition = Vector3.zero;
         var food = GameObject.Instantiate(foodPrefabs[foodIndex], foodPool);
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
+        Invoke("OnFoodStopped", 0.5f);
+    }
+
+    void OnFoodStopped()
+    {
+        isShooting = false;
+        foodSpriteRenderer.transform.localPosition = Vector3.zero;
         ReloadFood();
+        animatorCamera.SetTrigger("Back");
     }
 
     void ReloadFood()
