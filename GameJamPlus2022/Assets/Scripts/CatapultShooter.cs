@@ -39,6 +39,9 @@ public class CatapultShooter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             Shoot();
+
+        if (Input.GetKeyDown(KeyCode.C))
+            ClearTable();
     }
 
     void Shoot()
@@ -50,6 +53,13 @@ public class CatapultShooter : MonoBehaviour
         isShooting = true;
         xPosTarget = spawnPivot.position.x + Random.Range(-spawnRangeX, spawnRangeX);
         StartCoroutine(AnimateXAxis());
+    }
+
+    void ClearTable()
+    {
+        var total = foodPool.childCount;
+        for (int i = total - 1; i >= 0; i--)
+            Destroy(foodPool.GetChild(i).gameObject);
     }
 
     IEnumerator AnimateXAxis()

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2272586669747616447}
   - component: {fileID: 2272586669747616446}
   - component: {fileID: 2272586669747616445}
-  m_Layer: 0
+  - component: {fileID: 5279821362233683216}
+  m_Layer: 6
   m_Name: bone_5
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +133,18 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.3
   m_Frequency: 3
+--- !u!114 &5279821362233683216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272586669747616067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2272586669896474937
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +159,10 @@ GameObject:
   - component: {fileID: 2272586669896474933}
   - component: {fileID: 2272586669896474932}
   - component: {fileID: 2272586669896474939}
-  m_Layer: 0
+  - component: {fileID: 243379600375848015}
+  m_Layer: 6
   m_Name: bone_2
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +278,18 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.3
   m_Frequency: 3
+--- !u!114 &243379600375848015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272586669896474937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2272586669924873314
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,9 +304,10 @@ GameObject:
   - component: {fileID: 2272586669924873310}
   - component: {fileID: 2272586669924873309}
   - component: {fileID: 2272586669924873308}
-  m_Layer: 0
+  - component: {fileID: 1169013432003829993}
+  m_Layer: 6
   m_Name: bone_1
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,6 +423,18 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.3
   m_Frequency: 3
+--- !u!114 &1169013432003829993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272586669924873314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2272586670297715582
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,10 +483,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -507,6 +548,7 @@ MonoBehaviour:
     m_Extent: {x: 2.5432053, y: 2.43245, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
+  m_AutoRebind: 0
 --- !u!1 &2272586671053278752
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,9 +563,10 @@ GameObject:
   - component: {fileID: 2272586671053278748}
   - component: {fileID: 2272586671053278755}
   - component: {fileID: 2272586671053278754}
-  m_Layer: 0
+  - component: {fileID: 8355879492999970549}
+  m_Layer: 6
   m_Name: bone_4
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,6 +682,18 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.3
   m_Frequency: 3
+--- !u!114 &8355879492999970549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272586671053278752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2272586671514928984
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,9 +708,10 @@ GameObject:
   - component: {fileID: 2272586671514928980}
   - component: {fileID: 2272586671514928987}
   - component: {fileID: 2272586671514928986}
-  m_Layer: 0
+  - component: {fileID: 6397076257172038127}
+  m_Layer: 6
   m_Name: bone_3
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -771,3 +827,15 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0.3
   m_Frequency: 3
+--- !u!114 &6397076257172038127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272586671514928984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
