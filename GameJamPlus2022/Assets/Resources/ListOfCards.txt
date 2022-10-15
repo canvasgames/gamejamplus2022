@@ -1,0 +1,2 @@
+0,0,"Caldo de Carne","Caldo simples com carnes. Ótimo para uma sopa.",5/
+3,0,"mOlho","Esse caldo é estranho... espera, têm olhos boiando? Prefiro deixar esse passar.",15/
