@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CatapultContainer : MonoBehaviour
 {
-    [SerializeField] GameObject food;
-
     void Ended()
     {
         CatapultShooter.instance.DeployFood();
