@@ -57,7 +57,7 @@ public class CatapultShooter : MonoBehaviour
         StartCoroutine(AnimateXAxis());
     }
 
-    void ClearTable()
+    public void ClearTable()
     {
         var total = foodPool.childCount;
         for (int i = total - 1; i >= 0; i--)
@@ -87,7 +87,7 @@ public class CatapultShooter : MonoBehaviour
         foreach (var body in bodies)
             body.AddForce(Vector2.down * 600);
             //body.velocity *= Vector2.down * 30;
-        Invoke(nameof(OnFoodStopped), 0.5f);
+        Invoke(nameof(OnFoodStopped), 0.8f);
     }
 
     void OnFoodStopped()
@@ -96,8 +96,7 @@ public class CatapultShooter : MonoBehaviour
         foodSpriteRenderer.transform.localPosition = Vector3.zero;
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
-        RoundController.instance.AddIngredient(card);
-        RoundController.instance.PrepareNewRound();
+        RoundController.instance.AfterShoot(card);
     }
 
     public FoodLoader GetPrefabById(FoodId id)

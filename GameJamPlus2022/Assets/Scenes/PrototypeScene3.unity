@@ -216,7 +216,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2041334671}
   m_Father: {fileID: 1599705696}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ingredients: []
+  explosion: {fileID: 2041334670}
 --- !u!1 &306282144
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,8 +261,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306282144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.17, y: 6, z: 0}
-  m_LocalScale: {x: 0.6798703, y: 0.6798703, z: 0.6798703}
+  m_LocalPosition: {x: 0.16, y: 4.15, z: 0}
+  m_LocalScale: {x: 0.47232628, y: 0.47232628, z: 0.47232628}
   m_Children: []
   m_Father: {fileID: 1658383152}
   m_RootOrder: 1
@@ -667,7 +669,6 @@ Transform:
   - {fileID: 1665177366}
   - {fileID: 1631272043}
   - {fileID: 198311973}
-  - {fileID: 2041334671}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -993,8 +994,8 @@ Transform:
   m_LocalPosition: {x: 0.29, y: 2.75, z: 0}
   m_LocalScale: {x: 0.8144689, y: 0.8144689, z: 0.8144689}
   m_Children: []
-  m_Father: {fileID: 1599705696}
-  m_RootOrder: 4
+  m_Father: {fileID: 198311973}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2041334672
 Animator:

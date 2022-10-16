@@ -6,7 +6,8 @@ using System.Linq;
 public class RoundController : MonoBehaviour
 {
     public static RoundController instance;
-    public List<Card> Ingredients; 
+    public List<Card> Ingredients;
+    [SerializeField] GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -15,16 +16,20 @@ public class RoundController : MonoBehaviour
         PrepareNewRound();
     }
 
-    // Update is called once per frame
-    public void PrepareNewRound()
+    public void AfterShoot(Card card)
     {
-        DeckMaster.instance.CheckDeck();
-        if (Ingredients.Count >= 5 || DeckMaster.instance.IsOver)
+        AddIngredient(card);
+        if (IsRoundOver || DeckMaster.instance.IsOver)
         {
-            Debug.Log("Acabou o jogo");
+            Invoke(nameof(EndClientRound), 0.5f);
             return;
         }
+        PrepareNewRound();
+    }
 
+    void PrepareNewRound()
+    {
+        DeckMaster.instance.CheckDeck();
         DeckMaster.instance.Draw3Cards();
         if (DeckMaster.instance.NeedToRefill)
             FoodSelector.instance.ShufleAndPrepareNewOptions();
@@ -33,10 +38,27 @@ public class RoundController : MonoBehaviour
         DeckMaster.instance.NeedToRefill = false;
     }
 
-    public void AddIngredient(Card card)
+    public bool IsRoundOver => Ingredients.Count >= 5;
+
+    void AddIngredient(Card card)
     {
         Ingredients.Add(card);
         var points = DeckMaster.instance.CalculateItemScore(card);
         ScoreController.instance.AddScore(points);
+    }
+
+    void EndClientRound()
+    {
+        Debug.Log("Acabou o jogo");
+        explosion.SetActive(true);
+        Invoke(nameof(ClearTable), 0.2f);
+    }
+
+    void ClearTable()
+    {
+        CatapultShooter.instance.ClearTable();
+        Ingredients.Clear();
+        ;//TODO next client
+        PrepareNewRound();
     }
 }
