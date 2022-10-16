@@ -25,14 +25,14 @@ public class CatapultShooter : MonoBehaviour
     float xPosTarget;
     int foodIndex;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        instance = this;
         foodPrefabs = new GameObject[]
         {
             unityLixo1, unityLixo2, unityLixo3
         };
-        instance = this;
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,6 +43,13 @@ public class CatapultShooter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
             ClearTable();
+    }
+
+    public void PrepareToShoot(int foodIndex)
+    {
+        this.gameObject.SetActive(true);
+        this.foodIndex = foodIndex;
+        foodSpriteRenderer.sprite = foodPrefabs[foodIndex].GetComponent<SpriteRenderer>().sprite;
     }
 
     void Shoot()
@@ -88,13 +95,8 @@ public class CatapultShooter : MonoBehaviour
     {
         isShooting = false;
         foodSpriteRenderer.transform.localPosition = Vector3.zero;
-        ReloadFood();
         animatorCamera.SetTrigger("Back");
-    }
-
-    void ReloadFood()
-    {
-        foodIndex = Random.Range(0, foodPrefabs.Length);
-        foodSpriteRenderer.sprite = foodPrefabs[foodIndex].GetComponent<SpriteRenderer>().sprite;
+        this.gameObject.SetActive(false);
+        FoodSelector.instance.PrepareNewRound();
     }
 }
