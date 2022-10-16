@@ -24,8 +24,10 @@ public class Client {
 
 public class ClientMaster : MonoBehaviour
 {
-    public List<ClientType> levelClients, clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
-    public ClientType currentClient;
+    List<ClientType> levelClients;
+    public List<ClientType>  clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
+    [HideInInspector] public ClientType currentClient;
+    [HideInInspector] public int currentClientIndex;
 
     List<ClientType> GetLevelClients(int level)
     {
@@ -48,15 +50,46 @@ public class ClientMaster : MonoBehaviour
 
     public void InitLevel(int level)
     {
+        levelClients = new List<ClientType>();
         levelClients = GetLevelClients(level);
         currentClient = levelClients[0];
+        currentClientIndex = 0;
+    }
+
+    public void NextClient()
+    {
+        currentClientIndex++;
+
+        if(currentClientIndex > levelClients.Count-1)
+        {
+            currentClient = levelClients[currentClientIndex];
+        }
+        else
+        {
+            //LEVEL END CODE @bits
+        }
     }
 
     public bool CheckIfThisFoodTypeIsUnpleasant(FoodType food)
     {
-        if (food == FoodType.Carb) return true;
-
-        return false;
+        if (currentClient == ClientType.Carnivorous) { 
+            if (food == FoodType.Vegetable) return true;
+            else return false;
+        }
+        else if(currentClient == ClientType.Vegan) {
+            if (food == FoodType.Meat) return true;
+            else return false;
+        }
+        else if(currentClient == ClientType.LowCarb) {
+            if (food == FoodType.Carb) return true;
+            else return false;
+        }
+        else if (currentClient == ClientType.DairyIntolerant) {
+            if (food == FoodType.Dairy) return true;
+            else return false;
+        }
+        else
+            return false;
     }
     
 }
