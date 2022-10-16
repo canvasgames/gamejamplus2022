@@ -28,6 +28,8 @@ public class ClientMaster : MonoBehaviour
     public List<ClientType>  clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
     [HideInInspector] public ClientType currentClient;
     [HideInInspector] public int currentClientIndex;
+    public int[] targetLevelScore;
+
 
     List<ClientType> GetLevelClients(int level)
     {
@@ -66,9 +68,10 @@ public class ClientMaster : MonoBehaviour
         }
         else
         {
-            //LEVEL END CODE @bits
+            //if()
         }
     }
+
 
     public bool CheckIfThisFoodTypeIsUnpleasant(FoodType food)
     {

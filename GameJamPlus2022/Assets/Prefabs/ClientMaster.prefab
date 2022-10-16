@@ -50,3 +50,4 @@ MonoBehaviour:
   clientsLevel5: 0000000000000000030000000200000001000000
   currentClient: 0
   currentClientIndex: 0
+  targetLevelScore: 060000000c000000140000001c00000024000000
