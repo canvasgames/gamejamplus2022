@@ -94,6 +94,7 @@ public class CatapultShooter : MonoBehaviour
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
         RoundController.instance.PrepareNewRound();
+        var points = DeckMaster.instance.CalculateItemScore(FoodId.MushroomBurger);
         ScoreController.instance.AddScore(5);
     }
 }

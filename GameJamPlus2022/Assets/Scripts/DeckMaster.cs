@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class DeckMaster : MonoBehaviour
 {
+    public static DeckMaster instance;
     public List<Card> cardLibrary;
     List<Card> playerDeck, playerHand, playerDiscard;
     public List<FoodId> playerInitalDeck;
+    
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         BuildInitalGameDeck();
         //BuildInitalGameDeckRandom();
         StartCoroutine(Draw3Cards());
@@ -122,8 +125,8 @@ public class DeckMaster : MonoBehaviour
 
     }
 
-    public void CalculateItemScore()
+    public int CalculateItemScore(FoodId id)
     {
-
+        return 5;
     }
 }
