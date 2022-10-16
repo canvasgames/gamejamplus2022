@@ -80,7 +80,11 @@ public class CatapultShooter : MonoBehaviour
         var food = GameObject.Instantiate(foodPrefabs[foodIndex], foodPool);
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
         food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
-        Invoke("OnFoodStopped", 0.5f);
+        var bodies = food.GetComponentsInChildren<Rigidbody2D>();
+        foreach (var body in bodies)
+            body.AddForce(Vector2.down * 600);
+            //body.velocity *= Vector2.down * 30;
+        Invoke(nameof(OnFoodStopped), 0.5f);
     }
 
     void OnFoodStopped()
