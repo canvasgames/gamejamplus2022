@@ -35,6 +35,7 @@ public class ClientMaster : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        InitLevel(0);
     }
 
 

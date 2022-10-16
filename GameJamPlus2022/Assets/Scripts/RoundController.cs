@@ -19,6 +19,7 @@ public class RoundController : MonoBehaviour
 
     public void AfterShoot(Card card)
     {
+        explosion.SetActive(false);
         AddIngredient(card);
         if (IsRoundOver || DeckMaster.instance.IsOver)
         {
@@ -39,7 +40,7 @@ public class RoundController : MonoBehaviour
         DeckMaster.instance.NeedToRefill = false;
     }
 
-    public bool IsRoundOver => Ingredients.Count >= 5;
+    public bool IsRoundOver => Ingredients.Count >= 4;
 
     void AddIngredient(Card card)
     {
