@@ -13,25 +13,16 @@ public class CatapultShooter : MonoBehaviour
     [SerializeField] float spawnRangeX;
     [SerializeField] float animationTime;
     [SerializeField] Transform foodPool;
-    GameObject[] foodPrefabs;
-
-    //Bugado
-    [Header("Prefabs")]
-    [SerializeField] GameObject unityLixo1;
-    [SerializeField] GameObject unityLixo2;
-    [SerializeField] GameObject unityLixo3;
+    public GameObject[] foodPrefabs;
 
     bool isShooting;
     float xPosTarget;
     int foodIndex;
+    int spriteSortOrder;
 
     private void Awake()
     {
         instance = this;
-        foodPrefabs = new GameObject[]
-        {
-            unityLixo1, unityLixo2, unityLixo3
-        };
         this.gameObject.SetActive(false);
     }
 
@@ -88,6 +79,7 @@ public class CatapultShooter : MonoBehaviour
         Debug.Log("Deploy food");
         var food = GameObject.Instantiate(foodPrefabs[foodIndex], foodPool);
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
+        food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
         Invoke("OnFoodStopped", 0.5f);
     }
 
@@ -97,6 +89,6 @@ public class CatapultShooter : MonoBehaviour
         foodSpriteRenderer.transform.localPosition = Vector3.zero;
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
-        FoodSelector.instance.PrepareNewRound();
+        RoundController.instance.PrepareNewRound();
     }
 }
