@@ -492,6 +492,70 @@ Transform:
   m_Father: {fileID: 1599705696}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1680852557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680852559}
+  - component: {fileID: 1680852558}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1680852558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680852557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0837ea60b73fe4ca782280110a9dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complains:
+  - {fileID: 8300000, guid: 0efc829952d8dca4cb282a7ef772eb13, type: 3}
+  - {fileID: 8300000, guid: f4440c9669dca8040bfd4949cf6bcbb0, type: 3}
+  - {fileID: 8300000, guid: ca3e83b5041e0964f9b4fba097c8bb5e, type: 3}
+  - {fileID: 8300000, guid: c741e4785a9adaa458522c08179629e8, type: 3}
+  congratulations:
+  - {fileID: 8300000, guid: f514f65fb45ff12488c01df90bd28150, type: 3}
+  - {fileID: 8300000, guid: df4a0073d4955a54987452e173bc3fb8, type: 3}
+  - {fileID: 8300000, guid: 5bf16aea9a7650e448a973fa8049a979, type: 3}
+  - {fileID: 8300000, guid: 9ae2a0122a71b9448b9d4e2e8319f365, type: 3}
+  - {fileID: 8300000, guid: 92cf2d1a288f3b74a86ad6facb0edfd5, type: 3}
+  costumers:
+  - {fileID: 8300000, guid: b00743f182cf08f40a4d9301e6a60b19, type: 3}
+  - {fileID: 8300000, guid: 58fe203c0790da4458deeebae370d5ea, type: 3}
+  - {fileID: 8300000, guid: 94999e1bb10ae5343916fc7c3a704c7e, type: 3}
+  - {fileID: 8300000, guid: 49fbb91331462934394f07a85ee3ac65, type: 3}
+  ingredients:
+  - {fileID: 8300000, guid: 54688e05e8c58b440bb2e5edd1edc3de, type: 3}
+  - {fileID: 8300000, guid: c52cbcdb68137a149ac76770be7145e2, type: 3}
+  - {fileID: 8300000, guid: b525a637a5bf4e24fb7a783e2ea90ef5, type: 3}
+  randomAudio: {fileID: 0}
+--- !u!4 &1680852559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680852557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
