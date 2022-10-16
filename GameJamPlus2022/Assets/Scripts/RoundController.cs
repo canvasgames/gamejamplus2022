@@ -8,6 +8,7 @@ public class RoundController : MonoBehaviour
     public static RoundController instance;
     public List<Card> Ingredients;
     [SerializeField] GameObject explosion;
+    [SerializeField] GameObject[] marks;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class RoundController : MonoBehaviour
         PrepareNewRound();
     }
 
-    void PrepareNewRound()
+    public void PrepareNewRound()
     {
         DeckMaster.instance.CheckDeck();
         DeckMaster.instance.Draw3Cards();
@@ -56,9 +57,10 @@ public class RoundController : MonoBehaviour
 
     void ClearTable()
     {
+        marks[ClientMaster.instance.currentClientIndex].SetActive(true);
         CatapultShooter.instance.ClearTable();
         Ingredients.Clear();
-        ;//TODO next client
+        ClientMaster.instance.NextClient();
         PrepareNewRound();
     }
 }
