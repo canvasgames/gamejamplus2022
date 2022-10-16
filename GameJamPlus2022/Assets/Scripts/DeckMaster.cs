@@ -9,6 +9,8 @@ public class DeckMaster : MonoBehaviour
     public List<Card> cardLibrary;
     public List<Card> playerDeck, playerHand, playerDiscard;
     public List<FoodId> playerInitalDeck;
+    public bool IsOver;
+    public bool NeedToRefill;
 
     // Start is called before the first frame update
     void Start()
@@ -41,16 +43,10 @@ public class DeckMaster : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (playerDeck.Count == 0)
-            {
-                //WAIT FOR SHUFFLE ANIMATION;
-                ReshufleDiscard();
-            }
-
             playerHand.Add(playerDeck.Last());
-            Debug.Log(playerDeck.Last()._foodId + " aa " + playerHand.Last()._foodId);
             playerDeck.RemoveAt(playerDeck.Count - 1);
         }
+        Debug.Log($"Deck total {playerDeck.Count} Discard total {playerDiscard.Count}");
     }
 
     public void ThrowCardsInTheTrash(int selectIndex)
@@ -58,18 +54,33 @@ public class DeckMaster : MonoBehaviour
         for (int i = 0; i < 3; i++)
             if (i != selectIndex)
             {
-                playerDiscard.Add(playerHand.Last());
-                Debug.Log(playerHand.Last()._foodId + " TRASHH " + playerDiscard.Last()._foodId);
+                playerDiscard.Add(playerHand[i]);
+                Debug.Log(" TRASHH " + playerHand[i]._foodId);
             }
         playerHand.Clear();
     }
 
+    public void CheckDeck()
+    {
+        if (playerDeck.Count >= 3)
+            return;
+
+        if (playerDeck.Count == 0 && playerDiscard.Count == 0)
+        {
+            IsOver = true;
+            return;
+        }
+
+        NeedToRefill = true;
+    }
+
     public void ReshufleDiscard()
     {
-        playerDeck = playerDiscard;
-        playerDiscard = null;
-        playerDiscard = new List<Card>();
-        playerDeck.Sort();
+        Debug.Log(" ReshufleDiscard ");
+        NeedToRefill = false;
+        playerDeck.AddRange(playerDiscard);
+        playerDiscard.Clear();
+        playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
     }
 
     #endregion

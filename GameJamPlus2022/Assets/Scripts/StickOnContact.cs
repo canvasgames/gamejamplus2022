@@ -27,6 +27,5 @@ public class StickOnContact : MonoBehaviour
         if (collision.collider.transform.IsChildOf(this.transform.parent)) return;
 
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
-        Debug.Log("Stuck");
     }
 }

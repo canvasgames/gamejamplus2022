@@ -32,6 +32,10 @@ public class FoodSelector : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             var prefab = CatapultShooter.instance.GetPrefabById(selectedIds[i]);
+            if (prefab == null)
+            {
+                Debug.Log(i + " Prefab not found for " + selectedIds[i]);
+            }
             buttons[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
             buttons[i].gameObject.SetActive(true);
         }

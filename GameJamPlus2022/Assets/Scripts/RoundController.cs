@@ -17,6 +17,16 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     public void PrepareNewRound()
     {
+        DeckMaster.instance.CheckDeck();
+        if (DeckMaster.instance.IsOver)
+        {
+            Debug.Log("Acabou o jogo");
+            return;
+        }
+
+        if (DeckMaster.instance.NeedToRefill)
+            DeckMaster.instance.ReshufleDiscard();
+
         DeckMaster.instance.Draw3Cards();
         var selectedIds = new FoodId[3];
         for (int i = 0; i < DeckMaster.instance.playerHand.Count; i++)
