@@ -24,13 +24,11 @@ public class RoundController : MonoBehaviour
             return;
         }
 
-        if (DeckMaster.instance.NeedToRefill)
-            DeckMaster.instance.ReshufleDiscard();
-
         DeckMaster.instance.Draw3Cards();
         if (DeckMaster.instance.NeedToRefill)
             FoodSelector.instance.ShufleAndPrepareNewOptions();
         else
             FoodSelector.instance.PrepareNewOptions();
+        DeckMaster.instance.NeedToRefill = false;
     }
 }

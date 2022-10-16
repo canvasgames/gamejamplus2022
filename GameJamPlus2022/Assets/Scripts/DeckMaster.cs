@@ -28,6 +28,7 @@ public class DeckMaster : MonoBehaviour
         foreach (FoodId item in playerInitalDeck)
         {
             playerDeck.Add(cardLibrary.FirstOrDefault(c => c._foodId == item));
+            // if (playerDeck.Count == 1) return;//TODO Remove
             Debug.Log(playerDeck.Last()._foodId);
         }
         Debug.Log("deck size" + playerDeck.Count);
@@ -74,12 +75,12 @@ public class DeckMaster : MonoBehaviour
         }
 
         NeedToRefill = true;
+        ReshufleDiscard();
     }
 
     public void ReshufleDiscard()
     {
         Debug.Log(" ReshufleDiscard ");
-        NeedToRefill = false;
         playerDeck.AddRange(playerDiscard);
         playerDiscard.Clear();
         playerDeck.Sort((c1, c2) => Random.Range(-1, 2));

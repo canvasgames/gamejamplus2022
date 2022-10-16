@@ -60,11 +60,9 @@ public class FoodSelector : MonoBehaviour
         if (selected != null) return;
 
         Debug.Log("Selected " + i);
-        selected = cards[i];
-        animator.SetTrigger("Trash");
-        for (int j = 0; j < buttons.Length; j++)
-            buttons[j].gameObject.SetActive(i != j);
+        selected = cards[i];     
         DeckMaster.instance.ThrowCardsInTheTrash(i);
+        animator.SetTrigger("Trash" + (i + 1));
         Invoke(nameof(PrepareToShoot), 1f);
     }
 
