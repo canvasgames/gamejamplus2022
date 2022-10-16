@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8781933201559880528}
   - component: {fileID: 8781933201559880533}
   - component: {fileID: 3446336861912632051}
+  - component: {fileID: -3728415564428367339}
   m_Layer: 6
   m_Name: Tire
   m_TagString: Food
@@ -240,3 +241,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3728415564428367339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781933201559880529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cdf6f882310eb4bb4434a2d6f02dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 3

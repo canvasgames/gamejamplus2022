@@ -13,7 +13,7 @@ public class CatapultShooter : MonoBehaviour
     [SerializeField] float spawnRangeX;
     [SerializeField] float animationTime;
     [SerializeField] Transform foodPool;
-    public GameObject[] foodPrefabs;
+    public FoodLoader[] foodPrefabs;
 
     bool isShooting;
     float xPosTarget;

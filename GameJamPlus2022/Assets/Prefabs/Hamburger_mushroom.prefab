@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 9215132561065726146}
   - component: {fileID: 9215132561065726145}
   - component: {fileID: 2620025709841885493}
+  - component: {fileID: -2693600896326933053}
   m_Layer: 0
   m_Name: Hamburger_mushroom
   m_TagString: Untagged
@@ -944,3 +945,16 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &-2693600896326933053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215132561065726151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cdf6f882310eb4bb4434a2d6f02dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 8
