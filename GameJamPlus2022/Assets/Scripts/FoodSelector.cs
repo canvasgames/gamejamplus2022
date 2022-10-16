@@ -9,8 +9,8 @@ public class FoodSelector : MonoBehaviour
 
     Animator animator;
     Button[] buttons;
-    int[] ids;
-    int selected;
+    FoodId[] ids;
+    FoodId? selected;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,13 +25,13 @@ public class FoodSelector : MonoBehaviour
         }
     }
 
-    public void PrepareNewOptions(int[] selectedIds)
+    public void PrepareNewOptions(FoodId[] selectedIds)
     {
-        selected = -1;
+        selected = null;
         ids = selectedIds;
         for (int i = 0; i < buttons.Length; i++)
         {
-            var prefab = CatapultShooter.instance.foodPrefabs[selectedIds[i]];
+            var prefab = CatapultShooter.instance.GetPrefabById(selectedIds[i]);
             buttons[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
             buttons[i].gameObject.SetActive(true);
         }
@@ -40,19 +40,20 @@ public class FoodSelector : MonoBehaviour
 
     void OnOptionSelected(int i)
     {
-        if (selected != -1) return;
+        if (selected != null) return;
 
         Debug.Log("Selected " + i);
         selected = ids[i];
         animator.SetTrigger("Trash");
         for (int j = 0; j < buttons.Length; j++)
             buttons[j].gameObject.SetActive(i != j);
+        DeckMaster.instance.ThrowCardsInTheTrash(i);
         Invoke(nameof(PrepareToShoot), 1f);
     }
 
     void PrepareToShoot()
     {
-        CatapultShooter.instance.PrepareToShoot(selected);
+        CatapultShooter.instance.PrepareToShoot(selected.Value);
 
     }
 }

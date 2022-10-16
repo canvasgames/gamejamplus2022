@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CatapultShooter : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class CatapultShooter : MonoBehaviour
 
     bool isShooting;
     float xPosTarget;
-    int foodIndex;
+    FoodId foodId;
     int spriteSortOrder;
 
     private void Awake()
@@ -36,11 +37,12 @@ public class CatapultShooter : MonoBehaviour
             ClearTable();
     }
 
-    public void PrepareToShoot(int foodIndex)
+    public void PrepareToShoot(FoodId id)
     {
         this.gameObject.SetActive(true);
-        this.foodIndex = foodIndex;
-        foodSpriteRenderer.sprite = foodPrefabs[foodIndex].GetComponent<SpriteRenderer>().sprite;
+        this.foodId = id;
+        var prefab = GetPrefabById(id);
+        foodSpriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
     }
 
     void Shoot()
@@ -77,7 +79,8 @@ public class CatapultShooter : MonoBehaviour
     public void DeployFood()
     {
         Debug.Log("Deploy food");
-        var food = GameObject.Instantiate(foodPrefabs[foodIndex], foodPool);
+        var prefab = GetPrefabById(foodId);
+        var food = GameObject.Instantiate(prefab, foodPool);
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
         food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
         var bodies = food.GetComponentsInChildren<Rigidbody2D>();
@@ -96,5 +99,10 @@ public class CatapultShooter : MonoBehaviour
         RoundController.instance.PrepareNewRound();
         var points = DeckMaster.instance.CalculateItemScore(FoodId.MushroomBurger);
         ScoreController.instance.AddScore(5);
+    }
+
+    public FoodLoader GetPrefabById(FoodId id)
+    {
+        return foodPrefabs.FirstOrDefault(p => p.GetComponent<FoodLoader>().Id == id);
     }
 }

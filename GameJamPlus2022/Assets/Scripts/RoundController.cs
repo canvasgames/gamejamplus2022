@@ -17,17 +17,11 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     public void PrepareNewRound()
     {
-        var selectedIds = new int[3];
-        for (int i = 0; i < selectedIds.Length; i++)
-            selectedIds[i] = -1;
+        DeckMaster.instance.Draw3Cards();
+        var selectedIds = new FoodId[3];
+        for (int i = 0; i < DeckMaster.instance.playerHand.Count; i++)
+            selectedIds[i] = DeckMaster.instance.playerHand[i]._foodId;
 
-        for (int i = 0; i < selectedIds.Length; i++)
-        {
-            var selected = Random.Range(0, CatapultShooter.instance.foodPrefabs.Length);
-            while (selectedIds.Contains(selected))
-                selected = Random.Range(0, CatapultShooter.instance.foodPrefabs.Length);
-            selectedIds[i] = selected;
-        }
         FoodSelector.instance.PrepareNewOptions(selectedIds);
     }
 }
