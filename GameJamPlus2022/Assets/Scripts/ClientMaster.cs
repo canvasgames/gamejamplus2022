@@ -29,6 +29,7 @@ public class ClientMaster : MonoBehaviour
     [HideInInspector] public ClientType currentClient;
     [HideInInspector] public int currentClientIndex;
     public int[] targetLevelScore;
+    [HideInInspector] public int currentLevel = 1;
 
 
     List<ClientType> GetLevelClients(int level)
@@ -68,8 +69,21 @@ public class ClientMaster : MonoBehaviour
         }
         else
         {
-            //if()
+            if (ScoreController.instance.Score >= GetLevelTargetScore(currentLevel))
+            {
+                // victory
+            }
+            else
+            {
+                //Defeat
+            }
         }
+    }
+
+    int GetLevelTargetScore(int level)
+    {
+        if (level <= 5) return targetLevelScore[level - 1];
+        else return 30;
     }
 
 
