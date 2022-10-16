@@ -28,6 +28,9 @@ public class RoundController : MonoBehaviour
             DeckMaster.instance.ReshufleDiscard();
 
         DeckMaster.instance.Draw3Cards();
-        FoodSelector.instance.PrepareNewOptions();
+        if (DeckMaster.instance.NeedToRefill)
+            FoodSelector.instance.ShufleAndPrepareNewOptions();
+        else
+            FoodSelector.instance.PrepareNewOptions();
     }
 }

@@ -25,6 +25,12 @@ public class FoodSelector : MonoBehaviour
         }
     }
 
+    public void ShufleAndPrepareNewOptions()
+    {
+        animator.SetTrigger("Shufle");
+        Invoke(nameof(PrepareNewOptions), 1);
+    }
+
     public void PrepareNewOptions()
     {
         selected = null;
