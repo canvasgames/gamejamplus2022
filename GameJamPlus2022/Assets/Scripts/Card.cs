@@ -66,10 +66,11 @@ public class Card
         return null; //botei null pq me perdi no raciocinio, a ideia era ler uma carta da lista em um txt
     }
 
-    public Card (FoodType foodType, BurguerType burguerType, int points)
+    public Card (FoodType foodType, BurguerType burguerType, int points, FoodId id)
     {
         _foodType = foodType;
         _burguerType = burguerType;
         _points = points;
+        _foodId = id;
     }
 }
