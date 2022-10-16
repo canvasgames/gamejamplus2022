@@ -119,29 +119,32 @@ MonoBehaviour:
     _points: 3
     _foodType: 0
     _burguerType: 2
-  - _foodId: 16
+  - _foodId: 15
     _name: White Sauce
     _points: 1
     _foodType: 4
     _burguerType: 3
-  - _foodId: 17
+  - _foodId: 16
     _name: Radioactive Fluid
     _points: 3
     _foodType: 0
     _burguerType: 3
-  - _foodId: 18
+  - _foodId: 17
     _name: Barbecue Sauce
     _points: 1
     _foodType: 1
     _burguerType: 3
-  - _foodId: 19
+  - _foodId: 18
     _name: Honey Sauce
     _points: 2
     _foodType: 3
     _burguerType: 3
-  - _foodId: 20
+  - _foodId: 19
     _name: Swamp Sauce
     _points: 2
     _foodType: 2
     _burguerType: 3
+  playerDeck: []
+  playerHand: []
+  playerDiscard: []
   playerInitalDeck: 000000000000000005000000080000000700000000000000050000000c0000000300000003000000
