@@ -47,7 +47,7 @@ public class FoodSelector : MonoBehaviour
         animator.SetTrigger("Trash");
         for (int j = 0; j < buttons.Length; j++)
             buttons[j].gameObject.SetActive(i != j);
-        Invoke(nameof(PrepareToShoot), 0.5f);
+        Invoke(nameof(PrepareToShoot), 1f);
     }
 
     void PrepareToShoot()
