@@ -94,5 +94,6 @@ public class CatapultShooter : MonoBehaviour
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
         RoundController.instance.PrepareNewRound();
+        ScoreController.instance.AddScore(5);
     }
 }
