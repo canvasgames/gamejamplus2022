@@ -11,8 +11,8 @@ public class DeckMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BuildInitalGameDeck();
-        BuildInitalGameDeckRandom();
+        BuildInitalGameDeck();
+        //BuildInitalGameDeckRandom();
         StartCoroutine(Draw3Cards());
         ThrowCardsInTheTrash();
     }
@@ -27,7 +27,12 @@ public class DeckMaster : MonoBehaviour
             playerDeck.Add(cardLibrary.FirstOrDefault(c => c._foodId == item));
             Debug.Log(playerDeck.Last()._foodId);
         }
-        playerDeck.Sort();
+        Debug.Log("deck size" + playerDeck.Count);
+        //playerDeck
+        for (int i = 0; i < 5; i++)
+        {
+            //RandomItems.Add(AllItems[random.Next(0, AllItems.Count + 1)]);
+        }
     }
 
     #region TURN STUFF
@@ -109,5 +114,16 @@ public class DeckMaster : MonoBehaviour
 
             playerDeck.Add( new Card(food, burguer, 2, id) );
         }
+    }
+
+    public void CalculateTotalBurguerScore()
+    {
+
+
+    }
+
+    public void CalculateItemScore()
+    {
+
     }
 }
