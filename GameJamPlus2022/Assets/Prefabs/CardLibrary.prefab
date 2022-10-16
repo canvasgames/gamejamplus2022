@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2627847929180588110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2627847929180588108}
+  - component: {fileID: 2627847929180588111}
+  m_Layer: 0
+  m_Name: CardLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2627847929180588108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627847929180588110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2627847929180588111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627847929180588110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2258c6fed63467ca3f44ee3dcdb6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardLibrary:
+  - _foodId: 0
+    _name: Regular Bread
+    _points: 1
+    _foodType: 3
+    _burguerType: 0
+  - _foodId: 1
+    _name: Cheese Bread
+    _points: 1
+    _foodType: 4
+    _burguerType: 0
+  - _foodId: 2
+    _name: Moldy Bread
+    _points: 2
+    _foodType: 3
+    _burguerType: 0
+  - _foodId: 3
+    _name: Tire
+    _points: 3
+    _foodType: 0
+    _burguerType: 0
+  - _foodId: 4
+    _name: Vegan Bread
+    _points: 2
+    _foodType: 2
+    _burguerType: 0
+  - _foodId: 5
+    _name: Meat Burguer
+    _points: 1
+    _foodType: 1
+    _burguerType: 1
+  - _foodId: 6
+    _name: Rottenm Burguer
+    _points: 2
+    _foodType: 1
+    _burguerType: 1
+  - _foodId: 7
+    _name: Mistery Burguer
+    _points: 3
+    _foodType: 1
+    _burguerType: 1
+  - _foodId: 8
+    _name: Mushroom Burguer
+    _points: 2
+    _foodType: 2
+    _burguerType: 1
+  - _foodId: 9
+    _name: Soy Burguer
+    _points: 1
+    _foodType: 2
+    _burguerType: 1
+  - _foodId: 10
+    _name: Lettuce
+    _points: 1
+    _foodType: 2
+    _burguerType: 2
+  - _foodId: 11
+    _name: Newspaper
+    _points: 2
+    _foodType: 2
+    _burguerType: 2
+  - _foodId: 12
+    _name: Rotten Cheese
+    _points: 1
+    _foodType: 4
+    _burguerType: 2
+  - _foodId: 13
+    _name: Unholy Cheese
+    _points: 2
+    _foodType: 4
+    _burguerType: 2
+  - _foodId: 14
+    _name: Old Sock
+    _points: 3
+    _foodType: 0
+    _burguerType: 2
+  - _foodId: 16
+    _name: White Sauce
+    _points: 1
+    _foodType: 4
+    _burguerType: 3
+  - _foodId: 17
+    _name: Radioactive Fluid
+    _points: 3
+    _foodType: 0
+    _burguerType: 3
+  - _foodId: 18
+    _name: Barbecue Sauce
+    _points: 1
+    _foodType: 1
+    _burguerType: 3
+  - _foodId: 19
+    _name: Honey Sauce
+    _points: 2
+    _foodType: 3
+    _burguerType: 3
+  - _foodId: 20
+    _name: Swamp Sauce
+    _points: 2
+    _foodType: 2
+    _burguerType: 3
+  playerInitalDeck: 0000000000000000050000000900000004000000040000000a0000000f0000001000000014000000
