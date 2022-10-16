@@ -25,7 +25,7 @@ public class LevelEndScreen : MonoBehaviour
     IEnumerator initiii()
     {
         yield return new WaitForSeconds(0.5f);
-        Init();
+        //Init();
     }
 
     public void Init()
