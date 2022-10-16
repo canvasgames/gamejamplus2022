@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RoundController : MonoBehaviour
 {
@@ -18,8 +19,14 @@ public class RoundController : MonoBehaviour
     {
         var selectedIds = new int[3];
         for (int i = 0; i < selectedIds.Length; i++)
+            selectedIds[i] = -1;
+
+        for (int i = 0; i < selectedIds.Length; i++)
         {
-            selectedIds[i] = Random.Range(0, CatapultShooter.instance.foodPrefabs.Length);
+            var selected = Random.Range(0, CatapultShooter.instance.foodPrefabs.Length);
+            while (selectedIds.Contains(selected))
+                selected = Random.Range(0, CatapultShooter.instance.foodPrefabs.Length);
+            selectedIds[i] = selected;
         }
         FoodSelector.instance.PrepareNewOptions(selectedIds);
     }
