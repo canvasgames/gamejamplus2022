@@ -18,7 +18,7 @@ public class CatapultShooter : MonoBehaviour
 
     bool isShooting;
     float xPosTarget;
-    FoodId foodId;
+    Card card;
     int spriteSortOrder;
 
     private void Awake()
@@ -40,8 +40,8 @@ public class CatapultShooter : MonoBehaviour
     public void PrepareToShoot(Card card)
     {
         this.gameObject.SetActive(true);
-        foodId = card._foodId;
-        var prefab = GetPrefabById(foodId);
+        this.card = card;
+        var prefab = GetPrefabById(card._foodId);
         foodSpriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -79,7 +79,7 @@ public class CatapultShooter : MonoBehaviour
     public void DeployFood()
     {
         Debug.Log("Deploy food");
-        var prefab = GetPrefabById(foodId);
+        var prefab = GetPrefabById(card._foodId);
         var food = GameObject.Instantiate(prefab, foodPool);
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
         food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
@@ -96,9 +96,8 @@ public class CatapultShooter : MonoBehaviour
         foodSpriteRenderer.transform.localPosition = Vector3.zero;
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
+        RoundController.instance.AddIngredient(card);
         RoundController.instance.PrepareNewRound();
-        var points = DeckMaster.instance.CalculateItemScore(FoodId.MushroomBurger);
-        ScoreController.instance.AddScore(5);
     }
 
     public FoodLoader GetPrefabById(FoodId id)

@@ -6,6 +6,7 @@ using System.Linq;
 public class RoundController : MonoBehaviour
 {
     public static RoundController instance;
+    public List<Card> Ingredients; 
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class RoundController : MonoBehaviour
     public void PrepareNewRound()
     {
         DeckMaster.instance.CheckDeck();
-        if (DeckMaster.instance.IsOver)
+        if (Ingredients.Count >= 5 || DeckMaster.instance.IsOver)
         {
             Debug.Log("Acabou o jogo");
             return;
@@ -30,5 +31,12 @@ public class RoundController : MonoBehaviour
         else
             FoodSelector.instance.PrepareNewOptions();
         DeckMaster.instance.NeedToRefill = false;
+    }
+
+    public void AddIngredient(Card card)
+    {
+        Ingredients.Add(card);
+        var points = DeckMaster.instance.CalculateItemScore(card);
+        ScoreController.instance.AddScore(points);
     }
 }

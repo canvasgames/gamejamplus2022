@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3446336861912632051}
   - component: {fileID: -3728415564428367339}
   - component: {fileID: 5867177981362698980}
+  - component: {fileID: 917476122917286594}
   m_Layer: 6
   m_Name: Tire
   m_TagString: Food
@@ -351,3 +352,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &917476122917286594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781933201559880529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

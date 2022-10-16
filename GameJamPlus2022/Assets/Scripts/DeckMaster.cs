@@ -127,11 +127,12 @@ public class DeckMaster : MonoBehaviour
     public void CalculateTotalBurguerScore()
     {
 
-
     }
 
-    public int CalculateItemScore(FoodId id)
+    public int CalculateItemScore(Card card)
     {
-        return 5;
+        if (ClientMaster.instance.CheckIfThisFoodTypeIsUnpleasant(card._foodType))
+            return card._points * 2;
+        return card._points;
     }
 }

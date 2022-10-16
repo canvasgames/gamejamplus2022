@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3446336861912632051}
   - component: {fileID: 3839629567535347764}
   - component: {fileID: -8078800542042632932}
+  - component: {fileID: 8457668753656995631}
   m_Layer: 6
   m_Name: Bread_normal_bottom
   m_TagString: Food
@@ -306,3 +307,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8457668753656995631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781933201559880529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d3680ab149431499f76f4bc64d179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
