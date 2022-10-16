@@ -9,8 +9,8 @@ public class FoodSelector : MonoBehaviour
 
     Animator animator;
     Button[] buttons;
-    FoodId[] ids;
-    FoodId? selected;
+    Card[] cards;
+    Card selected;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,16 +25,23 @@ public class FoodSelector : MonoBehaviour
         }
     }
 
-    public void PrepareNewOptions(FoodId[] selectedIds)
+    public void PrepareNewOptions()
     {
         selected = null;
-        ids = selectedIds;
+        cards = DeckMaster.instance.playerHand.ToArray();
         for (int i = 0; i < buttons.Length; i++)
         {
-            var prefab = CatapultShooter.instance.GetPrefabById(selectedIds[i]);
+            if (cards.Length <= i || cards[i] == null)
+            {
+                buttons[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            buttons[i].gameObject.SetActive(true);
+            var prefab = CatapultShooter.instance.GetPrefabById(cards[i]._foodId);
             if (prefab == null)
             {
-                Debug.Log(i + " Prefab not found for " + selectedIds[i]);
+                Debug.Log(i + " Prefab not found for " + cards[i]._foodId);
             }
             buttons[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
             buttons[i].gameObject.SetActive(true);
@@ -47,7 +54,7 @@ public class FoodSelector : MonoBehaviour
         if (selected != null) return;
 
         Debug.Log("Selected " + i);
-        selected = ids[i];
+        selected = cards[i];
         animator.SetTrigger("Trash");
         for (int j = 0; j < buttons.Length; j++)
             buttons[j].gameObject.SetActive(i != j);
@@ -57,7 +64,7 @@ public class FoodSelector : MonoBehaviour
 
     void PrepareToShoot()
     {
-        CatapultShooter.instance.PrepareToShoot(selected.Value);
+        CatapultShooter.instance.PrepareToShoot(selected);
 
     }
 }

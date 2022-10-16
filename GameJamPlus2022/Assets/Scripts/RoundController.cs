@@ -28,10 +28,6 @@ public class RoundController : MonoBehaviour
             DeckMaster.instance.ReshufleDiscard();
 
         DeckMaster.instance.Draw3Cards();
-        var selectedIds = new FoodId[3];
-        for (int i = 0; i < DeckMaster.instance.playerHand.Count; i++)
-            selectedIds[i] = DeckMaster.instance.playerHand[i]._foodId;
-
-        FoodSelector.instance.PrepareNewOptions(selectedIds);
+        FoodSelector.instance.PrepareNewOptions();
     }
 }

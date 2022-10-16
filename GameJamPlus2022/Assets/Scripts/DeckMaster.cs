@@ -41,17 +41,19 @@ public class DeckMaster : MonoBehaviour
     #region TURN STUFF
     public void Draw3Cards()
     {
-        for (int i = 0; i < 3; i++)
+        var total = Mathf.Min(3, playerDeck.Count);
+        for (int i = 0; i < total; i++)
         {
             playerHand.Add(playerDeck.Last());
             playerDeck.RemoveAt(playerDeck.Count - 1);
         }
-        Debug.Log($"Deck total {playerDeck.Count} Discard total {playerDiscard.Count}");
+        Debug.Log($"Deck total {playerDeck.Count} Discard total {playerDiscard.Count} Hand total {playerHand.Count}");
     }
 
     public void ThrowCardsInTheTrash(int selectIndex)
     {
-        for (int i = 0; i < 3; i++)
+        var total = Mathf.Min(3, playerHand.Count);
+        for (int i = 0; i < total; i++)
             if (i != selectIndex)
             {
                 playerDiscard.Add(playerHand[i]);

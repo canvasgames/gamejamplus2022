@@ -30,18 +30,18 @@ public class CatapultShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.C))
             ClearTable();
     }
 
-    public void PrepareToShoot(FoodId id)
+    public void PrepareToShoot(Card card)
     {
         this.gameObject.SetActive(true);
-        this.foodId = id;
-        var prefab = GetPrefabById(id);
+        foodId = card._foodId;
+        var prefab = GetPrefabById(foodId);
         foodSpriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
     }
 
