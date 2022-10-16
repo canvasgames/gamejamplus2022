@@ -30,6 +30,12 @@ public class ClientMaster : MonoBehaviour
     [HideInInspector] public int currentClientIndex;
     public int[] targetLevelScore;
     [HideInInspector] public int currentLevel = 1;
+    public static ClientMaster instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
 
     List<ClientType> GetLevelClients(int level)
@@ -69,7 +75,7 @@ public class ClientMaster : MonoBehaviour
         }
         else
         {
-            if (ScoreController.instance.Score >= GetLevelTargetScore(currentLevel))
+            if (ScoreController.instance.Score >= GetLevelTargetScore())
             {
                 // victory
             }
@@ -80,9 +86,9 @@ public class ClientMaster : MonoBehaviour
         }
     }
 
-    int GetLevelTargetScore(int level)
+    public int GetLevelTargetScore()
     {
-        if (level <= 5) return targetLevelScore[level - 1];
+        if (currentLevel <= 5) return targetLevelScore[currentLevel - 1];
         else return 30;
     }
 
