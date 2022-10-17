@@ -84,6 +84,7 @@ public class DeckMaster : MonoBehaviour
         playerDeck.AddRange(playerDiscard);
         playerDiscard.Clear();
         playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
+        SoundController.instance.RandomIngredients();
     }
 
     #endregion

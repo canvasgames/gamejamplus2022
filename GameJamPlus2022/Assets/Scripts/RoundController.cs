@@ -54,6 +54,7 @@ public class RoundController : MonoBehaviour
         Debug.Log("Acabou o jogo");
         explosion.SetActive(true);
         Invoke(nameof(ClearTable), 0.2f);
+        SoundController.instance.RandomCostumers();
     }
 
     void ClearTable()

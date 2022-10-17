@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: -4355630416736074217}
   m_Layer: 0
   m_Name: Ketchup
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -833,6 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 17
+  Type: 2
 --- !u!82 &-4355630416736074217
 AudioSource:
   m_ObjectHideFlags: 0

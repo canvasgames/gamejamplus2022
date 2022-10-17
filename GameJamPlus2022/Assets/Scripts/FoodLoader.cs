@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodLoader : MonoBehaviour
 {
     public FoodId Id;
+    public FoodType Type;
     // Start is called before the first frame update
     void Start()
     {

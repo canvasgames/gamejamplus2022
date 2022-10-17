@@ -84,6 +84,14 @@ public class CatapultShooter : MonoBehaviour
         food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
         food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
         var bodies = food.GetComponentsInChildren<Rigidbody2D>();
+        if (food.CompareTag("Not-Food"))
+        {
+            SoundController.instance.RandomCongratulations();
+        }
+        else if (food.CompareTag("Food"))
+        {
+            SoundController.instance.RandomComplain();
+        }
         foreach (var body in bodies)
             body.AddForce(Vector2.down * 600);
             //body.velocity *= Vector2.down * 30;

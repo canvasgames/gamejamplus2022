@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: -8445831243592503827}
   m_Layer: 0
   m_Name: Hamburger_rotten
-  m_TagString: Untagged
+  m_TagString: Not-Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -958,3 +958,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 6
+  Type: 4

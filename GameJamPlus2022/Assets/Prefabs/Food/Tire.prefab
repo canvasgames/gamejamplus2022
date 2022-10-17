@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 917476122917286594}
   m_Layer: 6
   m_Name: Tire
-  m_TagString: Food
+  m_TagString: Not-Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 3
+  Type: 4
 --- !u!82 &5867177981362698980
 AudioSource:
   m_ObjectHideFlags: 0

@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: -6702947392849140762}
   m_Layer: 0
   m_Name: Hamburger_mystery
-  m_TagString: Untagged
+  m_TagString: Not-Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,6 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 7
+  Type: 4
 --- !u!82 &-6702947392849140762
 AudioSource:
   m_ObjectHideFlags: 0

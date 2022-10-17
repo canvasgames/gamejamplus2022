@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 4853056165384700137}
   m_Layer: 0
   m_Name: Sock
-  m_TagString: Untagged
+  m_TagString: Not-Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1085,6 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 14
+  Type: 4
 --- !u!82 &4853056165384700137
 AudioSource:
   m_ObjectHideFlags: 0
