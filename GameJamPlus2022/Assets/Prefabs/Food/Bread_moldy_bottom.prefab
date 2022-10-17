@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8457668753656995631}
   m_Layer: 6
   m_Name: Bread_moldy_bottom
-  m_TagString: Food
+  m_TagString: Not-Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 2
+  Type: 0
 --- !u!82 &-8078800542042632932
 AudioSource:
   m_ObjectHideFlags: 0
