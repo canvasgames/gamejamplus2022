@@ -46,7 +46,7 @@ public class SoundController : MonoBehaviour
     }
     public void RandomCostumers()
     {
-        randomAudio.clip = complains[Random.Range(0, costumers.Length)];
+        randomAudio.clip = costumers[Random.Range(0, costumers.Length)];
         randomAudio.Play();
     }
     public void RandomIngredients()
