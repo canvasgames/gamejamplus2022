@@ -70,7 +70,7 @@ public class ClientMaster : MonoBehaviour
     {
         currentClientIndex++;
 
-        if(currentClientIndex > levelClients.Count-1)
+        if(currentClientIndex < levelClients.Count-1)
         {
             currentClient = levelClients[currentClientIndex];
         }
@@ -78,11 +78,11 @@ public class ClientMaster : MonoBehaviour
         {
             if (ScoreController.instance.Score >= GetLevelTargetScore())
             {
-                // victory
+                LevelEndScreen.instance.Init();
             }
             else
             {
-                //Defeat
+                LevelEndScreen.instance.Init();
             }
         }
     }

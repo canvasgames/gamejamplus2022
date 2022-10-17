@@ -16,6 +16,7 @@ public class LevelEndScreen : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        this.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -30,6 +31,7 @@ public class LevelEndScreen : MonoBehaviour
 
     public void Init()
     {
+        this.gameObject.SetActive(true);
         playerScore.text = ScoreController.instance.Score.ToString();
         levelTargetScore.text = ClientMaster.instance.GetLevelTargetScore().ToString();
         cardsToBuyMenu.SetActive(false);
