@@ -11,6 +11,7 @@ public class FoodSelector : MonoBehaviour
     Button[] buttons;
     Card[] cards;
     Card selected;
+    Image[] foodTypeIcons;
 
     // Start is called before the first frame update
     void Awake()
@@ -18,10 +19,12 @@ public class FoodSelector : MonoBehaviour
         instance = this;
         buttons = this.GetComponentsInChildren<Button>();
         animator = this.GetComponent<Animator>();
+        foodTypeIcons = new Image[buttons.Length];
         for (int i = 0; i < buttons.Length; i++)
         {
             var index = i;
             buttons[i].onClick.AddListener(() => OnOptionSelected(index));
+            foodTypeIcons[i] = buttons[i].transform.GetChild(1).GetComponent<Image>();
         }
     }
 
@@ -43,26 +46,39 @@ public class FoodSelector : MonoBehaviour
                 continue;
             }
 
-            buttons[i].gameObject.SetActive(true);
             var prefab = CatapultShooter.instance.GetPrefabById(cards[i]._foodId);
             if (prefab == null)
             {
                 Debug.Log(i + " Prefab not found for " + cards[i]._foodId);
             }
             buttons[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
+            var sprite = NewCardToBuy.GetFoodTypeSprite(cards[i]._foodType);
+            if (sprite == null)
+                foodTypeIcons[i].gameObject.SetActive(false);
+            else
+                foodTypeIcons[i].sprite = sprite;
             buttons[i].gameObject.SetActive(true);
         }
         animator.SetTrigger("Show");
+        Invoke(nameof(ShowFoodTypes), 0.75f);
     }
 
-    void OnOptionSelected(int i)
+    void ShowFoodTypes()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+            foodTypeIcons[i].gameObject.SetActive(true);
+    }
+
+    void OnOptionSelected(int index)
     {
         if (selected != null) return;
 
-        Debug.Log("Selected " + i);
-        selected = cards[i];     
-        DeckMaster.instance.ThrowCardsInTheTrash(i);
-        animator.SetTrigger("Trash" + (i + 1));
+        Debug.Log("Selected " + index);
+        for (int i = 0; i < buttons.Length; i++)
+            foodTypeIcons[i].gameObject.SetActive(false);
+        selected = cards[index];     
+        DeckMaster.instance.ThrowCardsInTheTrash(index);
+        animator.SetTrigger("Trash" + (index + 1));
         Invoke(nameof(PrepareToShoot), 1f);
     }
 

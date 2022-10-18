@@ -36,30 +36,9 @@ public class NewCardToBuy : MonoBehaviour
         }
         myGraphic.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-        //SpriteRenderer sprite = Resources.Load<Sprite>("Sprites/valor" + myCard._points.ToString());
         myPoints.sprite = Resources.Load<Sprite>("Sprites/valor" + myCard._points.ToString());
-        //myPoints = Resources.Load<Image>("Sprites/valor" + myCard._points.ToString());
-
-        //myIcon = Resources.Load<Image>("Sprites/"+LoadMyIcon());
-        myIcon.sprite = Resources.Load<Sprite>("Sprites/"+LoadMyIcon());
+        myIcon.sprite = GetFoodTypeSprite(myCard._foodType);
         myTitle.text = myCard._name;
-    }
-
-    string LoadMyIcon()
-    {
-        string toLoad;
-        if (myCard._foodType == FoodType.Meat)
-            toLoad = "meat";
-        else if (myCard._foodType == FoodType.Vegetable)
-            toLoad = "vegan";
-        else if (myCard._foodType == FoodType.Dairy)
-            toLoad = "dairy";
-        else if (myCard._foodType == FoodType.Carb)
-            toLoad = "carb";
-        else
-            toLoad = "meat";
-
-        return toLoad;
     }
 
     public void OnSelect()
@@ -67,6 +46,24 @@ public class NewCardToBuy : MonoBehaviour
         DeckMaster.instance.AddSelectedCardToDeck(myCard._foodId);
         LevelEndScreen.instance.OnCardSelectedHideMyself();
 
-        
+
     }
+
+    //TODO move to a another class
+    public static Sprite GetFoodTypeSprite(FoodType type)
+    {
+        var spriteFileName = GetFoodTypeSpriteName(type);
+        if (string.IsNullOrEmpty(GetFoodTypeSpriteName(type)))
+            return null;
+        return Resources.Load<Sprite>("Sprites/" + spriteFileName);
+    }
+
+    static string GetFoodTypeSpriteName(FoodType type) => type switch
+    {
+        FoodType.Meat => "meat",
+        FoodType.Vegetable => "vegan",
+        FoodType.Carb => "carb",
+        FoodType.Dairy => "dairy",
+        _ => null,
+    };
 }
