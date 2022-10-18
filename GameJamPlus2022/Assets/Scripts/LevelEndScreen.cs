@@ -49,16 +49,16 @@ public class LevelEndScreen : MonoBehaviour
     {
         cardsToBuyMenu.SetActive(true);
         FoodId[] cardsToPresent = DeckMaster.instance.PresentNewCardsChoice();
-        card1.initMyCard(cardsToPresent[1]);
-        card2.initMyCard(cardsToPresent[2]);
-        card3.initMyCard(cardsToPresent[3]);
+        card1.initMyCard(cardsToPresent[0]);
+        card2.initMyCard(cardsToPresent[1]);
+        card3.initMyCard(cardsToPresent[2]);
     }
 
 
     public void OnCardSelectedHideMyself()
     {
-        //RoundController.instance.PrepareNewRound();
         this.gameObject.SetActive(false);
+        RoundController.instance.StartRoundLevel();
     }
 
 }

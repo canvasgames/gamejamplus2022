@@ -8,12 +8,21 @@ public class RoundController : MonoBehaviour
     public static RoundController instance;
     public List<Card> Ingredients;
     [SerializeField] GameObject explosion;
-    [SerializeField] GameObject[] marks;
+    ClientOrder[] clientOrders;
 
-    // Start is called before the first frame update
-    void Start()
+    const int TOTAL_INGREDIENTS = 4;
+
+    private void Awake()
     {
         instance = this;
+        clientOrders = this.gameObject.GetComponentsInChildren<ClientOrder>();
+    }
+
+    public void StartRoundLevel()
+    {
+        foreach (var hook in clientOrders)
+            hook.gameObject.SetActive(false);
+        ShowClientOrder();
         PrepareNewRound();
     }
 
@@ -29,7 +38,7 @@ public class RoundController : MonoBehaviour
         PrepareNewRound();
     }
 
-    public void PrepareNewRound()
+    void PrepareNewRound()
     {
         DeckMaster.instance.CheckDeck();
         DeckMaster.instance.Draw3Cards();
@@ -40,7 +49,7 @@ public class RoundController : MonoBehaviour
         DeckMaster.instance.NeedToRefill = false;
     }
 
-    public bool IsRoundOver => Ingredients.Count >= 4;
+    public bool IsRoundOver => Ingredients.Count >= TOTAL_INGREDIENTS;
 
     void AddIngredient(Card card)
     {
@@ -51,7 +60,7 @@ public class RoundController : MonoBehaviour
 
     void EndClientRound()
     {
-        Debug.Log("Acabou o jogo");
+        Debug.Log("Client finished");
         explosion.SetActive(true);
         Invoke(nameof(ClearTable), 0.2f);
         SoundController.instance.RandomCostumers();
@@ -59,10 +68,18 @@ public class RoundController : MonoBehaviour
 
     void ClearTable()
     {
-        marks[ClientMaster.instance.currentClientIndex].SetActive(true);
         CatapultShooter.instance.ClearTable();
         Ingredients.Clear();
+        clientOrders[ClientMaster.instance.currentClientIndex].MarkAsDone();
         ClientMaster.instance.NextClient();
+        if (ClientMaster.instance.currentClientIndex == 0)
+            return;
+        ShowClientOrder();
         PrepareNewRound();
+    }
+
+    void ShowClientOrder()
+    {
+        clientOrders[ClientMaster.instance.currentClientIndex].RunAnimation(ClientMaster.instance.currentClient);
     }
 }

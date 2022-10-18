@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ClientType {
+public enum ClientType
+{
     Carnivorous = 0,
     Vegan = 1,
     LowCarb = 3,
     DairyIntolerant = 2
 }
 
-public class Client {
+public class Client
+{
 
     public ClientType myType;
 
@@ -25,7 +27,7 @@ public class Client {
 public class ClientMaster : MonoBehaviour
 {
     List<ClientType> levelClients;
-    public List<ClientType>  clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
+    public List<ClientType> clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
     [HideInInspector] public ClientType currentClient;
     [HideInInspector] public int currentClientIndex;
     public int[] targetLevelScore;
@@ -35,9 +37,12 @@ public class ClientMaster : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        InitLevel(0);
     }
 
+    private void Start()
+    {
+        InitLevel(0);
+    }
 
     List<ClientType> GetLevelClients(int level)
     {
@@ -60,17 +65,20 @@ public class ClientMaster : MonoBehaviour
 
     public void InitLevel(int level)
     {
+        Debug.Log($"InitLevel-{level}");
+        currentLevel = level;
         levelClients = new List<ClientType>();
         levelClients = GetLevelClients(level);
         currentClient = levelClients[0];
         currentClientIndex = 0;
+        RoundController.instance.StartRoundLevel();
     }
 
     public void NextClient()
     {
         currentClientIndex++;
 
-        if(currentClientIndex < levelClients.Count-1)
+        if (currentClientIndex < levelClients.Count - 1)
         {
             currentClient = levelClients[currentClientIndex];
         }
@@ -84,36 +92,42 @@ public class ClientMaster : MonoBehaviour
             {
                 LevelEndScreen.instance.Init();
             }
+            DeckMaster.instance.BuildInitalGameDeck();
+            currentClientIndex = 0;
         }
     }
 
     public int GetLevelTargetScore()
     {
-        if (currentLevel <= 5) return targetLevelScore[currentLevel - 1];
+        if (currentLevel < 5) return targetLevelScore[currentLevel];
         else return 30;
     }
 
 
     public bool CheckIfThisFoodTypeIsUnpleasant(FoodType food)
     {
-        if (currentClient == ClientType.Carnivorous) { 
+        if (currentClient == ClientType.Carnivorous)
+        {
             if (food == FoodType.Vegetable) return true;
             else return false;
         }
-        else if(currentClient == ClientType.Vegan) {
+        else if (currentClient == ClientType.Vegan)
+        {
             if (food == FoodType.Meat) return true;
             else return false;
         }
-        else if(currentClient == ClientType.LowCarb) {
+        else if (currentClient == ClientType.LowCarb)
+        {
             if (food == FoodType.Carb) return true;
             else return false;
         }
-        else if (currentClient == ClientType.DairyIntolerant) {
+        else if (currentClient == ClientType.DairyIntolerant)
+        {
             if (food == FoodType.Dairy) return true;
             else return false;
         }
         else
             return false;
     }
-    
+
 }
