@@ -117,7 +117,7 @@ MonoBehaviour:
   - _foodId: 14
     _name: Old Sock
     _points: 3
-    _foodType: 0
+    _foodType: 2
     _burguerType: 2
   - _foodId: 15
     _name: White Sauce

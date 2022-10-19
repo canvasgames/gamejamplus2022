@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FoodSelector : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class FoodSelector : MonoBehaviour
     Card[] cards;
     Card selected;
     Image[] foodTypeIcons;
+    public TextMeshProUGUI DeckSizeText;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,6 +28,8 @@ public class FoodSelector : MonoBehaviour
             buttons[i].onClick.AddListener(() => OnOptionSelected(index));
             foodTypeIcons[i] = buttons[i].transform.GetChild(1).GetComponent<Image>();
         }
+
+        DeckSizeText.text = DeckMaster.instance.playerDeck.Count.ToString();
     }
 
     public void ShufleAndPrepareNewOptions()
@@ -37,6 +41,8 @@ public class FoodSelector : MonoBehaviour
     public void PrepareNewOptions()
     {
         selected = null;
+        DeckSizeText.text = DeckMaster.instance.playerDeck.Count.ToString();
+
         cards = DeckMaster.instance.playerHand.ToArray();
         for (int i = 0; i < buttons.Length; i++)
         {

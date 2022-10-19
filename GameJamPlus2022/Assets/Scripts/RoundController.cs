@@ -47,6 +47,7 @@ public class RoundController : MonoBehaviour
         else
             FoodSelector.instance.PrepareNewOptions();
         DeckMaster.instance.NeedToRefill = false;
+        ScoreController.instance.UpdateTargetScore();
     }
 
     public bool IsRoundOver => Ingredients.Count >= TOTAL_INGREDIENTS;
@@ -64,6 +65,7 @@ public class RoundController : MonoBehaviour
         explosion.SetActive(true);
         Invoke(nameof(ClearTable), 0.2f);
         SoundController.instance.RandomCostumers();
+        ScoreController.instance.UpdateTargetScore();
     }
 
     void ClearTable()
