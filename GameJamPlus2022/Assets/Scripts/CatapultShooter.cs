@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class CatapultShooter : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class CatapultShooter : MonoBehaviour
     [SerializeField] float spawnRangeX;
     [SerializeField] float animationTime;
     [SerializeField] Transform foodPool;
+    [SerializeField] TextMesh foodScore;
     public FoodLoader[] foodPrefabs;
 
     bool isShooting;
     float xPosTarget;
     Card card;
+    FoodLoader lastFood;
     int spriteSortOrder;
 
     private void Awake()
@@ -42,7 +45,7 @@ public class CatapultShooter : MonoBehaviour
         this.gameObject.SetActive(true);
         this.card = card;
         var prefab = GetPrefabById(card._foodId);
-        foodSpriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
+        foodSpriteRenderer.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
     }
 
     void Shoot()
@@ -80,15 +83,16 @@ public class CatapultShooter : MonoBehaviour
     {
         Debug.Log("Deploy food");
         var prefab = GetPrefabById(card._foodId);
-        var food = GameObject.Instantiate(prefab, foodPool);
-        food.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
-        food.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
-        var bodies = food.GetComponentsInChildren<Rigidbody2D>();
-        if (food.CompareTag("Not-Food"))
+        lastFood = GameObject.Instantiate(prefab, foodPool);
+        lastFood.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
+        lastFood.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;
+        var bodies = lastFood.GetComponentsInChildren<Rigidbody2D>();
+        lastFood.AddScoreText(foodScore);
+        if (lastFood.CompareTag("Not-Food"))
         {
             SoundController.instance.RandomCongratulations();
         }
-        else if (food.CompareTag("Food"))
+        else if (lastFood.CompareTag("Food"))
         {
             SoundController.instance.RandomComplain();
         }
@@ -104,7 +108,7 @@ public class CatapultShooter : MonoBehaviour
         foodSpriteRenderer.transform.localPosition = Vector3.zero;
         animatorCamera.SetTrigger("Back");
         this.gameObject.SetActive(false);
-        RoundController.instance.AfterShoot(card);
+        RoundController.instance.AfterShoot(card, lastFood);
     }
 
     public FoodLoader GetPrefabById(FoodId id)

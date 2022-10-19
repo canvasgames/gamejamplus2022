@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Need: 0'
+  m_text: 'Target: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 003bc70aa8c81c44e958c1f4107ea9b8, type: 2}
   m_sharedMaterial: {fileID: 2985074661269141854, guid: 003bc70aa8c81c44e958c1f4107ea9b8, type: 2}
@@ -406,6 +406,7 @@ MonoBehaviour:
   textScore: {fileID: 4177381144934819462}
   targetScore: {fileID: 980353882021576728}
   textNewScore: {fileID: 26830280017193219}
+  textCountingScore: {fileID: 0}
   Score: 0
 --- !u!1 &5123173117049085751
 GameObject:

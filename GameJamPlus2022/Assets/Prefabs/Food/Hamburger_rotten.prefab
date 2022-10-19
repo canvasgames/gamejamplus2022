@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 9215132561065726145}
   - component: {fileID: 2620025709841885493}
   - component: {fileID: -8445831243592503827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hamburger_rotten
   m_TagString: Not-Food
   m_Icon: {fileID: 0}

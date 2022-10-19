@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3762119244961413564}
   - component: {fileID: 6802447592890888043}
   - component: {fileID: 6955979303619254246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 1464653199800817259}
   - component: {fileID: 6722145255658872483}
   - component: {fileID: 1383038933349790102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 2397635034610410079}
   - component: {fileID: 733549666855898694}
   - component: {fileID: 556216714886193237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8083877366654189375}
   - component: {fileID: 5501673852548848572}
   - component: {fileID: 5622043583735176162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 8585202572224468894}
   - component: {fileID: 8666954698115954540}
   - component: {fileID: 3516583276957569339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 5247053308168645694}
   - component: {fileID: 2942712143321335002}
   - component: {fileID: 2904644284621195389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ GameObject:
   - component: {fileID: 2620025709841885493}
   - component: {fileID: -1352555131723441852}
   - component: {fileID: -4355630416736074217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SauceRadioative
   m_TagString: Not-Food
   m_Icon: {fileID: 0}

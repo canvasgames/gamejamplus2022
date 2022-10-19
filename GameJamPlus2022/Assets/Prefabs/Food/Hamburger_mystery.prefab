@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 2620025709841885493}
   - component: {fileID: 8062186691051255340}
   - component: {fileID: -6702947392849140762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hamburger_mystery
   m_TagString: Not-Food
   m_Icon: {fileID: 0}

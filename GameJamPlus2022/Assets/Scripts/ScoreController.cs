@@ -9,14 +9,26 @@ public class ScoreController : MonoBehaviour
     [SerializeField] TMP_Text textScore;
     [SerializeField] TMP_Text targetScore;
     [SerializeField] TMP_Text textNewScore;
+    [SerializeField] TMP_Text textCountingScore;
+
     Animator animator;
+    TMP_Text[] textCountingScores;
 
     public int Score;
+
+    private void Awake()
+    {
+        instance = this;
+        //textCountingScores = new TMP_Text[RoundController.TOTAL_INGREDIENTS];
+        //textCountingScores[0] = textCountingScore;
+        //textCountingScore.gameObject.SetActive(false);
+        //for (int i = 1; i < RoundController.TOTAL_INGREDIENTS; i++)
+        //    textCountingScores[i] = Instantiate(textCountingScore, textCountingScore.transform.parent);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
         animator = this.GetComponent<Animator>();
         textNewScore.text = "";
     }
@@ -32,6 +44,11 @@ public class ScoreController : MonoBehaviour
 
     public void UpdateTargetScore()
     {
-        targetScore.text = $"Need: {ClientMaster.instance.targetLevelScore[ClientMaster.instance.currentLevel].ToString()}";
+        targetScore.text = $"Target: {ClientMaster.instance.targetLevelScore[ClientMaster.instance.currentLevel]}";
+    }
+
+    public void ShowBurgerScore(FoodLoader[] foods, ClientType client)
+    {
+
     }
 }

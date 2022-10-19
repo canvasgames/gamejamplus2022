@@ -198,11 +198,12 @@ MonoBehaviour:
   spawnRangeX: 2
   animationTime: 0.4
   foodPool: {fileID: 0}
+  foodScore: {fileID: 877721727681636936, guid: bff4bfcbdf317ee478e865dff41af2a4, type: 3}
   foodPrefabs:
-  - {fileID: 3839629567535347764, guid: 9fabc3ce82ffc374ca11cb267f19e010, type: 3}
-  - {fileID: 3839629567535347764, guid: 3089da069556536478590c2b83cf1ea9, type: 3}
-  - {fileID: 3839629567535347764, guid: d9b512073c51a594f889b2fbe1329ed1, type: 3}
-  - {fileID: 3839629567535347764, guid: 280a97d766cbce946838709ee2ab9b4f, type: 3}
+  - {fileID: 3839629567535347764, guid: f8385cc5fb8735048920b8eae8e9986f, type: 3}
+  - {fileID: 3839629567535347764, guid: 8fc96678ef97b64428d2017387f666bc, type: 3}
+  - {fileID: 3839629567535347764, guid: 3a1b8d471583fa94db8488cc2e473d00, type: 3}
+  - {fileID: 3839629567535347764, guid: 06059061012c8174aad44220284d30b0, type: 3}
   - {fileID: -1352555131723441852, guid: 7d0c4cabe27da50408c1b530f7c2d7f7, type: 3}
   - {fileID: -1352555131723441852, guid: a5d0e3ab947315f48b79d81bc8682552, type: 3}
   - {fileID: -8445831243592503827, guid: 03b4ebbe61dc0d44f94f4da89e34f494, type: 3}

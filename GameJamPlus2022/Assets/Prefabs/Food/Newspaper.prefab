@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1271369160745579645}
   - component: {fileID: 1228254236396515168}
   - component: {fileID: 6460226483786072343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6694526796371506265}
   - component: {fileID: 4660390080646444505}
   - component: {fileID: 5065704083300562922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 4111508657218827604}
   - component: {fileID: 2685700700912473495}
   - component: {fileID: 1960015986982167552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 2550681613142606501}
   - component: {fileID: 7154367305686252153}
   - component: {fileID: 3840352826328787434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 8161867249525152792}
   - component: {fileID: 8858687622921681884}
   - component: {fileID: 8885300501707245911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 7051709064612657921}
   - component: {fileID: 2680893902748174832}
   - component: {fileID: 8442102187962767649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 8964683561358683514}
   - component: {fileID: 3932221866212560246}
   - component: {fileID: 2516715159974738048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 166611281547733632}
   - component: {fileID: 3245506269135204118}
   - component: {fileID: 6757968391933652193}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 2620025709841885493}
   - component: {fileID: -1352555131723441852}
   - component: {fileID: -4355630416736074217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Newspaper
   m_TagString: Not-Food
   m_Icon: {fileID: 0}

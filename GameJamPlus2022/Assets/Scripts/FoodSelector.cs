@@ -29,6 +29,10 @@ public class FoodSelector : MonoBehaviour
             foodTypeIcons[i] = buttons[i].transform.GetChild(1).GetComponent<Image>();
         }
 
+    }
+
+    private void Start()
+    {
         DeckSizeText.text = DeckMaster.instance.playerDeck.Count.ToString();
     }
 

@@ -6,11 +6,11 @@ using System.Linq;
 public class RoundController : MonoBehaviour
 {
     public static RoundController instance;
-    public List<Card> Ingredients;
+    public List<FoodLoader> Ingredients;
     [SerializeField] GameObject explosion;
     ClientOrder[] clientOrders;
 
-    const int TOTAL_INGREDIENTS = 4;
+    public const int TOTAL_INGREDIENTS = 4;
 
     private void Awake()
     {
@@ -26,10 +26,10 @@ public class RoundController : MonoBehaviour
         PrepareNewRound();
     }
 
-    public void AfterShoot(Card card)
+    public void AfterShoot(Card card, FoodLoader food)
     {
         explosion.SetActive(false);
-        AddIngredient(card);
+        AddIngredient(card, food);
         if (IsRoundOver || DeckMaster.instance.IsOver)
         {
             Invoke(nameof(EndClientRound), 0.5f);
@@ -52,26 +52,45 @@ public class RoundController : MonoBehaviour
 
     public bool IsRoundOver => Ingredients.Count >= TOTAL_INGREDIENTS;
 
-    void AddIngredient(Card card)
+    void AddIngredient(Card card, FoodLoader food)
     {
-        Ingredients.Add(card);
+        Ingredients.Add(food);
         var points = DeckMaster.instance.CalculateItemScore(card);
+        food.SetFoodScore(points);
         ScoreController.instance.AddScore(points);
     }
 
     void EndClientRound()
     {
-        Debug.Log("Client finished");
-        explosion.SetActive(true);
-        Invoke(nameof(ClearTable), 0.2f);
-        SoundController.instance.RandomCostumers();
-        ScoreController.instance.UpdateTargetScore();
+        Debug.Log("EndClientRound");
+        ShowScore();
+    }
+    
+    void ShowScore()
+    {
+        for (int i = Ingredients.Count - 1; i >= 0; i--)
+            Ingredients[i].ShowFoodScore(i);
+
+        Invoke(nameof(DeliveryOrder), 5f);
     }
 
+    void DeliveryOrder()
+    {
+        explosion.SetActive(true);
+        Invoke(nameof(ClearTable), 0.2f);
+    }
+    
     void ClearTable()
     {
+        SoundController.instance.RandomCostumers();
+        ScoreController.instance.UpdateTargetScore();
         CatapultShooter.instance.ClearTable();
         Ingredients.Clear();
+        Invoke(nameof(StartNextClient), 0.2f);
+    }
+
+    void StartNextClient()
+    {
         clientOrders[ClientMaster.instance.currentClientIndex].MarkAsDone();
         ClientMaster.instance.NextClient();
         if (ClientMaster.instance.currentClientIndex == 0)

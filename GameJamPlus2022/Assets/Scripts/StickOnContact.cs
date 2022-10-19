@@ -20,10 +20,7 @@ public class StickOnContact : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("OtherCollider " + collision.otherCollider.transform.parent);
-        //Debug.Log("Collider " + collision.collider.transform.parent);
-        //Debug.Log("this " + this.transform.parent);
-        if (!collision.collider.CompareTag("Food")) return;
+        //if (!collision.collider.CompareTag("Food")) return;
         if (collision.collider.transform.IsChildOf(this.transform.parent)) return;
 
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;

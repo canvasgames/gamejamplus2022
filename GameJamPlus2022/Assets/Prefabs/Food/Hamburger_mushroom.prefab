@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 2620025709841885493}
   - component: {fileID: -2693600896326933053}
   - component: {fileID: -7257925003599592000}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hamburger_mushroom
   m_TagString: Not-Food
   m_Icon: {fileID: 0}
