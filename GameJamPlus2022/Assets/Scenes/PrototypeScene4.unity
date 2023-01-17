@@ -2853,6 +2853,10 @@ PrefabInstance:
       value: SoundController
       objectReference: {fileID: 0}
     - target: {fileID: 3461168066389862262, guid: b9aad133a29f94e42846386379d48b1a, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461168066389862262, guid: b9aad133a29f94e42846386379d48b1a, type: 3}
       propertyPath: m_Volume
       value: 0.22
       objectReference: {fileID: 0}
