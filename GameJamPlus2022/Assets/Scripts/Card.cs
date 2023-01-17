@@ -21,8 +21,8 @@ public enum FoodId
     RegularCheese,
     RottenCheese,
     OldSock,
-    WhiteSauce,
     RadioativeSauce,
+    WhiteSauce,
     BarbecueSauce,
     HoneySauce,
     SwampSauce,
@@ -54,6 +54,8 @@ public class Card
     public int _points;
     public FoodType _foodType;
     public BurguerType _burguerType;
+    public int flyCounter = 0;
+    public bool fromTrash = false;
     
 
     private string[] ReadCardFromTxt()//Ler tipos, nome e pontos

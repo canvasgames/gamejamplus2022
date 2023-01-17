@@ -60,6 +60,7 @@ public class DeckMaster : MonoBehaviour
             if (i != selectIndex)
             {
                 playerDiscard.Add(playerHand[i]);
+                playerHand[i].flyCounter++;
                 Debug.Log(" TRASHH " + playerHand[i]._foodId);
             }
         playerHand.Clear();
@@ -83,6 +84,11 @@ public class DeckMaster : MonoBehaviour
     public void ReshufleDiscard()
     {
         Debug.Log(" ReshufleDiscard ");
+        foreach (Card trashIngredients in playerDiscard)
+        {
+            trashIngredients.fromTrash = true;
+        }
+            
         playerDeck.AddRange(playerDiscard);
         playerDiscard.Clear();
         playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
@@ -134,12 +140,26 @@ public class DeckMaster : MonoBehaviour
 
     public int CalculateItemScore(Card card)
     {
+        int currentFlyCounter = 0;
         if (ClientMaster.instance.CheckIfThisFoodTypeIsUnpleasant(card._foodType))
         {
             textScore.color = Color.red;
-            return card._points * 2;
+            if (card.fromTrash)
+            {
+                currentFlyCounter = card.flyCounter;
+                card.flyCounter = 0;
+            }
+            return (card._points * 2) + currentFlyCounter;
         }
-        textScore.color = Color.white;
-        return card._points;
+        else
+        {
+            if (card.fromTrash)
+            {
+                currentFlyCounter = card.flyCounter;
+                card.flyCounter = 0;
+            }
+            textScore.color = Color.white;
+            return card._points + currentFlyCounter;
+        }
     }
 }
