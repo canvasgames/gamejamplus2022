@@ -26,8 +26,8 @@ public class ClientOrder : MonoBehaviour
     Sprite GetSpriteByClientType(ClientType clientType) => Resources.Load<Sprite>("Sprites/" + GetSpriteNameByClientType(clientType));
     string GetSpriteNameByClientType(ClientType clientType) => clientType switch
     {
-        ClientType.Carnivorous => "NO_Meat",
-        ClientType.Vegan => "NO_Vegan",
+        ClientType.Carnivorous => "NO_Vegan",
+        ClientType.Vegan => "NO_Meat",
         ClientType.LowCarb => "NO_carb",
         ClientType.DairyIntolerant => "NO_Dairy",
         _ => "",
