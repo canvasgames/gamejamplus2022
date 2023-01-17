@@ -41,7 +41,7 @@ public class ClientMaster : MonoBehaviour
 
     private void Start()
     {
-        InitLevel(0);
+        InitLevel(1);
     }
 
     List<ClientType> GetLevelClients(int level)
@@ -74,6 +74,18 @@ public class ClientMaster : MonoBehaviour
         RoundController.instance.StartRoundLevel();
     }
 
+    public void NextLevel()
+    {
+        Debug.Log($"NextLevel-{currentLevel}");
+        currentLevel++;
+        levelClients = new List<ClientType>();
+        levelClients = GetLevelClients(currentLevel);
+        currentClient = levelClients[0];
+        currentClientIndex = 0;
+        RoundController.instance.StartRoundLevel();
+    }
+
+
     public void NextClient()
     {
         currentClientIndex++;
@@ -90,7 +102,7 @@ public class ClientMaster : MonoBehaviour
             }
             else
             {
-                LevelEndScreen.instance.Init();
+                LevelEndScreen.instance.Init(); // @TODO DEFEAT
             }
             DeckMaster.instance.BuildInitalGameDeck();
             currentClientIndex = 0;

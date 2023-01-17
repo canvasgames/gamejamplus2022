@@ -58,7 +58,8 @@ public class LevelEndScreen : MonoBehaviour
     public void OnCardSelectedHideMyself()
     {
         this.gameObject.SetActive(false);
-        RoundController.instance.StartRoundLevel();
+        //RoundController.instance.StartRoundLevel();
+        ClientMaster.instance.NextLevel();
     }
 
 }
