@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class DeckMaster : MonoBehaviour
@@ -11,6 +12,7 @@ public class DeckMaster : MonoBehaviour
     public List<FoodId> playerInitalDeck;
     public bool IsOver;
     public bool NeedToRefill;
+    [SerializeField] private TMP_Text textScore;
 
     // Start is called before the first frame update
     void Awake()
@@ -133,7 +135,11 @@ public class DeckMaster : MonoBehaviour
     public int CalculateItemScore(Card card)
     {
         if (ClientMaster.instance.CheckIfThisFoodTypeIsUnpleasant(card._foodType))
+        {
+            textScore.color = Color.red;
             return card._points * 2;
+        }
+        textScore.color = Color.white;
         return card._points;
     }
 }
