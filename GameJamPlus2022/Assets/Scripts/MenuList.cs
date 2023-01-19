@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuList : MonoBehaviour
 {
+    [Header("TextBoxes")]
     [SerializeField] private TextMeshProUGUI _numberOfMeat;
     [SerializeField] private TextMeshProUGUI _numberOfCarb;
     [SerializeField] private TextMeshProUGUI _numberOfDairy;
@@ -17,18 +17,29 @@ public class MenuList : MonoBehaviour
     private int _intDiary;
     private int _intVeg;
 
+    [Header("Ingredients")]
+    [SerializeField] private int _numberOfIngredients;
+    [SerializeField] private GameObject _ingredientObjectsContainer;
+    [Header("Lists")]
     [SerializeField] private List<GameObject> _childsObjects;
     [SerializeField] private List<FoodLoader> _childsFoodLoader;
     [SerializeField] private List<Image> _childType;
+    [SerializeField] private List<Image> _childPoints;
 
     private void Awake()
     {
-        int i = 0;
-        foreach(GameObject child in _childsObjects)
+        for (int childNumber = 0; childNumber < _numberOfIngredients; childNumber++)
         {
-            _childsFoodLoader[i] = child.GetComponent<FoodLoader>();
-            _childType[i] = child.transform.GetChild(1).gameObject.GetComponent<Image>();
-            i++;
+            _childsObjects.Add(_ingredientObjectsContainer.transform.GetChild(childNumber).gameObject);
+        }
+
+        int childIterator = 0;
+        foreach (GameObject child in _childsObjects)
+        {
+            _childsFoodLoader.Add(child.GetComponent<FoodLoader>());
+            _childType.Add(child.transform.GetChild(1).gameObject.GetComponent<Image>());
+            _childPoints.Add(child.transform.GetChild(2).gameObject.GetComponent<Image>());
+            childIterator++;
         }
     }
     private void Start()
@@ -37,26 +48,59 @@ public class MenuList : MonoBehaviour
         _intCarb = 0;
         _intDiary = 0;
         _intVeg = 0;
-        CalculateNumberOfTypes();
+        CalculateNumberAndAdjustImageOfTypes();
     }
-    private void CalculateNumberOfTypes()
-    {//adicionar aqui a mudança dos tipos dos ingredientes(imagens)
-        foreach(FoodLoader ingredient in _childsFoodLoader)
+    private void CalculateNumberAndAdjustImageOfTypes()
+    {
+        int ingredientIterator = 0;
+        foreach (FoodLoader ingredient in _childsFoodLoader)
         {
             if (ingredient.Type == FoodType.Carb)
+            {
                 _intCarb++;
-            if (ingredient.Type == FoodType.Meat)
+                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/carb");
+            }
+            else if (ingredient.Type == FoodType.Meat)
+            {
                 _intMeat++;
-            if (ingredient.Type == FoodType.Vegetable)
+                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/meat");
+            }
+            else if (ingredient.Type == FoodType.Vegetable)
+            {
                 _intVeg++;
-            if (ingredient.Type == FoodType.Dairy)
+                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/vegan");
+            }    
+            else if (ingredient.Type == FoodType.Dairy)
+            {
                 _intDiary++;
+                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/dairy");
+            }
+            else
+            {
+                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Meat");
+            }
 
-            _numberOfMeat.text = "x"+ _intMeat;
-            _numberOfCarb.text = "x"+ _intCarb;
-            _numberOfDairy.text = "x"+ _intDiary;
-            _numberOfVeg.text = "x"+ _intVeg;
+            if (ingredient.points == 1)
+            {
+                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor1");
+            }
+            else if (ingredient.points == 2)
+            {
+                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor2");
+            }
+            else if (ingredient.points == 3)
+            {
+                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor3");
+            }
+            else
+            {
+                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Vegan");
+            }
+            ingredientIterator++;
         }
+        _numberOfMeat.text = "x" + _intMeat;
+        _numberOfCarb.text = "x" + _intCarb;
+        _numberOfDairy.text = "x" + _intDiary;
+        _numberOfVeg.text = "x" + _intVeg;
     }
-    
 }

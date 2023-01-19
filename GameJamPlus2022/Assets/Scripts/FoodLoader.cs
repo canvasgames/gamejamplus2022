@@ -8,6 +8,7 @@ public class FoodLoader : MonoBehaviour
     public FoodId Id;
     public FoodType Type;
     TextMesh textScore;
+    public int points;
 
     public void AddScoreText(TextMesh prefab)
     {
