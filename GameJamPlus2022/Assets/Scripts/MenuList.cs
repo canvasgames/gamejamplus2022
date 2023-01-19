@@ -26,6 +26,9 @@ public class MenuList : MonoBehaviour
     [SerializeField] private List<Image> _childType;
     [SerializeField] private List<Image> _childPoints;
 
+    [Header("Button")]
+    [SerializeField] private Button _closeButton;
+
     private void Awake()
     {
         for (int childNumber = 0; childNumber < _numberOfIngredients; childNumber++)
@@ -41,6 +44,17 @@ public class MenuList : MonoBehaviour
             _childPoints.Add(child.transform.GetChild(2).gameObject.GetComponent<Image>());
             childIterator++;
         }
+
+        
+    }
+
+    private void OnEnable()
+    {
+        _closeButton.onClick.AddListener(CloseList);
+    }
+    private void OnDisable()
+    {
+        _closeButton.onClick.RemoveListener(CloseList);
     }
     private void Start()
     {
@@ -102,5 +116,10 @@ public class MenuList : MonoBehaviour
         _numberOfCarb.text = "x" + _intCarb;
         _numberOfDairy.text = "x" + _intDiary;
         _numberOfVeg.text = "x" + _intVeg;
+    }
+
+    private void CloseList()
+    {
+        this.gameObject.SetActive(false);
     }
 }
