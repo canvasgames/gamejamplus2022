@@ -25,6 +25,7 @@ public class MenuList : MonoBehaviour
     [SerializeField] private List<FoodLoader> _childsFoodLoader;
     [SerializeField] private List<Image> _childType;
     [SerializeField] private List<Image> _childPoints;
+    [SerializeField] private List<Image> _childBurgerType;
 
     [Header("Button")]
     [SerializeField] private Button _closeButton;
@@ -42,6 +43,7 @@ public class MenuList : MonoBehaviour
             _childsFoodLoader.Add(child.GetComponent<FoodLoader>());
             _childType.Add(child.transform.GetChild(1).gameObject.GetComponent<Image>());
             _childPoints.Add(child.transform.GetChild(2).gameObject.GetComponent<Image>());
+            _childBurgerType.Add(child.transform.GetChild(3).gameObject.GetComponent<Image>());
             childIterator++;
         }
 
@@ -93,7 +95,7 @@ public class MenuList : MonoBehaviour
             {
                 _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Meat");
             }
-
+            //------------------
             if (ingredient.points == 1)
             {
                 _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor1");
@@ -110,6 +112,28 @@ public class MenuList : MonoBehaviour
             {
                 _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Vegan");
             }
+            //------------------
+            if (ingredient.BurgerType == BurguerType.Bread)
+            {
+                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/breadType");
+            }
+            else if (ingredient.BurgerType == BurguerType.Hamburguer)
+            {
+                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/hamburgerType");
+            }
+            else if (ingredient.BurgerType == BurguerType.Topping)
+            {
+                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/toppingType");
+            }
+            else if (ingredient.BurgerType == BurguerType.Sauce)
+            {
+                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/sauceType");
+            }
+            else
+            {
+                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_carb");
+            }
+
             ingredientIterator++;
         }
         _numberOfMeat.text = "x" + _intMeat;

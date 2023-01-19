@@ -15,6 +15,5 @@ public class ShowIngredientList : MonoBehaviour
     private void OpenList()
     {
         _ingredientList.SetActive(true);
-        Debug.Log("AQUIII2");
     }
 }

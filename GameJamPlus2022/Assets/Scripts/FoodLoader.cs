@@ -9,6 +9,7 @@ public class FoodLoader : MonoBehaviour
     public FoodType Type;
     TextMesh textScore;
     public int points;
+    public BurguerType BurgerType;
 
     public void AddScoreText(TextMesh prefab)
     {
