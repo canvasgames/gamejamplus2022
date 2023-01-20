@@ -823,6 +823,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &940726922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 1112831508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &970622924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 501517302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &979340619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1100,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1060268453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 1372513340221961036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1112831508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1250,6 +1265,10 @@ PrefabInstance:
     - target: {fileID: 5425561160108013107, guid: 3aa1ef22151db421ba864a8e506112cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425561160108013112, guid: 3aa1ef22151db421ba864a8e506112cf, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa1ef22151db421ba864a8e506112cf, type: 3}
@@ -2152,6 +2171,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1602927375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 551331564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1631272043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8781933201559880530, guid: d9b512073c51a594f889b2fbe1329ed1, type: 3}
@@ -2366,6 +2390,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3360389223437591778, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
   m_PrefabInstance: {fileID: 3360389222961229872}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1818521556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 2070848416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836690944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2478,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1897519231 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8738300270639449864, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+  m_PrefabInstance: {fileID: 1372513340221961036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1950135305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,6 +2849,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 10703771}
     m_Modifications:
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 1897519231}
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook1Object
+      value: 
+      objectReference: {fileID: 1060268453}
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook2Object
+      value: 
+      objectReference: {fileID: 1602927375}
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook3Object
+      value: 
+      objectReference: {fileID: 940726922}
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook4Object
+      value: 
+      objectReference: {fileID: 1818521556}
+    - target: {fileID: 407616842593774021, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
+      propertyPath: hook5Object
+      value: 
+      objectReference: {fileID: 970622924}
     - target: {fileID: 1372513339584051280, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
       propertyPath: m_RootOrder
       value: 0

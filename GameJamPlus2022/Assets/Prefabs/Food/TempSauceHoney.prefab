@@ -783,8 +783,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 874896725889e8c45bc1abca6968c4f3, type: 3}
-  m_Color: {r: 1, g: 0.4783347, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d5b6bd351b74b6043b2cfa6b9ef2c2ef, type: 3}
+  m_Color: {r: 1, g: 0.9214486, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -807,13 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RootBone: {fileID: 9190068499397682342}
-  m_BoneTransforms:
-  - {fileID: 9190068499397682342}
-  - {fileID: 7109687220150744793}
-  - {fileID: 8953751886935321455}
-  - {fileID: 6303274737198609544}
-  - {fileID: 4030690251282902521}
-  - {fileID: 9068210801317423563}
+  m_BoneTransforms: []
   m_Bounds:
     m_Center: {x: 0, y: -0.010644913, z: 0}
     m_Extent: {x: 2.435, y: 0.58683497, z: 0}
@@ -834,6 +828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 18
   Type: 3
+  points: 0
+  BurgerType: 0
 --- !u!82 &-4355630416736074217
 AudioSource:
   m_ObjectHideFlags: 0
