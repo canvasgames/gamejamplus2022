@@ -12,7 +12,7 @@ public enum FoodId
     Tire,
     VeganBread,
     RegularBurguer,
-    RottenmBurger,
+    RottenBurger,
     MysteryBurger,
     MushroomBurger,
     SoyBurguer,

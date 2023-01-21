@@ -1086,6 +1086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 11
   Type: 2
+  points: 2
+  BurgerType: 2
 --- !u!82 &-4355630416736074217
 AudioSource:
   m_ObjectHideFlags: 0

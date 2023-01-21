@@ -9,7 +9,7 @@ public class NewCardToBuy : MonoBehaviour
 {
     // Start is called before the first frame update
     Card myCard;
-    public Image myPoints, myGraphic, myIcon;
+    public Image myPoints, myGraphic, myIcon, myBurgerType;
     public TextMeshProUGUI myTitle;
 
     void Start()
@@ -38,6 +38,7 @@ public class NewCardToBuy : MonoBehaviour
 
         myPoints.sprite = Resources.Load<Sprite>("Sprites/valor" + myCard._points.ToString());
         myIcon.sprite = GetFoodTypeSprite(myCard._foodType);
+        myBurgerType.sprite = GetBurgerTypeSprite(myCard._burguerType);
         myTitle.text = myCard._name;
     }
 
@@ -64,6 +65,28 @@ public class NewCardToBuy : MonoBehaviour
         FoodType.Vegetable => "vegan",
         FoodType.Carb => "carb",
         FoodType.Dairy => "dairy",
+        _ => null,
+    };
+
+    public static Sprite GetFoodScoreSprite(int score)
+    {
+        return Resources.Load<Sprite>("Sprites/valor" + score);
+    }
+
+    public static Sprite GetBurgerTypeSprite(BurguerType type)
+    {
+        var spriteFileName = GetBurgerTypeSpriteName(type);
+        if (string.IsNullOrEmpty(GetBurgerTypeSpriteName(type)))
+            return null;
+        return Resources.Load<Sprite>("Sprites/" + spriteFileName + "Type");
+    }
+
+    static string GetBurgerTypeSpriteName(BurguerType type) => type switch
+    {
+        BurguerType.Bread => "bread",
+        BurguerType.Hamburguer => "hamburger",
+        BurguerType.Sauce => "sauce",
+        BurguerType.Topping => "topping",
         _ => null,
     };
 }
