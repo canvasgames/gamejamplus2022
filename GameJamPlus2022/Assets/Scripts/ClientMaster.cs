@@ -90,7 +90,7 @@ public class ClientMaster : MonoBehaviour
     {
         currentClientIndex++;
 
-        if (currentClientIndex < levelClients.Count - 1)
+        if (currentClientIndex < levelClients.Count)
         {
             currentClient = levelClients[currentClientIndex];
         }
