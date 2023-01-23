@@ -23,7 +23,7 @@ public enum FoodId
     OldSock,
     RadioativeSauce,
     WhiteSauce,
-    BarbecueSauce,
+    Ketchup,
     HoneySauce,
     SwampSauce,
 }

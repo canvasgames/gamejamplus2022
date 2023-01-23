@@ -44,7 +44,7 @@ public class ClientMaster : MonoBehaviour
         InitLevel(1);
     }
 
-    List<ClientType> GetLevelClients(int level)
+    public List<ClientType> GetLevelClients(int level)
     {
         if (level == 1) return clientsLevel1;
         else if (level == 2) return clientsLevel2;
@@ -71,7 +71,7 @@ public class ClientMaster : MonoBehaviour
         levelClients = GetLevelClients(level);
         currentClient = levelClients[0];
         currentClientIndex = 0;
-        RoundController.instance.StartRoundLevel();
+        RoundController.instance.StartRoundLevel(level);
     }
 
     public void NextLevel()
@@ -82,7 +82,7 @@ public class ClientMaster : MonoBehaviour
         levelClients = GetLevelClients(currentLevel);
         currentClient = levelClients[0];
         currentClientIndex = 0;
-        RoundController.instance.StartRoundLevel();
+        RoundController.instance.StartRoundLevel(currentLevel);
     }
 
 

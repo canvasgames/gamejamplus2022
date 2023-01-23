@@ -18,10 +18,22 @@ public class RoundController : MonoBehaviour
         clientOrders = this.gameObject.GetComponentsInChildren<ClientOrder>();
     }
 
-    public void StartRoundLevel()
+    public void StartRoundLevel(int currentLevel)
     {
-        foreach (var hook in clientOrders)
-            hook.gameObject.SetActive(false);
+        
+        for (int i = 0; i < clientOrders.Count(); i++)
+        {
+            if (i <= ClientMaster.instance.GetLevelClients(currentLevel).Count() - 1)
+            {
+                clientOrders[i].gameObject.SetActive(true);
+                clientOrders[i].RunAnimation(ClientMaster.instance.GetLevelClients(currentLevel)[i]);
+            }
+            else
+            {
+                clientOrders[i].gameObject.SetActive(false);
+            }
+        }
+          
         ShowClientOrder();
         PrepareNewRound();
     }
@@ -101,6 +113,6 @@ public class RoundController : MonoBehaviour
 
     void ShowClientOrder()
     {
-        clientOrders[ClientMaster.instance.currentClientIndex].RunAnimation(ClientMaster.instance.currentClient);
+        //clientOrders[ClientMaster.instance.currentClientIndex].RunAnimation(ClientMaster.instance.currentClient);
     }
 }

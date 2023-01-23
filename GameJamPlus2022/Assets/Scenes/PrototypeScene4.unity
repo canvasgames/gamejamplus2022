@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ingredients: []
   explosion: {fileID: 2041334670}
+  clientOrders: []
 --- !u!1 &306282144
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
@@ -729,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
@@ -1170,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
@@ -1520,6 +1521,10 @@ PrefabInstance:
     - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
       propertyPath: cardLibrary.Array.data[16]._name
       value: White Sauce
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: cardLibrary.Array.data[17]._name
+      value: Ketchup
       objectReference: {fileID: 0}
     - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
       propertyPath: cardLibrary.Array.data[15]._foodId
@@ -2001,7 +2006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel2.Array.size
@@ -2013,7 +2018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.data[2]
@@ -2885,7 +2890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372513339584051287, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496c8d491307d6b459e97ca25159673a, type: 3}
