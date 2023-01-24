@@ -44,11 +44,17 @@ public class ScoreController : MonoBehaviour
 
     public void UpdateTargetScore()
     {
-        targetScore.text = $"Target: {ClientMaster.instance.targetLevelScore[ClientMaster.instance.currentLevel]}";
+        targetScore.text = $"Target: {ClientMaster.instance.targetLevelScore[(ClientMaster.instance.currentLevel)-1]}";
     }
 
     public void ShowBurgerScore(FoodLoader[] foods, ClientType client)
     {
 
+    }
+
+    public void ResetScore()
+    {
+        Score = 0;
+        textScore.text = "Score: 0";
     }
 }

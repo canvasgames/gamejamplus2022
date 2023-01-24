@@ -340,7 +340,7 @@ MonoBehaviour:
   Id: 3
   Type: 2
   points: 3
-  BurgerType: 2
+  BurgerType: 0
 --- !u!222 &5099532403026937324
 CanvasRenderer:
   m_ObjectHideFlags: 0

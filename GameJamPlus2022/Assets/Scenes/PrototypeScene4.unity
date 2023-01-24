@@ -2226,6 +2226,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1151524002}
     - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: playerInitalDeck.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: playerInitalDeck.Array.data[17]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: playerInitalDeck.Array.data[18]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
       propertyPath: cardLibrary.Array.data[15]._name
       value: Radioative Fluid
       objectReference: {fileID: 0}
@@ -2267,7 +2279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
       propertyPath: cardLibrary.Array.data[3]._burguerType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e97bded3a02174a9281390e52dd6a101, type: 3}

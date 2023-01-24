@@ -288,7 +288,7 @@ MonoBehaviour:
   Id: 3
   Type: 2
   points: 3
-  BurgerType: 2
+  BurgerType: 0
 --- !u!82 &5867177981362698980
 AudioSource:
   m_ObjectHideFlags: 0

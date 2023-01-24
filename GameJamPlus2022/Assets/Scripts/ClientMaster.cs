@@ -111,7 +111,7 @@ public class ClientMaster : MonoBehaviour
 
     public int GetLevelTargetScore()
     {
-        if (currentLevel < 5) return targetLevelScore[currentLevel];
+        if (currentLevel-1 < 5) return targetLevelScore[currentLevel-1];
         else return 30;
     }
 
