@@ -12,10 +12,20 @@ public class MenuList : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _numberOfDairy;
     [SerializeField] private TextMeshProUGUI _numberOfVeg;
 
+    [SerializeField] private TextMeshProUGUI _numberOfBread;
+    [SerializeField] private TextMeshProUGUI _numberOfBurger;
+    [SerializeField] private TextMeshProUGUI _numberOfTopping;
+    [SerializeField] private TextMeshProUGUI _numberOfSauce;
+
     private int _intMeat;
     private int _intCarb;
     private int _intDiary;
     private int _intVeg;
+
+    private int _intBread;
+    private int _intBurger;
+    private int _intTopping;
+    private int _intSauce;
 
     [Header("Ingredients")]
     [SerializeField] private int _numberOfIngredients;
@@ -64,6 +74,10 @@ public class MenuList : MonoBehaviour
         _intCarb = 0;
         _intDiary = 0;
         _intVeg = 0;
+        _intBread = 0;
+        _intBurger = 0;
+        _intTopping = 0;
+        _intSauce = 0;
         CalculateNumberAndAdjustImageOfTypes();
     }
     private void CalculateNumberAndAdjustImageOfTypes()
@@ -115,18 +129,22 @@ public class MenuList : MonoBehaviour
             //------------------
             if (ingredient.BurgerType == BurguerType.Bread)
             {
+                _intBread++;
                 _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/breadType");
             }
             else if (ingredient.BurgerType == BurguerType.Hamburguer)
             {
+                _intBurger++;
                 _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/hamburgerType");
             }
             else if (ingredient.BurgerType == BurguerType.Topping)
             {
+                _intTopping++;
                 _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/toppingType");
             }
             else if (ingredient.BurgerType == BurguerType.Sauce)
             {
+                _intSauce++;
                 _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/sauceType");
             }
             else
@@ -140,6 +158,10 @@ public class MenuList : MonoBehaviour
         _numberOfCarb.text = "x" + _intCarb;
         _numberOfDairy.text = "x" + _intDiary;
         _numberOfVeg.text = "x" + _intVeg;
+        _numberOfBread.text = "x" + _intBread;
+        _numberOfBurger.text = "x" + _intBurger;
+        _numberOfTopping.text = "x" + _intTopping;
+        _numberOfSauce.text = "x" + _intSauce;
     }
 
     private void CloseList()
