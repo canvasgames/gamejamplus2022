@@ -48,6 +48,7 @@ public class LevelEndScreen : MonoBehaviour
     public void DisplayCardOptions()
     {
         cardsToBuyMenu.SetActive(true);
+        ShowNextOrders.instance.NextOrders();
         FoodId[] cardsToPresent = DeckMaster.instance.PresentNewCardsChoice();
         card1.initMyCard(cardsToPresent[0]);
         card2.initMyCard(cardsToPresent[1]);

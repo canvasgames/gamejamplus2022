@@ -10,6 +10,7 @@ public class RoundController : MonoBehaviour
     [SerializeField] GameObject explosion;
     ClientOrder[] clientOrders;
 
+    public int numberOfNextOrders;
     public const int TOTAL_INGREDIENTS = 4;
 
     private void Awake()
@@ -20,10 +21,10 @@ public class RoundController : MonoBehaviour
 
     public void StartRoundLevel(int currentLevel)
     {
-        
+        numberOfNextOrders = currentLevel+1;
         for (int i = 0; i < clientOrders.Count(); i++)
         {
-            if (i <= ClientMaster.instance.GetLevelClients(currentLevel).Count() - 1)
+            if (i <= ClientMaster.instance.GetLevelClients(currentLevel).Count - 1)
             {
                 clientOrders[i].gameObject.SetActive(true);
                 clientOrders[i].RunAnimation(ClientMaster.instance.GetLevelClients(currentLevel)[i]);

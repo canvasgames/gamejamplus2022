@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClientOrder : MonoBehaviour
 {
+    public static ClientOrder instance;
     [SerializeField] SpriteRenderer foodTypeSpriteRenderer;
     [SerializeField] SpriteRenderer mark;
     [SerializeField] float animationSpeed;
@@ -12,6 +13,7 @@ public class ClientOrder : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         startPos = this.transform.localPosition;
     }
 
@@ -23,7 +25,7 @@ public class ClientOrder : MonoBehaviour
     }
     public void MarkAsDone() => mark.gameObject.SetActive(true);
 
-    Sprite GetSpriteByClientType(ClientType clientType) => Resources.Load<Sprite>("Sprites/" + GetSpriteNameByClientType(clientType));
+    public Sprite GetSpriteByClientType(ClientType clientType) => Resources.Load<Sprite>("Sprites/" + GetSpriteNameByClientType(clientType));
     string GetSpriteNameByClientType(ClientType clientType) => clientType switch
     {
         ClientType.Carnivorous => "NO_Vegan",
