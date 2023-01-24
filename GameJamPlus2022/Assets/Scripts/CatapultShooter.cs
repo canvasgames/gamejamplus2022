@@ -17,6 +17,7 @@ public class CatapultShooter : MonoBehaviour
     [SerializeField] Transform foodPool;
     [SerializeField] TextMesh foodScore;
     public FoodLoader[] foodPrefabs;
+    public BurguerType typeDeployed; 
 
     bool isShooting;
     float xPosTarget;
@@ -83,6 +84,8 @@ public class CatapultShooter : MonoBehaviour
     {
         Debug.Log("Deploy food");
         var prefab = GetPrefabById(card._foodId);
+        
+        MarkBurgerTypesUsed.instance.MarkType(card._burguerType);
         lastFood = GameObject.Instantiate(prefab, foodPool);
         lastFood.transform.position = spawnPivot.transform.position + Vector3.right * xPosTarget;
         lastFood.GetComponentInChildren<SpriteRenderer>().sortingOrder = ++spriteSortOrder;

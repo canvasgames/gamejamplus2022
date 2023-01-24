@@ -98,6 +98,7 @@ public class RoundController : MonoBehaviour
         SoundController.instance.RandomCostumers();
         ScoreController.instance.UpdateTargetScore();
         CatapultShooter.instance.ClearTable();
+        MarkBurgerTypesUsed.instance.ClearAllMarks();
         Ingredients.Clear();
         Invoke(nameof(StartNextClient), 0.2f);
     }
