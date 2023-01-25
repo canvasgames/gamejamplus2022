@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 110589694649203234}
   - component: {fileID: 2380263169462508571}
+  - component: {fileID: 1488600243}
   m_Layer: 5
-  m_Name: AvatarF
+  m_Name: FemaleBodyThinWimp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +51,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562667390538788943}
   m_CullTransparentMesh: 1
+--- !u!114 &1488600243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562667390538788943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418b16c82f8fe43d086067b1cd964fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodySkin: {fileID: 664432511854263598}
+  bodyClothes1: {fileID: 2760033653766096960}
+  bodyClothes2: {fileID: 7929655554562980178}
+  arm1: {fileID: 116427670490012580}
+  arm2: {fileID: 6622010365140412404}
+  hair: {fileID: 5384391836381808403}
 --- !u!1 &2147349803201381645
 GameObject:
   m_ObjectHideFlags: 0
