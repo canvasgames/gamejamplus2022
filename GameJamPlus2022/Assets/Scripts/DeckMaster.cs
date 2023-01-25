@@ -149,7 +149,7 @@ public class DeckMaster : MonoBehaviour
                 currentFlyCounter = card.flyCounter;
                 card.flyCounter = 0;
             }
-            return (card._points * ScoreController.instance.restrictionMultiplier) + currentFlyCounter;
+            return (int)((card._points + currentFlyCounter * ScoreController.instance.flyMultiplier) * ScoreController.instance.restrictionMultiplier);
         }
         else
         {
@@ -160,6 +160,14 @@ public class DeckMaster : MonoBehaviour
             }
             textScore.color = Color.white;
             return card._points + currentFlyCounter;
+        }
+    }
+
+    public void ResetFlies()
+    {
+        foreach (Card card in cardLibrary)
+        {
+            card.flyCounter = 0;
         }
     }
 }

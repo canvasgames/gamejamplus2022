@@ -32,6 +32,7 @@ public class LevelEndScreen : MonoBehaviour
     public void Init()
     {
         this.gameObject.SetActive(true);
+        DeckMaster.instance.ResetFlies();
         playerScore.text = ScoreController.instance.Score.ToString();
         levelTargetScore.text = ClientMaster.instance.GetLevelTargetScore().ToString();
         cardsToBuyMenu.SetActive(false);

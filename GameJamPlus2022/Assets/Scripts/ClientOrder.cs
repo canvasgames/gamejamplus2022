@@ -32,6 +32,7 @@ public class ClientOrder : MonoBehaviour
         ClientType.Vegan => "NO_Meat",
         ClientType.LowCarb => "NO_carb",
         ClientType.DairyIntolerant => "NO_Dairy",
+        ClientType.Random => "question_mark",
         _ => "",
     };
 

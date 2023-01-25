@@ -7,7 +7,8 @@ public enum ClientType
     Carnivorous = 0,
     Vegan = 1,
     LowCarb = 3,
-    DairyIntolerant = 2
+    DairyIntolerant = 2,
+    Random = 4
 }
 
 public class Client
@@ -71,6 +72,16 @@ public class ClientMaster : MonoBehaviour
         levelClients = GetLevelClients(level);
         currentClient = levelClients[0];
         currentClientIndex = 0;
+        if (GetLevelClients(currentLevel).Contains(ClientType.Random))
+        {
+            for (int i = 0; i < GetLevelClients(currentLevel).Count; i++)
+            {
+                if (GetLevelClients(currentLevel)[i] == ClientType.Random)
+                {
+                    GetLevelClients(currentLevel)[i] = ((ClientType)Random.Range(0, 3));
+                }
+            }
+        }
         RoundController.instance.StartRoundLevel(level);
     }
 
@@ -82,6 +93,16 @@ public class ClientMaster : MonoBehaviour
         levelClients = GetLevelClients(currentLevel);
         currentClient = levelClients[0];
         currentClientIndex = 0;
+        if (GetLevelClients(currentLevel).Contains(ClientType.Random))
+        {
+            for(int i = 0; i< GetLevelClients(currentLevel).Count;i++)
+            {
+                if (GetLevelClients(currentLevel)[i] == ClientType.Random)
+                {
+                    GetLevelClients(currentLevel)[i] = ((ClientType)Random.Range(0, 3));
+                }
+            }
+        }
         RoundController.instance.StartRoundLevel(currentLevel);
     }
 
