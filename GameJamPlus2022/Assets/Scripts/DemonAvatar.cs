@@ -20,71 +20,144 @@ public class DemonAvatar : MonoBehaviour
         fatMuscular = 3,
     }
 
-    [SerializeField] NamedImage[] hairSprites;
-    DemonAvatarBody myBody;
-    DemonAvatarBody[] femaleBodies;
-    DemonAvatarBody[] maleBodies;
+   [SerializeField] Color[] skinColors, primaryColors, secondaryColors, hairColors, eyeColors;
+
+   [SerializeField] NamedImage[] femaleHairSprites, maleHairSprites;
+   [SerializeField] DemonAvatarBody myBody;
+   [SerializeField] DemonAvatarBody[] femaleBodies, maleBodies;
+
+    Dictionary<string, Sprite> femaleHairDictionary, maleHairDictionary;
 
     bodyTypes myBodyType;
-   
+
 
     void Start()
     {
-        
-        /*Dictionary<string, Sprite> bodies = new Dictionary<string, Sprite>();
-        foreach (NamedImage item in femaleBodyParts)
+
+        femaleHairDictionary = new Dictionary<string, Sprite>();
+        foreach (NamedImage item in femaleHairSprites)
         {
-            bodies.Add(item.name, item.image);
-        }*/
+            femaleHairDictionary.Add(item.name, item.image);
+        }
+        maleHairDictionary = new Dictionary<string, Sprite>();
+        foreach (NamedImage item in maleHairSprites)
+        {
+            maleHairDictionary.Add(item.name, item.image);
+        }
+
+        //DefineParts(true,        RandomBool(),     RandomBool(),      "#f9d4ab",        "#f9d4ab",        "#f9d4ab",               "#f9d4ab",           "#f9d4ab",     "#f9d4ab");
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
     }
 
+    public void CreateDemon()
+    {
+        DefineParts(true, RandomBool(), RandomBool(), RandomEyeColors(), RandomHairColor(), RandomSkinColor(), RandomPrimaryColor(), RandomSecondaryColor(), RandomColor());
+    }
+
+    string RandomColor()
+    {
+        int r = UnityEngine.Random.Range(0, 9);
+        if (r == 0) return "#f9d4ab";
+        else if (r == 1) return "#efd2c4";
+        else if (r == 2) return "#e2c6c2";
+        else if (r == 3) return "#e0d0bb";
+        else if (r == 4) return "#ebb77d";
+        else if (r == 5) return "#dca788";
+        else if (r == 6) return "#cda093";
+        else if (r == 7) return "#ccab80";
+        else return "";
+    }
+
+    string RandomSkinColor() {
+        Debug.Log("colooor " + ColorUtility.ToHtmlStringRGB(skinColors[UnityEngine.Random.Range(0, skinColors.Length)]));
+        return "#"+ColorUtility.ToHtmlStringRGB(skinColors[UnityEngine.Random.Range(0, skinColors.Length)]);
+    }
+    string RandomPrimaryColor()
+    {
+        return "#"+ColorUtility.ToHtmlStringRGB(primaryColors[UnityEngine.Random.Range(0, primaryColors.Length)]);
+    }
+    string RandomSecondaryColor()
+    {
+        return "#"+ColorUtility.ToHtmlStringRGB(secondaryColors[UnityEngine.Random.Range(0, secondaryColors.Length)]);
+    }
+    string RandomHairColor()
+    {
+        return "#"+ColorUtility.ToHtmlStringRGB(hairColors[UnityEngine.Random.Range(0, hairColors.Length)]);
+    }
+    string RandomEyeColors()
+    {
+        return "#"+ColorUtility.ToHtmlStringRGB(eyeColors[UnityEngine.Random.Range(0, eyeColors.Length)]);
+    }
+
+    bool RandomBool() { return UnityEngine.Random.Range(0, 2) == 0 ? false : true; }
+
+
+    //sex: male = false, female = true
+    //body_strenght: wimp = false, strong = true
+    //body_type: thin = false, fat = true
+    int dist = 1;
     public void DefineParts(bool sex, bool body_strenght, bool body_type, string eye_color, string hair_color, string skin_color, string primary_color, string secondary_color, string hair_style)
     {
+        DemonAvatarBody newBody;
+        myBody = new DemonAvatarBody();
         switch (sex) {
             case true: // female
-                if (body_strenght == true && body_type == true) // muscular and thin
+                if (body_strenght == true && body_type == true) // muscular and fat
+                {
+                    myBody = femaleBodies[(int)bodyTypes.fatMuscular];
+                }
+                else if (body_strenght == true && body_type == false) // muscular and thin
                 {
                     myBody = femaleBodies[(int)bodyTypes.thinMuscular];
                 }
-                else if (body_strenght == true && body_type == false) // muscular and fat
-                {
-                    myBody = femaleBodies[(int)bodyTypes.thinWimp];
-                }
-                else if (body_strenght == false && body_type == true) // wimp and thin
+                else if (body_strenght == false && body_type == true) // wimp and fat
                 {
                     myBody = femaleBodies[(int)bodyTypes.fatWimp];
                 }
                 else if (body_strenght == true && body_type == false) // wimp and thin
                 {
-                    myBody = femaleBodies[(int)bodyTypes.fatMuscular];
+                    myBody = femaleBodies[(int)bodyTypes.thinWimp];
                 }
+
+                newBody =  Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                //myBody.hair.sprite = femaleHairDictionary[hair_style];
                 break;
 
             case false: // male
-                if (body_strenght == true && body_type == true) // muscular and thin
+                if (body_strenght == true && body_type == true) // muscular and fat
+                {
+                    myBody = maleBodies[(int)bodyTypes.fatMuscular];
+                }
+                else if (body_strenght == true && body_type == false) // muscular and thin
                 {
                     myBody = maleBodies[(int)bodyTypes.thinMuscular];
                 }
-                else if (body_strenght == true && body_type == false) // muscular and fat
-                {
-                    myBody = maleBodies[(int)bodyTypes.thinWimp];
-                }
-                else if (body_strenght == false && body_type == true) // wimp and thin
+                else if (body_strenght == false && body_type == true) // wimp and fat
                 {
                     myBody = maleBodies[(int)bodyTypes.fatWimp];
                 }
                 else if (body_strenght == true && body_type == false) // wimp and thin
                 {
-                    myBody = maleBodies[(int)bodyTypes.fatMuscular];
+                    myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
+                //myBody.hair.sprite = maleHairDictionary[hair_style];
+                newBody = Instantiate(myBody, transform.position, transform.rotation);
+
                 break;
         }
 
-        myBody.bodyClothes1.color = HexToColor(primary_color);
-        myBody.bodyClothes2.color = HexToColor(secondary_color);
-        myBody.hair.color = HexToColor(hair_color);
-        myBody.bodySkin.color = HexToColor(skin_color);
-        myBody.arm1.color = HexToColor(skin_color);
+        newBody.bodyClothes1.color = HexToColor(primary_color);
+        newBody.bodyClothes2.color = HexToColor(secondary_color);
+        newBody.hair.color = HexToColor(hair_color);
+        newBody.bodySkin.color = HexToColor(skin_color);
+        newBody.arm1.color = HexToColor(skin_color);
+
+        dist += 2;
     }
 
     Color HexToColor(string hexColor)

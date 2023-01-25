@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2560156115019268059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2560156115019268057}
+  - component: {fileID: 2560156115019268056}
+  m_Layer: 0
+  m_Name: DemonAvatar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2560156115019268057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560156115019268059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46.3, y: -2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2560156115019268056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560156115019268059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f670e7744bd64f80b5688fee8d7f890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinColors:
+  - {r: 0.627451, g: 0.34509805, b: 0.32941177, a: 1}
+  - {r: 0.990566, g: 0.39298022, b: 0.35978103, a: 1}
+  - {r: 0.3679245, g: 0.30360347, b: 0.30024028, a: 1}
+  - {r: 0.5377358, g: 0.027901389, b: 0.027901389, a: 1}
+  - {r: 1, g: 0.5424528, b: 0.5424528, a: 1}
+  - {r: 0.13207549, g: 0.08535067, b: 0.08535067, a: 1}
+  - {r: 0.5849056, g: 0.03586687, b: 0.03586687, a: 1}
+  - {r: 0.9056604, g: 0.14097545, b: 0.14097545, a: 1}
+  primaryColors:
+  - {r: 0.21960786, g: 0.10196079, b: 0.20000002, a: 0}
+  - {r: 0.9339623, g: 0.3568441, b: 0.837776, a: 0}
+  - {r: 0.2924528, g: 0.21382163, b: 0.27961507, a: 0}
+  - {r: 0.11320755, g: 0.12526886, b: 0.4528302, a: 0}
+  - {r: 0.4509804, g: 0.23565535, b: 0.11372548, a: 0}
+  - {r: 0.4509804, g: 0.11372548, b: 0.33814198, a: 0}
+  - {r: 0.4509804, g: 0.43934217, b: 0.11372548, a: 0}
+  - {r: 0.1509434, g: 0.14744136, b: 0.050551802, a: 0}
+  secondaryColors:
+  - {r: 0.15686275, g: 0.11764707, b: 0.14901961, a: 1}
+  - {r: 0.29803923, g: 0.22352943, b: 0.28235295, a: 1}
+  - {r: 0.22352941, g: 0.24377896, b: 0.29803923, a: 1}
+  - {r: 0.22352941, g: 0.29803923, b: 0.2964841, a: 1}
+  hairColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  eyeColors:
+  - {r: 0.8773585, g: 0.086908154, b: 0.086908154, a: 0}
+  - {r: 0.7924528, g: 0.22801706, b: 0.48819798, a: 0}
+  - {r: 0.33962262, g: 0.31238872, b: 0.32487094, a: 0}
+  - {r: 0.3207547, g: 0.05900677, b: 0.17118452, a: 0}
+  femaleHairSprites: []
+  maleHairSprites: []
+  myBody: {fileID: 0}
+  femaleBodies:
+  - {fileID: 1488600243, guid: 634ced5413156934ca4aeed36452f59b, type: 3}
+  - {fileID: 1488600243, guid: b2ad4221e6ab34f88ad821288e7ae057, type: 3}
+  - {fileID: 1488600243, guid: 93e974c956a8b4a86bd6884341728422, type: 3}
+  - {fileID: 1488600243, guid: 53242843ff3464b148a59bd5fc011b0f, type: 3}
+  maleBodies:
+  - {fileID: 1488600243, guid: 634ced5413156934ca4aeed36452f59b, type: 3}
+  - {fileID: 1488600243, guid: b2ad4221e6ab34f88ad821288e7ae057, type: 3}
+  - {fileID: 1488600243, guid: 93e974c956a8b4a86bd6884341728422, type: 3}
+  - {fileID: 1488600243, guid: 53242843ff3464b148a59bd5fc011b0f, type: 3}

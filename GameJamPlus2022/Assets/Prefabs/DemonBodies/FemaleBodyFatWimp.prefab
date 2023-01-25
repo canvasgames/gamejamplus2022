@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2380263169462508571}
   - component: {fileID: 1488600243}
   m_Layer: 5
-  m_Name: FemaleBodyThinWimp
+  m_Name: FemaleBodyFatWimp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 31fda6a0ad2fd0b40b40a0b4d39e24be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20671f4b95acb2049a171a6ddc5e3357, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -349,7 +349,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 54e4778ba938bf348b5bc8aa222470f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 560f22aad765bb444ba6a50c0e517770, type: 3}
   m_Color: {r: 0.25882354, g: 0.11764706, b: 0.23529412, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -446,7 +446,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 1091e9d5342e9284389437a3fbf8e797, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f505ca09545aad448b8c279f700a328, type: 3}
   m_Color: {r: 0.34901962, g: 0.2627451, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -544,7 +544,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: d83c441eda5fc754287e9e3b092f33b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57dd448a7da00fc4dbe01d8668a370dc, type: 3}
   m_Color: {r: 0.627451, g: 0.34509805, b: 0.32941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -641,7 +641,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d7492665c1b9dc459d391576e37febb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a5329fd7ccab443ad9226b093aaf2a, type: 3}
   m_Color: {r: 0.627451, g: 0.34509805, b: 0.32941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -738,7 +738,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: ccedc7e36f8b2e64e92e78581a32683a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25d6d0f6cb72aae42b126c586b2077ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
