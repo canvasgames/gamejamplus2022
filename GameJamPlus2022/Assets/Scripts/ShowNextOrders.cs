@@ -8,22 +8,10 @@ public class ShowNextOrders : MonoBehaviour
     public static ShowNextOrders instance;
     [SerializeField] private List<GameObject> _orders;
     [SerializeField] private List<Image> _dietIcon;
-    // Start is called before the first frame update
 
     void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void NextOrders()

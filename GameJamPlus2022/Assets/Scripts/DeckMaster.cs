@@ -149,7 +149,7 @@ public class DeckMaster : MonoBehaviour
                 currentFlyCounter = card.flyCounter;
                 card.flyCounter = 0;
             }
-            return (card._points * 2) + currentFlyCounter;
+            return (card._points * ScoreController.instance.restrictionMultiplier) + currentFlyCounter;
         }
         else
         {

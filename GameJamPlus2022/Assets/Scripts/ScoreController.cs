@@ -16,6 +16,9 @@ public class ScoreController : MonoBehaviour
 
     public int Score;
 
+    [Header("GD")]
+    public int restrictionMultiplier = 2;
+
     private void Awake()
     {
         instance = this;
