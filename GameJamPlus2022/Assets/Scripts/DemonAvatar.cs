@@ -157,7 +157,7 @@ public class DemonAvatar : MonoBehaviour
         newBody.bodySkin.color = HexToColor(skin_color);
         newBody.arm1.color = HexToColor(skin_color);
 
-        dist += 2;
+        dist += 5;
     }
 
     Color HexToColor(string hexColor)
