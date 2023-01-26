@@ -6,6 +6,7 @@ using TMPro;
 
 public class LevelEndScreen : MonoBehaviour
 {
+    [SerializeField] private GameObject _shuffleButton;
     // Start is called before the first frame update
     public TextMeshProUGUI playerScore, levelTargetScore;
 
@@ -18,6 +19,17 @@ public class LevelEndScreen : MonoBehaviour
         instance = this;
         this.gameObject.SetActive(false);
     }
+
+    private void OnEnable()
+    {
+        _shuffleButton.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        _shuffleButton.SetActive(true);
+    }
+
     void Start()
     {
         StartCoroutine(StartCardBuyAnimations());

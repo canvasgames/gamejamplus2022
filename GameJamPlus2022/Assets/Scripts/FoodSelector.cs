@@ -8,7 +8,7 @@ public class FoodSelector : MonoBehaviour
 {
     public static FoodSelector instance;
 
-    Animator animator;
+    public Animator animator;
     Button[] buttons;
     Card[] cards;
     Card selected;

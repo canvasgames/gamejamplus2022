@@ -32,10 +32,10 @@ public class MenuList : MonoBehaviour
     [SerializeField] private GameObject _ingredientObjectsContainer;
     [Header("Lists")]
     [SerializeField] private List<GameObject> _childsObjects;
-    [SerializeField] private List<FoodLoader> _childsFoodLoader;
-    [SerializeField] private List<Image> _childType;
-    [SerializeField] private List<Image> _childPoints;
-    [SerializeField] private List<Image> _childBurgerType;
+    [HideInInspector] public List<FoodLoader> childsFoodLoader;
+    [HideInInspector] public List<Image> childType;
+    [HideInInspector] public List<Image> childPoints;
+    [HideInInspector] public List<Image> childBurgerType;
 
     [Header("Button")]
     [SerializeField] private Button _closeButton;
@@ -50,10 +50,10 @@ public class MenuList : MonoBehaviour
         int childIterator = 0;
         foreach (GameObject child in _childsObjects)
         {
-            _childsFoodLoader.Add(child.GetComponent<FoodLoader>());
-            _childType.Add(child.transform.GetChild(1).gameObject.GetComponent<Image>());
-            _childPoints.Add(child.transform.GetChild(2).gameObject.GetComponent<Image>());
-            _childBurgerType.Add(child.transform.GetChild(3).gameObject.GetComponent<Image>());
+            childsFoodLoader.Add(child.GetComponent<FoodLoader>());
+            childType.Add(child.transform.GetChild(1).gameObject.GetComponent<Image>());
+            childPoints.Add(child.transform.GetChild(2).gameObject.GetComponent<Image>());
+            childBurgerType.Add(child.transform.GetChild(3).gameObject.GetComponent<Image>());
             childIterator++;
         }
 
@@ -83,73 +83,73 @@ public class MenuList : MonoBehaviour
     private void CalculateNumberAndAdjustImageOfTypes()
     {
         int ingredientIterator = 0;
-        foreach (FoodLoader ingredient in _childsFoodLoader)
+        foreach (FoodLoader ingredient in childsFoodLoader)
         {
             if (ingredient.Type == FoodType.Carb)
             {
                 _intCarb++;
-                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/carb");
+                childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/carb");
             }
             else if (ingredient.Type == FoodType.Meat)
             {
                 _intMeat++;
-                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/meat");
+                childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/meat");
             }
             else if (ingredient.Type == FoodType.Vegetable)
             {
                 _intVeg++;
-                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/vegan");
+                childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/vegan");
             }    
             else if (ingredient.Type == FoodType.Dairy)
             {
                 _intDiary++;
-                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/dairy");
+                childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/dairy");
             }
             else
             {
-                _childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Meat");
+                childType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Meat");
             }
             //------------------
             if (ingredient.points == 1)
             {
-                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor1");
+                childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor1");
             }
             else if (ingredient.points == 2)
             {
-                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor2");
+                childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor2");
             }
             else if (ingredient.points == 3)
             {
-                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor3");
+                childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/valor3");
             }
             else
             {
-                _childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Vegan");
+                childPoints[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_Vegan");
             }
             //------------------
             if (ingredient.BurgerType == BurguerType.Bread)
             {
                 _intBread++;
-                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/breadType");
+                childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/breadType");
             }
             else if (ingredient.BurgerType == BurguerType.Hamburguer)
             {
                 _intBurger++;
-                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/hamburgerType");
+                childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/hamburgerType");
             }
             else if (ingredient.BurgerType == BurguerType.Topping)
             {
                 _intTopping++;
-                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/toppingType");
+                childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/toppingType");
             }
             else if (ingredient.BurgerType == BurguerType.Sauce)
             {
                 _intSauce++;
-                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/sauceType");
+                childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/sauceType");
             }
             else
             {
-                _childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_carb");
+                childBurgerType[ingredientIterator].sprite = Resources.Load<Sprite>("Sprites/NO_carb");
             }
 
             ingredientIterator++;

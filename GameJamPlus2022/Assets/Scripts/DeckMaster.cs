@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeckMaster : MonoBehaviour
 {
+    [SerializeField] private Button _shufleButton;
+    
     public static DeckMaster instance;
     public List<Card> cardLibrary;
     public List<Card> playerDeck, playerHand, playerDiscard;
@@ -20,6 +23,8 @@ public class DeckMaster : MonoBehaviour
         instance = this;
         BuildInitalGameDeck();
         //BuildInitalGameDeckRandom();
+
+        _shufleButton.onClick.AddListener(ShuffleHand);
     }
 
     public void BuildInitalGameDeck()
@@ -93,6 +98,28 @@ public class DeckMaster : MonoBehaviour
         playerDiscard.Clear();
         playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
         SoundController.instance.RandomIngredients();
+    }
+
+    public void ShuffleHand()
+    {
+        var total = Mathf.Min(3, playerHand.Count);
+        for (int i = 0; i < total; i++)
+        {
+            
+            playerDiscard.Add(playerHand[i]);
+            playerHand[i].flyCounter++;
+            Debug.Log(" TRASH SHUFFLE " + playerHand[i]._foodId);
+            //FoodSelector.instance.animator.SetTrigger("Trash" + playerHand[i]);
+        }
+        playerHand.Clear();
+        
+        CheckDeck();
+        Draw3Cards();
+        if (NeedToRefill)
+            FoodSelector.instance.ShufleAndPrepareNewOptions();
+        else
+            FoodSelector.instance.PrepareNewOptions();
+        NeedToRefill = false;
     }
 
     #endregion
