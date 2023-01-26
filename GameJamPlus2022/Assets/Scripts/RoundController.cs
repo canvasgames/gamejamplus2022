@@ -83,7 +83,11 @@ public class RoundController : MonoBehaviour
     {
         for (int i = Ingredients.Count - 1; i >= 0; i--)
             Ingredients[i].ShowFoodScore(i);
-
+        if (MarkBurgerTypesUsed.instance.CheckComplete())
+        {
+            ScoreController.instance.AddForCompletedBurger();
+            //mostrar visualmente que o bonus apareceu
+        }
         Invoke(nameof(DeliveryOrder), 5f);
     }
 
@@ -107,7 +111,6 @@ public class RoundController : MonoBehaviour
     {
         clientOrders[ClientMaster.instance.currentClientIndex].MarkAsDone();
         ClientMaster.instance.NextClient();
-        
         if (ClientMaster.instance.currentClientIndex == 0)
             return;
         ShowClientOrder();

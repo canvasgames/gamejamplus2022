@@ -104,6 +104,8 @@ public class ClientMaster : MonoBehaviour
             }
         }
         RoundController.instance.StartRoundLevel(currentLevel);
+        DeckMaster.instance.AddShuffleUses();
+        DeckMaster.instance.UpdateShuffleRemain();
     }
 
 
@@ -137,30 +139,30 @@ public class ClientMaster : MonoBehaviour
     }
 
 
-    public bool CheckIfThisFoodTypeIsUnpleasant(FoodType food)
+    public int CheckIfThisFoodTypeIsUnpleasant(FoodType food)
     {
         if (currentClient == ClientType.Carnivorous)
         {
-            if (food == FoodType.Vegetable) return true;
-            else return false;
+            if (food == FoodType.Vegetable) return 1;
+            else return 0;
         }
         else if (currentClient == ClientType.Vegan)
         {
-            if (food == FoodType.Meat) return true;
-            else return false;
+            if (food == FoodType.Meat) return 1;
+            else return 0;
         }
         else if (currentClient == ClientType.LowCarb)
         {
-            if (food == FoodType.Carb) return true;
-            else return false;
+            if (food == FoodType.Carb) return 1;
+            else return 0;
         }
         else if (currentClient == ClientType.DairyIntolerant)
         {
-            if (food == FoodType.Dairy) return true;
-            else return false;
+            if (food == FoodType.Dairy) return 1;
+            else return 0;
         }
         else
-            return false;
+            return 0;
     }
 
 }

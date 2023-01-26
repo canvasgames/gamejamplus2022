@@ -8,7 +8,13 @@ using UnityEngine.UI;
 public class DeckMaster : MonoBehaviour
 {
     [SerializeField] private Button _shufleButton;
-    
+    [SerializeField] private TextMeshPro _shuffleRemain;
+    [SerializeField] private float _shuffleAddMultiplyer;
+    [SerializeField] private int _shuffleAddIntger;
+
+
+    public GameObject markShuffle;
+    public int canShuffle;
     public static DeckMaster instance;
     public List<Card> cardLibrary;
     public List<Card> playerDeck, playerHand, playerDiscard;
@@ -23,7 +29,8 @@ public class DeckMaster : MonoBehaviour
         instance = this;
         BuildInitalGameDeck();
         //BuildInitalGameDeckRandom();
-
+        AddShuffleUses();
+        UpdateShuffleRemain();
         _shufleButton.onClick.AddListener(ShuffleHand);
     }
 
@@ -102,7 +109,26 @@ public class DeckMaster : MonoBehaviour
 
     public void ShuffleHand()
     {
-        FoodSelector.instance.animator.SetTrigger("TrashAll");
+        if (canShuffle > 0)
+        {
+            canShuffle--;
+            UpdateShuffleRemain();
+            if (canShuffle == 0)
+            {
+                markShuffle.SetActive(true);
+            }
+            FoodSelector.instance.animator.SetTrigger("TrashAll");
+        }
+    }
+
+    public void UpdateShuffleRemain()
+    {
+        _shuffleRemain.text = "x" + canShuffle;
+    }
+
+    public void AddShuffleUses()
+    {
+        canShuffle = (int)(ClientMaster.instance.GetLevelClients(ClientMaster.instance.currentLevel).Count * _shuffleAddMultiplyer) + _shuffleAddIntger;
     }
 
     public void ShuffleHandAfterTrashAnimation()
@@ -172,27 +198,21 @@ public class DeckMaster : MonoBehaviour
     public int CalculateItemScore(Card card)
     {
         int currentFlyCounter = 0;
-        if (ClientMaster.instance.CheckIfThisFoodTypeIsUnpleasant(card._foodType))
+        int unpleasantFood = ClientMaster.instance.CheckIfThisFoodTypeIsUnpleasant(card._foodType);
+        int result;
+
+        textScore.color = Color.red;
+        if (card.fromTrash)
         {
-            textScore.color = Color.red;
-            if (card.fromTrash)
-            {
-                currentFlyCounter = card.flyCounter;
-                card.flyCounter = 0;
-            }
-            return (int)((card._points + currentFlyCounter * ScoreController.instance.flyMultiplier) * ScoreController.instance.restrictionMultiplier);
+            currentFlyCounter = card.flyCounter;
+            card.flyCounter = 0;
         }
-        else
-        {
-            if (card.fromTrash)
-            {
-                currentFlyCounter = card.flyCounter;
-                card.flyCounter = 0;
-            }
-            textScore.color = Color.white;
-            return card._points + currentFlyCounter;
-        }
-    }
+
+        result = (int)(card._points + currentFlyCounter * ScoreController.instance.flyMultiplier);
+        result *= (int)(Mathf.Pow(ScoreController.instance.restrictionMultiplier, unpleasantFood));
+            
+        return result;
+}
 
     public void ResetFlies()
     {

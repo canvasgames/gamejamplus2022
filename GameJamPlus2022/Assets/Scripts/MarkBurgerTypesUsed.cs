@@ -5,7 +5,8 @@ using UnityEngine;
 public class MarkBurgerTypesUsed : MonoBehaviour
 {
     public static MarkBurgerTypesUsed instance;
-    [SerializeField] public List<SpriteRenderer> _marks;
+    [SerializeField] private List<SpriteRenderer> _marks;
+    private List<bool> _marked = new List<bool>() { false, false, false, false};
 
     void Awake()
     {
@@ -15,13 +16,27 @@ public class MarkBurgerTypesUsed : MonoBehaviour
     public void MarkType(BurguerType type)
     {
         _marks[(int)type].gameObject.SetActive(true);
+        _marked[(int)type] = true;
     }
 
     public void ClearAllMarks()
     {
-        foreach(SpriteRenderer mark in _marks)
+        for(int i = 0; i < _marks.Count; i++)
         {
-            mark.gameObject.SetActive(false);
+            _marks[i].gameObject.SetActive(false);
+            _marked[i] = false;
         }
+    }
+
+    public bool CheckComplete()
+    {
+        for (int i = 0; i < _marked.Count; ++i)
+        {
+            if (_marked[i] == false)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

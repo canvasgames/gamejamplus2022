@@ -67,6 +67,8 @@ public class LevelEndScreen : MonoBehaviour
         card2.initMyCard(cardsToPresent[1]);
         card3.initMyCard(cardsToPresent[2]);
         ScoreController.instance.ResetScore();
+        
+        DeckMaster.instance.markShuffle.SetActive(false);
     }
 
 

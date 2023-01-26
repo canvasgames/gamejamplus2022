@@ -19,6 +19,7 @@ public class ScoreController : MonoBehaviour
     [Header("GD")]
     public float restrictionMultiplier;
     public float flyMultiplier;
+    public int completedBurgerBonus;
 
     private void Awake()
     {
@@ -60,5 +61,11 @@ public class ScoreController : MonoBehaviour
     {
         Score = 0;
         textScore.text = "Score: 0";
+    }
+
+    public void AddForCompletedBurger()
+    {
+        Score += completedBurgerBonus;
+        textScore.text = "Score: " + Score;
     }
 }
