@@ -119,7 +119,7 @@ public class DemonAvatar : MonoBehaviour
                 {
                     myBody = femaleBodies[(int)bodyTypes.fatWimp];
                 }
-                else if (body_strenght == true && body_type == false) // wimp and thin
+                else if (body_strenght == false && body_type == false) // wimp and thin
                 {
                     myBody = femaleBodies[(int)bodyTypes.thinWimp];
                 }
@@ -141,7 +141,7 @@ public class DemonAvatar : MonoBehaviour
                 {
                     myBody = maleBodies[(int)bodyTypes.fatWimp];
                 }
-                else if (body_strenght == true && body_type == false) // wimp and thin
+                else if (body_strenght == false && body_type == false) // wimp and thin
                 {
                     myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
