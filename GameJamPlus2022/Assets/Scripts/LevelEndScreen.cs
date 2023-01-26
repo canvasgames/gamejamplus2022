@@ -66,6 +66,7 @@ public class LevelEndScreen : MonoBehaviour
         card1.initMyCard(cardsToPresent[0]);
         card2.initMyCard(cardsToPresent[1]);
         card3.initMyCard(cardsToPresent[2]);
+        ScoreController.instance.ResetScore();
     }
 
 

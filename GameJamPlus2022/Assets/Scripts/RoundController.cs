@@ -107,7 +107,7 @@ public class RoundController : MonoBehaviour
     {
         clientOrders[ClientMaster.instance.currentClientIndex].MarkAsDone();
         ClientMaster.instance.NextClient();
-        ScoreController.instance.ResetScore();
+        
         if (ClientMaster.instance.currentClientIndex == 0)
             return;
         ShowClientOrder();
