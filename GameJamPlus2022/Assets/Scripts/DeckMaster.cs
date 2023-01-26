@@ -102,17 +102,21 @@ public class DeckMaster : MonoBehaviour
 
     public void ShuffleHand()
     {
+        FoodSelector.instance.animator.SetTrigger("TrashAll");
+    }
+
+    public void ShuffleHandAfterTrashAnimation()
+    {
         var total = Mathf.Min(3, playerHand.Count);
         for (int i = 0; i < total; i++)
         {
-            
+
             playerDiscard.Add(playerHand[i]);
             playerHand[i].flyCounter++;
             Debug.Log(" TRASH SHUFFLE " + playerHand[i]._foodId);
-            //FoodSelector.instance.animator.SetTrigger("Trash" + playerHand[i]);
         }
         playerHand.Clear();
-        
+
         CheckDeck();
         Draw3Cards();
         if (NeedToRefill)

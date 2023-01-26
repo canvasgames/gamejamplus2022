@@ -141,4 +141,9 @@ public class FoodSelector : MonoBehaviour
         CatapultShooter.instance.PrepareToShoot(selected);
 
     }
+    
+    public void AnimateShuffle()
+    {
+        DeckMaster.instance.ShuffleHandAfterTrashAnimation();
+    }
 }
