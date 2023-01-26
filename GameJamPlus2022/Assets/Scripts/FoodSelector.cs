@@ -13,10 +13,11 @@ public class FoodSelector : MonoBehaviour
     Card[] cards;
     Card selected;
     Image[] foodTypeIcons;
-    Image[] foodScore;
+    //Image[] foodScore;
     Image[] hamburgerTypeIcons;
     GameObject[] flyIcon;
     TextMeshProUGUI[] flyCounter;
+    private TextMeshProUGUI[] _scoreText;
     public TextMeshProUGUI DeckSizeText;
 
     // Start is called before the first frame update
@@ -26,19 +27,21 @@ public class FoodSelector : MonoBehaviour
         buttons = this.GetComponentsInChildren<Button>();
         animator = this.GetComponent<Animator>();
         foodTypeIcons = new Image[buttons.Length];
-        foodScore = new Image[buttons.Length];
+        //foodScore = new Image[buttons.Length];
         hamburgerTypeIcons = new Image[buttons.Length];
         flyIcon = new GameObject[buttons.Length];
         flyCounter = new TextMeshProUGUI[buttons.Length];
+        _scoreText = new TextMeshProUGUI[buttons.Length];
         for (int i = 0; i < buttons.Length; i++)
         {
             var index = i;
             buttons[i].onClick.AddListener(() => OnOptionSelected(index));
             foodTypeIcons[i] = buttons[i].transform.GetChild(1).GetComponent<Image>();
-            foodScore[i] = buttons[i].transform.GetChild(2).GetComponent<Image>();
+            //foodScore[i] = buttons[i].transform.GetChild(2).GetComponent<Image>();
             hamburgerTypeIcons[i] = buttons[i].transform.GetChild(3).GetComponent<Image>();
             flyIcon[i] = buttons[i].transform.GetChild(4).gameObject;
             flyCounter[i] = flyIcon[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            _scoreText[i] = buttons[i].transform.GetChild(5).GetComponent<TextMeshProUGUI>();
         }
 
     }
@@ -75,7 +78,7 @@ public class FoodSelector : MonoBehaviour
             }
             buttons[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
             var typeSprite = NewCardToBuy.GetFoodTypeSprite(cards[i]._foodType);
-            var scoreSprite = NewCardToBuy.GetFoodScoreSprite(cards[i]._points);
+            //var scoreSprite = NewCardToBuy.GetFoodScoreSprite(cards[i]._points);
             var hamburgerTypeSprite = NewCardToBuy.GetBurgerTypeSprite(cards[i]._burguerType);
             if (cards[i].flyCounter > 0)
             {
@@ -89,14 +92,16 @@ public class FoodSelector : MonoBehaviour
             if (typeSprite == null)
             {
                 foodTypeIcons[i].gameObject.SetActive(false);
-                foodScore[i].gameObject.SetActive(false);
+                //foodScore[i].gameObject.SetActive(false);
+                _scoreText[i].gameObject.SetActive(false);
                 hamburgerTypeIcons[i].gameObject.SetActive(false);
             }
 
             else
             {
                 foodTypeIcons[i].sprite = typeSprite;
-                foodScore[i].sprite = scoreSprite;
+                //foodScore[i].sprite = scoreSprite;
+                _scoreText[i].text = cards[i]._points.ToString();
                 hamburgerTypeIcons[i].sprite = hamburgerTypeSprite;
             }
                 
@@ -112,7 +117,8 @@ public class FoodSelector : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             foodTypeIcons[i].gameObject.SetActive(true);
-            foodScore[i].gameObject.SetActive(true);
+            //foodScore[i].gameObject.SetActive(true);
+            _scoreText[i].gameObject.SetActive(true);
             hamburgerTypeIcons[i].gameObject.SetActive(true);
         }
             
@@ -126,7 +132,8 @@ public class FoodSelector : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             foodTypeIcons[i].gameObject.SetActive(false);
-            foodScore[i].gameObject.SetActive(false);
+            //foodScore[i].gameObject.SetActive(false);
+            _scoreText[i].gameObject.SetActive(false);
             hamburgerTypeIcons[i].gameObject.SetActive(false);
         }
         

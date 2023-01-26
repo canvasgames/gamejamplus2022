@@ -9,8 +9,13 @@ public class NewCardToBuy : MonoBehaviour
 {
     // Start is called before the first frame update
     Card myCard;
-    public Image myPoints, myGraphic, myIcon, myBurgerType;
+    //public Image myPoints;
+    public Image myGraphic;
+    public Image myIcon;
+    public Image myBurgerType;
     public TextMeshProUGUI myTitle;
+    public TextMeshProUGUI myScore;
+
 
     void Start()
     {
@@ -36,13 +41,15 @@ public class NewCardToBuy : MonoBehaviour
         }
         myGraphic.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-        myPoints.sprite = Resources.Load<Sprite>("Sprites/valor" + myCard._points.ToString());
+        //myPoints.sprite = Resources.Load<Sprite>("Sprites/valor" + myCard._points.ToString());
         myIcon.sprite = GetFoodTypeSprite(myCard._foodType);
         myBurgerType.sprite = GetBurgerTypeSprite(myCard._burguerType);
         myTitle.text = myCard._name;
-    }
+        myScore.text = myCard._points.ToString();
 
-    public void OnSelect()
+}
+
+public void OnSelect()
     {
         DeckMaster.instance.AddSelectedCardToDeck(myCard._foodId);
         LevelEndScreen.instance.OnCardSelectedHideMyself();
