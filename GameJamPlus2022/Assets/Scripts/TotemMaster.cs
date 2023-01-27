@@ -70,16 +70,16 @@ public class TotemMaster : MonoBehaviour
 
                 this.avatars = avatars;
 
-                for (int index = 0; index < avatars.Count; index++){
-                    Debug.Log("Avatar:" + avatars[index].ToString()); 
+                for (int index = 0; index < avatars.Count; index++)
+                {
+                    Debug.Log("Avatar:" + avatars[index].ToString());
 
                     TotemDNADefaultAvatar curAvatar = avatars[index];
                     //charData = curAvatar.human_hair_color.ToString();
                     //  DefineTotemSpritesAndColors(curAvatar.human_eye_color, curAvatar.human_hair_color, curAvatar.human_skin_color, curAvatar.hair_styles, index);
 
-                    //GD.s.NewSkinFromTotem("Totem Custom", ConvertMusicStyleFromTotem(curAvatar.music_style), curAvatar.human_skin_color, curAvatar.human_eye_color, curAvatar.human_hair_color, curAvatar.hair_styles, GD.s.RandomMusicStyle().ToString());
+                    FindObjectOfType<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eye_color, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
                 }
-
 
                 totemCore.GetUserItems<TotemDNADefaultItem>(user, TotemDNAFilter.DefaultItemFilter, (items) => {
                     this.items = items;
