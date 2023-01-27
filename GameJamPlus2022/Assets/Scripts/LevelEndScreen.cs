@@ -76,7 +76,8 @@ public class LevelEndScreen : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         //RoundController.instance.StartRoundLevel();
-        ClientMaster.instance.NextLevel();
+        ClientMaster.instance.currentLevel++;
+        ClientMaster.instance.InitLevel();
     }
 
 }

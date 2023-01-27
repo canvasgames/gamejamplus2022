@@ -42,7 +42,7 @@ public class ClientMaster : MonoBehaviour
 
     private void Start()
     {
-        InitLevel(1);
+        InitLevel();
     }
 
     public List<ClientType> GetLevelClients(int level)
@@ -63,13 +63,11 @@ public class ClientMaster : MonoBehaviour
         }
     }
 
-
-    public void InitLevel(int level)
+    public void InitLevel()
     {
-        Debug.Log($"InitLevel-{level}");
-        currentLevel = level;
+        Debug.Log($"NextLevel-{currentLevel}");
         levelClients = new List<ClientType>();
-        levelClients = GetLevelClients(level);
+        levelClients = GetLevelClients(currentLevel);
         currentClient = levelClients[0];
         currentClientIndex = 0;
         if (GetLevelClients(currentLevel).Contains(ClientType.Random))
@@ -82,32 +80,10 @@ public class ClientMaster : MonoBehaviour
                 }
             }
         }
-        RoundController.instance.StartRoundLevel(level);
-    }
-
-    public void NextLevel()
-    {
-        Debug.Log($"NextLevel-{currentLevel}");
-        currentLevel++;
-        levelClients = new List<ClientType>();
-        levelClients = GetLevelClients(currentLevel);
-        currentClient = levelClients[0];
-        currentClientIndex = 0;
-        if (GetLevelClients(currentLevel).Contains(ClientType.Random))
-        {
-            for(int i = 0; i< GetLevelClients(currentLevel).Count;i++)
-            {
-                if (GetLevelClients(currentLevel)[i] == ClientType.Random)
-                {
-                    GetLevelClients(currentLevel)[i] = ((ClientType)Random.Range(0, 3));
-                }
-            }
-        }
         RoundController.instance.StartRoundLevel(currentLevel);
         DeckMaster.instance.AddShuffleUses();
         DeckMaster.instance.UpdateShuffleRemain();
     }
-
 
     public void NextClient()
     {
