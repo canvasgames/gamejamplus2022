@@ -20,11 +20,12 @@ public class DemonAvatar : MonoBehaviour
         fatMuscular = 3,
     }
 
-   [SerializeField] Color[] skinColors, primaryColors, secondaryColors, hairColors, eyeColors;
 
-   [SerializeField] NamedImage[] femaleHairSprites, maleHairSprites;
-   [SerializeField] DemonAvatarBody myBody;
-   [SerializeField] DemonAvatarBody[] femaleBodies, maleBodies;
+    [SerializeField] Color[] skinColors, primaryColors, secondaryColors, hairColors, eyeIrisColors, eyeBallColors;
+
+    [SerializeField] NamedImage[] femaleHairSprites, maleHairSprites;
+    [SerializeField] DemonAvatarBody myBody;
+    [SerializeField] DemonAvatarBody[] femaleBodies, maleBodies;
 
     Dictionary<string, Sprite> femaleHairDictionary, maleHairDictionary;
 
@@ -52,12 +53,32 @@ public class DemonAvatar : MonoBehaviour
         CreateDemon();
         CreateDemon();
         CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
+        CreateDemon();
         dist = 0;
     }
 
     public void CreateDemon()
     {
-        DefineParts(true, RandomBool(), RandomBool(), RandomEyeColors(), RandomHairColor(), RandomSkinColor(), RandomPrimaryColor(), RandomSecondaryColor(), RandomColor());
+        DefineParts(RandomBool(), RandomBool(), RandomBool(), RandomEyeIrisColors(), RandomHairColor(), RandomSkinColor(), RandomPrimaryColor(), RandomSecondaryColor(), RandomHairStyle());
+    }
+
+    string RandomHairStyle()
+    {
+        int r = UnityEngine.Random.Range(0, 9);
+        if (r == 0) return "afro";
+        else if (r == 1) return "asymmetrical";
+        else if (r == 2) return "braids";
+        else if (r == 3) return "buzz cut";
+        else if (r == 4) return "dreadlocks";
+        else if (r == 5) return "long";
+        else if (r == 6) return "ponytail";
+        else if (r == 7) return "short";
+        else return "";
+
     }
 
     string RandomColor()
@@ -90,9 +111,13 @@ public class DemonAvatar : MonoBehaviour
     {
         return "#"+ColorUtility.ToHtmlStringRGB(hairColors[UnityEngine.Random.Range(0, hairColors.Length)]);
     }
-    string RandomEyeColors()
+    string RandomEyeIrisColors()
     {
-        return "#"+ColorUtility.ToHtmlStringRGB(eyeColors[UnityEngine.Random.Range(0, eyeColors.Length)]);
+        return "#"+ColorUtility.ToHtmlStringRGB(eyeIrisColors[UnityEngine.Random.Range(0, eyeIrisColors.Length)]);
+    }
+    string RandomEyeBallColors()
+    {
+        return "#" + ColorUtility.ToHtmlStringRGB(eyeBallColors[UnityEngine.Random.Range(0, eyeBallColors.Length)]);
     }
 
     bool RandomBool() { return UnityEngine.Random.Range(0, 2) == 0 ? false : true; }
@@ -102,7 +127,7 @@ public class DemonAvatar : MonoBehaviour
     //body_strenght: wimp = false, strong = true
     //body_type: thin = false, fat = true
     int dist = 1;
-    public void DefineParts(bool sex, bool body_strenght, bool body_type, string eye_color, string hair_color, string skin_color, string primary_color, string secondary_color, string hair_style)
+    public void DefineParts(bool sex, bool body_strenght, bool body_type, string eye_color, string hair_color, string skin_color, string primary_color, string secondary_color, string hair_style, string eyeball_color = "")
     {
         Debug.Log("CREATING A DEMON!! SEX - " + sex + " EYE COLOR " + eye_color);
         DemonAvatarBody newBody;
@@ -127,6 +152,8 @@ public class DemonAvatar : MonoBehaviour
                 }
 
                 newBody =  Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                newBody.hair.sprite = femaleHairDictionary[hair_style];
+
                 //myBody.hair.sprite = femaleHairDictionary[hair_style];
                 break;
 
@@ -148,7 +175,8 @@ public class DemonAvatar : MonoBehaviour
                     myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
                 //myBody.hair.sprite = maleHairDictionary[hair_style];
-                newBody = Instantiate(myBody, transform.position, transform.rotation);
+                newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                newBody.hair.sprite = maleHairDictionary[hair_style];
 
                 break;
         }
@@ -156,8 +184,11 @@ public class DemonAvatar : MonoBehaviour
         newBody.bodyClothes1.color = HexToColor(primary_color);
         newBody.bodyClothes2.color = HexToColor(secondary_color);
         newBody.hair.color = HexToColor(hair_color);
+        if (newBody.hair2 != null) newBody.hair2.color = HexToColor(hair_color);
         newBody.bodySkin.color = HexToColor(skin_color);
         newBody.arm1.color = HexToColor(skin_color);
+        newBody.eyeIris.color = HexToColor(eye_color);
+        newBody.eyeBall.color = HexToColor(eyeball_color); //tbd
 
         dist += 10;
     }
@@ -226,6 +257,7 @@ public class DemonAvatar : MonoBehaviour
 
     Color HexToColor(string hexColor)
     {
+        if (hexColor == "") return Color.white;
         Color color;
         ColorUtility.TryParseHtmlString(hexColor, out color);
 
