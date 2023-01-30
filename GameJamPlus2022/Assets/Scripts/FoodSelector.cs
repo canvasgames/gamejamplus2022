@@ -127,7 +127,7 @@ public class FoodSelector : MonoBehaviour
     void OnOptionSelected(int index)
     {
         if (selected != null) return;
-
+        DeckMaster.instance.shuffleButton.gameObject.SetActive(false);
         Debug.Log("Selected " + index);
         for (int i = 0; i < buttons.Length; i++)
         {

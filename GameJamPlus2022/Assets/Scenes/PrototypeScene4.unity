@@ -2616,6 +2616,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1604748975}
     - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: shuffleButton
+      value: 
+      objectReference: {fileID: 1604748975}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
+      propertyPath: _shuffleButton
+      value: 
+      objectReference: {fileID: 1604748975}
+    - target: {fileID: 2627847929180588111, guid: e97bded3a02174a9281390e52dd6a101, type: 3}
       propertyPath: _shuffleRemain
       value: 
       objectReference: {fileID: 1034726671}

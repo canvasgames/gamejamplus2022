@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class DeckMaster : MonoBehaviour
 {
-    [SerializeField] private Button _shufleButton;
+
     [SerializeField] private TextMeshPro _shuffleRemain;
     [SerializeField] private float _shuffleAddMultiplyer;
     [SerializeField] private int _shuffleAddIntger;
+    public Button shuffleButton;
 
 
     public GameObject markShuffle;
@@ -31,7 +32,7 @@ public class DeckMaster : MonoBehaviour
         //BuildInitalGameDeckRandom();
         AddShuffleUses();
         UpdateShuffleRemain();
-        _shufleButton.onClick.AddListener(ShuffleHand);
+        shuffleButton.onClick.AddListener(ShuffleHand);
     }
 
     public void BuildInitalGameDeck()
@@ -63,6 +64,7 @@ public class DeckMaster : MonoBehaviour
             playerDeck.RemoveAt(playerDeck.Count - 1);
         }
         Debug.Log($"Deck total {playerDeck.Count} Discard total {playerDiscard.Count} Hand total {playerHand.Count}");
+        shuffleButton.gameObject.SetActive(true);
     }
 
     public void ThrowCardsInTheTrash(int selectIndex)
@@ -111,6 +113,7 @@ public class DeckMaster : MonoBehaviour
     {
         if (canShuffle > 0)
         {
+            shuffleButton.gameObject.SetActive(false);
             canShuffle--;
             UpdateShuffleRemain();
             if (canShuffle == 0)
