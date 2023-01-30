@@ -50,7 +50,6 @@ public class Card
 {
     public FoodId _foodId;
     public string _name;
-    private string _description;
     public int _points;
     public FoodType _foodType;
     public BurguerType _burguerType;

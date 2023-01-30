@@ -74,7 +74,7 @@ public class DeckMaster : MonoBehaviour
             if (i != selectIndex)
             {
                 playerDiscard.Add(playerHand[i]);
-                playerHand[i].flyCounter++;
+                //playerHand[i].flyCounter++;
                 Debug.Log(" TRASHH " + playerHand[i]._foodId);
             }
         playerHand.Clear();
@@ -141,7 +141,7 @@ public class DeckMaster : MonoBehaviour
         {
 
             playerDiscard.Add(playerHand[i]);
-            playerHand[i].flyCounter++;
+            //playerHand[i].flyCounter++;
             Debug.Log(" TRASH SHUFFLE " + playerHand[i]._foodId);
         }
         playerHand.Clear();

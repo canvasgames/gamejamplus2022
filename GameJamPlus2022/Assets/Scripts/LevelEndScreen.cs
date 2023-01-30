@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 
 public class LevelEndScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _shuffleButton;
+    [SerializeField] private Button _tryAgain;
+    private bool _nextLevel;
     // Start is called before the first frame update
-    public TextMeshProUGUI playerScore, levelTargetScore;
+    public TextMeshProUGUI playerScore;
+    public TextMeshProUGUI levelTargetScore;
+    public TextMeshProUGUI resultText;
+
 
     public NewCardToBuy card1, card2, card3;
     public GameObject cardsToBuyMenu;
@@ -17,38 +22,48 @@ public class LevelEndScreen : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         _shuffleButton.SetActive(false);
+        _tryAgain.onClick.AddListener(OnCardSelectedHideMyself);
     }
 
     private void OnDisable()
     {
         _shuffleButton.SetActive(true);
+        _tryAgain.onClick.RemoveListener(OnCardSelectedHideMyself);
     }
 
-    void Start()
-    {
-        StartCoroutine(StartCardBuyAnimations());
-
-    }
     IEnumerator initiii()
     {
         yield return new WaitForSeconds(0.5f);
         //Init();
     }
 
-    public void Init()
+    public void Init(bool levelComplete)
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
         DeckMaster.instance.ResetFlies();
         playerScore.text = ScoreController.instance.Score.ToString();
         levelTargetScore.text = ClientMaster.instance.GetLevelTargetScore().ToString();
         cardsToBuyMenu.SetActive(false);
-        StartCoroutine(StartCardBuyAnimations());
+        if (levelComplete)
+        {
+            _tryAgain.gameObject.SetActive(false);
+            resultText.text = "\"Acceptable\"\nWork";
+            _nextLevel = true;
+            StartCoroutine(StartCardBuyAnimations());
+        }
+        else
+        {
+            _nextLevel = false;
+            resultText.text = "Try\nWorse";
+            StartCoroutine(WaitForButtonToShow());
+        }
+            
     }
 
     IEnumerator StartCardBuyAnimations()
@@ -56,6 +71,12 @@ public class LevelEndScreen : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         DisplayCardOptions();
+    }
+
+    IEnumerator WaitForButtonToShow()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _tryAgain.gameObject.SetActive(true);
     }
 
     public void DisplayCardOptions()
@@ -74,10 +95,17 @@ public class LevelEndScreen : MonoBehaviour
 
     public void OnCardSelectedHideMyself()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         //RoundController.instance.StartRoundLevel();
-        ClientMaster.instance.currentLevel++;
+        if (_nextLevel)
+        {
+            ClientMaster.instance.currentLevel++;
+        }
+        else
+        {
+            ClientMaster.instance.currentLevel = 1;
+            ScoreController.instance.ResetScore();
+        } 
         ClientMaster.instance.InitLevel();
     }
-
 }

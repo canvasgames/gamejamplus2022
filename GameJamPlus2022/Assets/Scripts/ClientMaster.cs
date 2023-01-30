@@ -97,11 +97,11 @@ public class ClientMaster : MonoBehaviour
         {
             if (ScoreController.instance.Score >= GetLevelTargetScore())
             {
-                LevelEndScreen.instance.Init();
+                LevelEndScreen.instance.Init(true);
             }
             else
             {
-                LevelEndScreen.instance.Init(); // @TODO DEFEAT
+                LevelEndScreen.instance.Init(false); // Chamar aqui o game over
             }
             DeckMaster.instance.BuildInitalGameDeck();
             currentClientIndex = 0;
