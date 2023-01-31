@@ -76,6 +76,8 @@ MonoBehaviour:
   hair2: {fileID: 4856940612218676370}
   eyeIris: {fileID: 5297002835339443014}
   eyeBall: {fileID: 8606388693827334550}
+  hatAll: {fileID: 8649565895727831565}
+  hatAfro: {fileID: 525399226684040442}
 --- !u!1 &2068863661754833442
 GameObject:
   m_ObjectHideFlags: 0
