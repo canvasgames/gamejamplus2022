@@ -12,6 +12,7 @@ public class RoundController : MonoBehaviour
 
     public int numberOfNextOrders;
     public const int TOTAL_INGREDIENTS = 4;
+    public bool infinity = false;
 
     private void Awake()
     {
