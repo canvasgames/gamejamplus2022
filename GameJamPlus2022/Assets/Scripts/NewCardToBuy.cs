@@ -49,9 +49,10 @@ public class NewCardToBuy : MonoBehaviour
 
 }
 
-public void OnSelect()
+    public void OnSelect()
     {
         DeckMaster.instance.AddSelectedCardToDeck(myCard._foodId);
+        DeckMaster.instance.AddSelectedCardToInitialDeck(myCard._foodId);
         LevelEndScreen.instance.OnCardSelectedHideMyself();
 
 

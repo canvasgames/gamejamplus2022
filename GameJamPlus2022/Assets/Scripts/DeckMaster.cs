@@ -175,6 +175,11 @@ public class DeckMaster : MonoBehaviour
         playerDeck.Add(cardLibrary.FirstOrDefault(c => c._foodId == cardId));
     }
 
+    public void AddSelectedCardToInitialDeck(FoodId type)
+    {
+        playerInitalDeck.Add(type);
+    }
+
     #endregion
 
     public void BuildInitalGameDeckRandom()
