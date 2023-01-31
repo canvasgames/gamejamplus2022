@@ -10,7 +10,15 @@ public class TotemDNACustomAvatar: TotemDNADefaultAvatar {
 
         public string human_eyeball_color;
         public string human_eye_color_dark ;
-        public string human_eye_color_light;
+        public string human_eye_color_light; 
+        public string demon_primary_color;
+        public string demon_secondary_color;
+        public override string ToString()
+        {
+            return $"sex_bio: {sex_bio} | body_strength: {body_strength} | human_skin_color: {human_skin_color} | human_hair_color: {human_hair_color} | " +
+                $"human_eye_color: {human_eyeball_color} | $human_eye_color_dark: {human_eye_color_dark} |  $human_eye_color_light: {human_eye_color_light} | hair_styles: {hair_styles} | " +
+                $"primary_color: {demon_primary_color} | secondary_color: {demon_secondary_color}";
+        }   
 }
 
 public class TotemMaster : MonoBehaviour
@@ -24,7 +32,7 @@ public class TotemMaster : MonoBehaviour
     public GameObject defaultActiveDemon;
     [HideInInspector] public int userAvatarCount = 0;
 
-    public List<TotemDNADefaultAvatar> avatars;
+    public List<TotemDNACustomAvatar> avatars;
     private List<TotemDNADefaultItem> items;
 
     [SerializeField] GameObject avatarList;
@@ -58,8 +66,8 @@ public class TotemMaster : MonoBehaviour
     {
         watingLogin = false;
         loadingEffect.SetActive(false);
-
-        totemCore.GetUserAvatars<TotemDNADefaultAvatar>(user, TotemDNAFilter.DefaultAvatarFilter, (avatars) =>
+        TotemDNAFilter mdFilter = new TotemDNAFilter(Resources.Load<TextAsset>("totem-avatar-belzeburguer").text);
+        totemCore.GetUserAvatars<TotemDNACustomAvatar>(user, mdFilter, (avatars) =>
         {
             if(avatars.Count > 0){
                 //globals.s.IS_TOTEM_LOGGED_IN = true;
@@ -70,7 +78,7 @@ public class TotemMaster : MonoBehaviour
                 {
                     Debug.Log("Avatar:" + avatars[index].ToString());
 
-                    TotemDNADefaultAvatar curAvatar = avatars[index];
+                    TotemDNACustomAvatar curAvatar = avatars[index];
                     //charData = curAvatar.human_hair_color.ToString();
                     //  DefineTotemSpritesAndColors(curAvatar.human_eye_color, curAvatar.human_hair_color, curAvatar.human_skin_color, curAvatar.hair_styles, index);
 
@@ -92,9 +100,9 @@ public class TotemMaster : MonoBehaviour
 
     public void OnAvatarSelected()
     {
-         TotemDNADefaultAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
+         TotemDNACustomAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
          avatarList.SetActive(false);
-         //mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
+         mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.demon_primary_color, curAvatar.demon_secondary_color, curAvatar.hair_styles);
          mainAvatar.SetLayerOrderForMyBody();
          if(curAvatar.sex_bio)
          {
@@ -104,7 +112,10 @@ public class TotemMaster : MonoBehaviour
          else
          {                                                         
             mainAvatar.myBody.GetComponent<RectTransform>().localScale = new Vector3(1.388401f, 1.388401f , 1f);
-            mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 3.55f, 1f);
+            if (curAvatar.body_type)
+                mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 3.55f, 1f);
+            else
+                mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 1.25f, 1f);
          }
          defaultActiveDemon.SetActive(false);
          this.gameObject.SetActive(false);
