@@ -230,4 +230,14 @@ public class DeckMaster : MonoBehaviour
             card.flyCounter = 0;
         }
     }
+    
+    public void ActivateShuffleButton()
+    {
+        shuffleButton.interactable = true;
+    }
+    public void DeactivateShuffleButton()
+    {
+        shuffleButton.interactable = false;
+    }
+
 }

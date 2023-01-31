@@ -48,8 +48,10 @@ public class TotemMaster : MonoBehaviour
         totemCore = new TotemCore(_gameId);
     }
 
-    // Update is called once per frame
-
+    void Start()
+    {
+        ButtonsOff();
+    }
     public void OnLoginButtonClick()
     {
         StartCoroutine(WaitLogin(10));
@@ -100,30 +102,32 @@ public class TotemMaster : MonoBehaviour
 
     public void OnAvatarSelected()
     {
-         TotemDNACustomAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
-         avatarList.SetActive(false);
-         mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.demon_primary_color, curAvatar.demon_secondary_color, curAvatar.hair_styles);
-         mainAvatar.SetLayerOrderForMyBody();
-         if(curAvatar.sex_bio)
-         {
+        TotemDNACustomAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
+        avatarList.SetActive(false);
+        mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.demon_primary_color, curAvatar.demon_secondary_color, curAvatar.hair_styles);
+        mainAvatar.SetLayerOrderForMyBody();
+        if (curAvatar.sex_bio)
+        {
             mainAvatar.myBody.GetComponent<RectTransform>().localScale = Vector3.one;
             mainAvatar.myBody.GetComponent<RectTransform>().localPosition = Vector3.zero;
-         }
-         else
-         {                                                         
-            mainAvatar.myBody.GetComponent<RectTransform>().localScale = new Vector3(1.388401f, 1.388401f , 1f);
+        }
+        else
+        {
+            mainAvatar.myBody.GetComponent<RectTransform>().localScale = new Vector3(1.388401f, 1.388401f, 1f);
             if (curAvatar.body_type)
                 mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 3.55f, 1f);
             else
                 mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 1.25f, 1f);
-         }
-         defaultActiveDemon.SetActive(false);
-         this.gameObject.SetActive(false);
+        }
+        defaultActiveDemon.SetActive(false);
+        gameObject.SetActive(false);
+        ButtonsOn();
     }
 
     public void OnCloseButtonPressed()
     {
-       this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        ButtonsOn();
     }
 
     IEnumerator WaitLogin(float time)
@@ -141,19 +145,32 @@ public class TotemMaster : MonoBehaviour
                // { Debug.Log("Legacy Event Saved: " + legacyData); });
     }
 
-
-   /* MusicStyle ConvertMusicStyleFromTotem(string style)
+    private void ButtonsOn()
     {
-        MusicStyleTotem parsed_enum = (MusicStyleTotem)System.Enum.Parse(typeof(MusicStyleTotem), style);
-        int toReturn = (int)parsed_enum;
-        if (toReturn > 8)
-        {
-            toReturn -= 8;
-        }
-
-        return (MusicStyle) toReturn;
+        FoodSelector.instance.ActivateSelectButtons();
+        DeckMaster.instance.ActivateShuffleButton();
+        ShowIngredientList.instance.ActivateListButton();
     }
-   */
+
+    private void ButtonsOff()
+    {
+        FoodSelector.instance.DeactivateSelectButtons();
+        DeckMaster.instance.DeactivateShuffleButton();
+        ShowIngredientList.instance.DeactivateListButton();
+    }
+
+    /* MusicStyle ConvertMusicStyleFromTotem(string style)
+     {
+         MusicStyleTotem parsed_enum = (MusicStyleTotem)System.Enum.Parse(typeof(MusicStyleTotem), style);
+         int toReturn = (int)parsed_enum;
+         if (toReturn > 8)
+         {
+             toReturn -= 8;
+         }
+
+         return (MusicStyle) toReturn;
+     }
+    */
 
 
 #endif

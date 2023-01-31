@@ -5,15 +5,26 @@ using UnityEngine.UI;
 
 public class ShowIngredientList : MonoBehaviour
 {
-    [SerializeField] private Button _openListButton;
+    public static ShowIngredientList instance;
+    public Button openListButton;
     [SerializeField] private GameObject _ingredientList;
 
     private void Awake()
     {
-        _openListButton.onClick.AddListener(OpenList);
+        instance = this;
+        openListButton.onClick.AddListener(OpenList);
     }
     private void OpenList()
     {
         _ingredientList.SetActive(true);
+    }
+
+    public void ActivateListButton()
+    {
+        openListButton.interactable = true;
+    }
+    public void DeactivateListButton()
+    {
+        openListButton.interactable = false;
     }
 }

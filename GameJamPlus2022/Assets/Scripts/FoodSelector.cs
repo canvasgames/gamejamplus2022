@@ -153,4 +153,20 @@ public class FoodSelector : MonoBehaviour
     {
         DeckMaster.instance.ShuffleHandAfterTrashAnimation();
     }
+
+    public void ActivateSelectButtons()
+    {
+        foreach(Button button in buttons)
+        {
+            button.interactable = true;
+        }
+    }
+    public void DeactivateSelectButtons()
+    {
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+    }
+    
 }
