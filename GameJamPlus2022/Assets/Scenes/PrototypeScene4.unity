@@ -5439,11 +5439,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel2.Array.size
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel3.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel4.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.data[0]
@@ -5451,15 +5459,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: clientsLevel1.Array.data[2]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
-      propertyPath: clientsLevel2.Array.data[2]
+      propertyPath: clientsLevel2.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel2.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel2.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel3.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel3.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel3.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel3.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel4.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel4.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel4.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel4.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel5.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel5.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel5.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
+      propertyPath: clientsLevel5.Array.data[4]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4992152644103936425, guid: fd2237740044b43fe9ae0e1a0cfc260e, type: 3}
       propertyPath: targetLevelScore.Array.size
