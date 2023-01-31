@@ -45,6 +45,7 @@ public class DeckMaster : MonoBehaviour
             playerDeck.Add(cardLibrary.FirstOrDefault(c => c._foodId == item));
             // if (playerDeck.Count == 1) return;//TODO Remove
             Debug.Log(playerDeck.Last()._foodId);
+            playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
         }
         Debug.Log("deck size" + playerDeck.Count);
         //playerDeck
