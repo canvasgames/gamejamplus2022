@@ -24,7 +24,7 @@ public class DemonAvatar : MonoBehaviour
     [SerializeField] Color[] skinColors, primaryColors, secondaryColors, hairColors, eyeIrisColors, eyeBallColors;
 
     [SerializeField] NamedImage[] femaleHairSprites, maleHairSprites;
-    [SerializeField] DemonAvatarBody myBody;
+    public DemonAvatarBody myBody;
     [SerializeField] DemonAvatarBody[] femaleBodies, maleBodies;
 
     Dictionary<string, Sprite> femaleHairDictionary, maleHairDictionary;
@@ -268,7 +268,7 @@ public class DemonAvatar : MonoBehaviour
             newBody.eyeIris.color = HexToColor(eye_color_light);
         else
             newBody.eyeIris.color = HexToColor(eye_color_dark);
-
+        myBody = newBody;
         dist += 10;
     }
 
@@ -277,6 +277,16 @@ public class DemonAvatar : MonoBehaviour
         if (eye_color == "#000000") return true;
         else return false;
        // else if(eye_color == "#FFFFFF" || eye_color ==  "FF4A4A" || eye_color == "DBC145") return false;
+    }
+
+    public void SetLayerOrderForMyBody()
+    {
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()){
+            sr.sortingLayerName = "Default";    
+            sr.sortingOrder -= 8360;
+        }
+        if(myBody.arm1 != null) myBody.arm1.sortingOrder += 10;
+        if(myBody.arm2 != null) myBody.arm2.sortingOrder += 10;
     }
 
 

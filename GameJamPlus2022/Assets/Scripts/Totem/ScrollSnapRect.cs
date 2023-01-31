@@ -196,7 +196,7 @@ int tbd = 0;
         {
             GameObject currentCharacter = Instantiate(TotemCharacterPrefab, _container);
             TotemDNADefaultAvatar curAvatar = TotemMaster.instance.avatars[i];
-           // currentCharacter.GetComponent<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
+            currentCharacter.GetComponent<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
             if (i == 0)
                 currentCharacter.SetActive(true);
 
