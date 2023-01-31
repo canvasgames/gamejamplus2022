@@ -42,11 +42,12 @@ public class DeckMaster : MonoBehaviour
         playerDiscard = new List<Card>();
         foreach (FoodId item in playerInitalDeck)
         {
-            playerDiscard.Add(cardLibrary.FirstOrDefault(c => c._foodId == item));
+            playerDeck.Add(cardLibrary.FirstOrDefault(c => c._foodId == item));
             // if (playerDeck.Count == 1) return;//TODO Remove
-            Debug.Log(playerDiscard.Last()._foodId);
+            Debug.Log(playerDeck.Last()._foodId);
+            playerDeck.Sort((c1, c2) => Random.Range(-1, 2));
         }
-        Debug.Log("deck size" + playerDiscard.Count);
+        Debug.Log("deck size" + playerDeck.Count);
         //playerDeck
         for (int i = 0; i < 5; i++)
         {
