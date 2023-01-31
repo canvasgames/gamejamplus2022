@@ -47,6 +47,7 @@ public class DemonAvatar : MonoBehaviour
         }
 
         //DefineParts(true,        RandomBool(),     RandomBool(),      "#f9d4ab",        "#f9d4ab",        "#f9d4ab",               "#f9d4ab",           "#f9d4ab",     "#f9d4ab");
+       /* CreateDemon();
         CreateDemon();
         CreateDemon();
         CreateDemon();
@@ -56,8 +57,7 @@ public class DemonAvatar : MonoBehaviour
         CreateDemon();
         CreateDemon();
         CreateDemon();
-        CreateDemon();
-        CreateDemon();
+        CreateDemon();     */
         dist = 0;
     }
 
@@ -193,7 +193,7 @@ public class DemonAvatar : MonoBehaviour
         dist += 10;
     }
 
-    public void DefinePartsTotem(bool sex, bool body_strenght, bool body_type, string eyeball_color, string eye_color_dark, string eye_color_light, string hair_color, string skin_color, Color primary_color, Color secondary_color, string hair_style)
+    public void DefinePartsTotem(bool sex, bool body_strenght, bool body_type, string eyeball_color, string eye_color_dark, string eye_color_light, string hair_color, string skin_color, string primary_color, string secondary_color, string hair_style)
     {
         Debug.Log("CREATING A DEMON!! SEX - " + sex + " EYE COLOR " + eyeball_color);
         DemonAvatarBody newBody;
@@ -239,14 +239,23 @@ public class DemonAvatar : MonoBehaviour
                 {
                     myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
-                newBody = Instantiate(myBody, transform.position, transform.rotation);
+                newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
                 myBody.hair.sprite = maleHairDictionary[hair_style];
 
+                // hat color and afro exception
+                if (hair_style != "afro") 
+                    newBody.hatAll.color = HexToColor(primary_color);
+                else 
+                {   
+                    newBody.hatAfro.gameObject.SetActive(true);
+                    newBody.hatAll.gameObject.SetActive(false);
+                    newBody.hatAfro.color = HexToColor(primary_color);
+                }
                 break;
         }
 
-        newBody.bodyClothes1.color = primary_color;
-        newBody.bodyClothes2.color = secondary_color;
+        newBody.bodyClothes1.color = HexToColor(primary_color);
+        newBody.bodyClothes2.color = HexToColor(secondary_color);
         newBody.hair.color = HexToColor(hair_color);
         if (newBody.hair2 != null) newBody.hair2.color = HexToColor(hair_color);
         newBody.bodySkin.color = HexToColor(skin_color);
@@ -258,15 +267,14 @@ public class DemonAvatar : MonoBehaviour
         else
             newBody.eyeIris.color = HexToColor(eye_color_dark);
 
- 
-
-
         dist += 10;
     }
 
     bool IsEyeBallColorDark(string eye_color)
     {
-        return true;
+        if (eye_color == "#000000") return true;
+        else return false;
+       // else if(eye_color == "#FFFFFF" || eye_color ==  "FF4A4A" || eye_color == "DBC145") return false;
     }
 
 
