@@ -29,6 +29,8 @@ public class ClientMaster : MonoBehaviour
 {
     List<ClientType> levelClients;
     public List<ClientType> clientsLevel1, clientsLevel2, clientsLevel3, clientsLevel4, clientsLevel5;
+    public List<ClientType> clientsLevel6, clientsLevel7, clientsLevel8, clientsLevel9, clientsLevel10;
+
     [HideInInspector] public ClientType currentClient;
     [HideInInspector] public int currentClientIndex;
     public int[] targetLevelScore;
@@ -52,6 +54,11 @@ public class ClientMaster : MonoBehaviour
         else if (level == 3) return clientsLevel3;
         else if (level == 4) return clientsLevel4;
         else if (level == 5) return clientsLevel5;
+        else if (level == 6) return clientsLevel6;
+        else if (level == 7) return clientsLevel7;
+        else if (level == 8) return clientsLevel8;
+        else if (level == 9) return clientsLevel9;
+        else if (level == 10) return clientsLevel10;
         else
         {
             List<ClientType> clientsToReturn = new List<ClientType>();
@@ -110,7 +117,7 @@ public class ClientMaster : MonoBehaviour
 
     public int GetLevelTargetScore()
     {
-        if (currentLevel-1 < 5) return targetLevelScore[currentLevel-1];
+        if (currentLevel-1 < 10) return targetLevelScore[currentLevel-1];
         else return 30;
     }
 
