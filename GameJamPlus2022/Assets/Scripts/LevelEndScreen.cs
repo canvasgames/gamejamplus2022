@@ -60,7 +60,7 @@ public class LevelEndScreen : MonoBehaviour
         else
         {
             _nextLevel = false;
-            resultText.text = "Try\nWorse";
+            resultText.text = "You were too nice,\ntry to make it WORSE!";
             StartCoroutine(WaitForButtonToShow());
         }
             
