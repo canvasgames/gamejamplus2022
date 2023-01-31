@@ -18,40 +18,22 @@ public class TotemMaster : MonoBehaviour
 
 #if !USE_TOTEM
     private TotemCore totemCore;
-    public static TotemMaster s;
+    public static TotemMaster instance;
     public string _gameId = "TotemDemo";
-    public string[] hairStyle;
-    public string[] hairColor;
-    public string[] bodyColor;
-    public string[] outfitStyle;
-    public string[] eyeColor;
-    public int skinId=0;
+    public DemonAvatar mainAvatar;
+    [HideInInspector] public int userAvatarCount = 0;
 
-    [HideInInspector]
-    public bool[] legacyDreadStoneBaronessDefeated;
-    [HideInInspector]
-    public bool[] legacyDreadStoneLichDefeated;
-    [HideInInspector]
-    public bool[] legacyTreeTalesReachTwoThousand;
-    [HideInInspector]
-    public bool[] legacyAnvilandDeliveredGiantRing;
-    [HideInInspector]
-    public bool[] legacyAnvilandHundredCoinsInBag;
-
-    private List<TotemDNADefaultAvatar> avatars;
+    public List<TotemDNADefaultAvatar> avatars;
     private List<TotemDNADefaultItem> items;
+
+    [SerializeField] GameObject avatarList;
 
     private bool watingLogin;
     
     void Awake()
     {
-        s = this;
+        instance = this;
         totemCore = new TotemCore(_gameId);
-        hairStyle = new string[10];
-        hairColor = new string[10];
-        bodyColor = new string[10];
-        outfitStyle = new string[10];
-        eyeColor = new string[10];
     }
 
     // Update is called once per frame
@@ -73,7 +55,7 @@ public class TotemMaster : MonoBehaviour
         {
             if(avatars.Count > 0){
                 //globals.s.IS_TOTEM_LOGGED_IN = true;
-
+                userAvatarCount = avatars.Count;
                 this.avatars = avatars;
 
                 for (int index = 0; index < avatars.Count; index++)
@@ -86,6 +68,7 @@ public class TotemMaster : MonoBehaviour
 
                     //FindObjectOfType<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
                 }
+                avatarList.SetActive(true);
 
                 totemCore.GetUserItems<TotemDNADefaultItem>(user, TotemDNAFilter.DefaultItemFilter, (items) => {
                     this.items = items;
@@ -98,14 +81,13 @@ public class TotemMaster : MonoBehaviour
         });
         
     }
-    private void DefineTotemSpritesAndColors(string eye_color, string hair_color, string body_color, string hair_style, int index)
-    {
-        eyeColor[index] = eye_color;
-        hairColor[index] = hair_color;
-        bodyColor[index] = body_color;
-        hairStyle[index] = hair_style;
-    }
 
+    public void OnAvatarSelected()
+    {
+         avatarList.SetActive(false);
+         TotemDNADefaultAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
+         mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
+    }
 
     IEnumerator WaitLogin(float time)
     {

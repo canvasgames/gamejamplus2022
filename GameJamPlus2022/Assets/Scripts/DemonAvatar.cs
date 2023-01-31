@@ -32,7 +32,7 @@ public class DemonAvatar : MonoBehaviour
     bodyTypes myBodyType;
 
 
-    void Start()
+    void Awake()
     {
 
         femaleHairDictionary = new Dictionary<string, Sprite>();
@@ -218,7 +218,8 @@ public class DemonAvatar : MonoBehaviour
                     myBody = femaleBodies[(int)bodyTypes.thinWimp];
                 }
 
-                newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                //newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                newBody = Instantiate(myBody, transform);
                 myBody.hair.sprite = femaleHairDictionary[hair_style];
                 break;
 
@@ -239,7 +240,8 @@ public class DemonAvatar : MonoBehaviour
                 {
                     myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
-                newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                //newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
+                newBody = Instantiate(myBody, transform);
                 myBody.hair.sprite = maleHairDictionary[hair_style];
 
                 // hat color and afro exception
@@ -261,7 +263,7 @@ public class DemonAvatar : MonoBehaviour
         newBody.bodySkin.color = HexToColor(skin_color);
         newBody.arm1.color = HexToColor(skin_color);
 
-        newBody.eyeBall.color = HexToColor(eyeball_color); //tbd
+        newBody.eyeBall.color = HexToColor(eyeball_color); 
         if(IsEyeBallColorDark(eyeball_color))
             newBody.eyeIris.color = HexToColor(eye_color_light);
         else
