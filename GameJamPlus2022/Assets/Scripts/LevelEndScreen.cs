@@ -8,6 +8,8 @@ public class LevelEndScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _shuffleButton;
     [SerializeField] private Button _tryAgain;
+    [SerializeField] private TextMeshProUGUI _levelReachedText;
+    private int _levelNumber = 1;
     private bool _nextLevel;
     // Start is called before the first frame update
     public TextMeshProUGUI playerScore;
@@ -49,12 +51,24 @@ public class LevelEndScreen : MonoBehaviour
         DeckMaster.instance.ResetFlies();
         playerScore.text = ScoreController.instance.Score.ToString();
         levelTargetScore.text = ClientMaster.instance.GetLevelTargetScore().ToString();
+        _levelReachedText.text = "Level\n" + _levelNumber;
         cardsToBuyMenu.SetActive(false);
         if (levelComplete)
         {
             _tryAgain.gameObject.SetActive(false);
             resultText.text = "\"Acceptable\"\nWork";
-            _nextLevel = true;
+            if(ClientMaster.instance.currentLevel == 10)
+            {
+                ClientMaster.instance.targetLevelScore[ClientMaster.instance.currentLevel-1] += ScoreController.instance.addTarget;
+                RoundController.instance.infinity = true;
+                //aumentar o target, variavel para acessar pelo inspector
+                //texto que mostra o lvl que chegou, aparecer tanto na vitoria quanto na derrota
+                
+            }
+            else
+            {
+                _nextLevel = true;
+            }
             StartCoroutine(StartCardBuyAnimations());
         }
         else
@@ -97,15 +111,20 @@ public class LevelEndScreen : MonoBehaviour
     {
         gameObject.SetActive(false);
         //RoundController.instance.StartRoundLevel();
-        if (_nextLevel)
+        
+        if (_nextLevel && ClientMaster.instance.currentLevel != 10)
         {
             ClientMaster.instance.currentLevel++;
+            _levelNumber++;
         }
-        else
+        else if(!_nextLevel)
         {
             ClientMaster.instance.currentLevel = 1;
+            _levelNumber = 1;
             ScoreController.instance.ResetScore();
-        } 
+            RoundController.instance.infinity = false;
+        }
+               
         ClientMaster.instance.InitLevel();
     }
 }

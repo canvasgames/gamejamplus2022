@@ -20,6 +20,7 @@ public class ScoreController : MonoBehaviour
     public float restrictionMultiplier;
     public float flyMultiplier;
     public int completedBurgerBonus;
+    public int addTarget;
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class ScoreController : MonoBehaviour
 
     public void UpdateTargetScore()
     {
-        targetScore.text = $"Target: {ClientMaster.instance.targetLevelScore[(ClientMaster.instance.currentLevel)-1]}";
+        targetScore.text = $"Target: {ClientMaster.instance.GetLevelTargetScore()}";
     }
 
     public void ShowBurgerScore(FoodLoader[] foods, ClientType client)
