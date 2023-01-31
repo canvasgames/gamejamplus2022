@@ -105,39 +105,99 @@
             }
         ]
     },
-    {"description": "Human Eye Color", "id": "human_eye_color", "type": "map", "gene": 1, "start": 7, "length": 3,
+    {"description": "Human Eye Color Light", "id": "human_eye_color_light", "type": "map", "gene": 1, "start": 7, "length": 3,
         "values": [
             {
                 "value": 0,
-                "key": "#b5d6e0"
+                "key": "#BB00FF"
             },
             {
                 "value": 1,
-                "key": "#90b4ca"
+                "key": "#AB8800"
             },
             {
                 "value": 2,
-                "key": "#a7ad7f"
+                "key": "#AB1800"
             },
             {
                 "value": 3,
-                "key": "#7c8b4f"
+                "key": "#7E7E7E"
             },
             {
                 "value": 4,
-                "key": "#c4a05f"
+                "key": "#CF6D00"
             },
             {
                 "value": 5,
-                "key": "#a97e33"
+                "key": "#9A1C00"
             },
             {
                 "value": 6,
-                "key": "#7a3411"
+                "key": "#E54DC0"
             },
             {
                 "value": 7,
-                "key": "#3d0d04"
+                "key": "#E0822B"
+            }
+        ]
+    },
+	{"description": "Human Eye Color Dark", "id": "human_eye_color_dark", "type": "map", "gene": 1, "start": 7, "length": 3,
+        "values": [
+            {
+                "value": 0,
+                "key": "#000000"
+            },
+            {
+                "value": 1,
+                "key": "#B70002"
+            },
+            {
+                "value": 2,
+                "key": "#B900FF"
+            },
+            {
+                "value": 3,
+                "key": "#002B7B"
+            },
+            {
+                "value": 4,
+                "key": "#574C08"
+            },
+            {
+                "value": 5,
+                "key": "#00721E"
+            },
+            {
+                "value": 6,
+                "key": "#B33A6C"
+            },
+            {
+                "value": 7,
+                "key": "#530080"
+            }
+        ]
+    },
+	{"description": "Eyeball Color", "id": "human_eyeball_color", "type": "range", "gene": 1, "start": 0, "length": 4,
+        "values": [
+            {
+                "value": [0,6],
+                "key": "#FFFFFF"
+            },
+            {
+                "value": [7,9],
+                "key": "#000000"
+            },
+            {
+                "value": [10,11],
+                "key": "#FF4A4A"
+            },
+            {
+                "value": [12,13],
+                "key": "#FFED4A"
+            },
+            {
+                "value": [14,15],
+                "key": "#FF8FCE"
             }
         ]
     },
@@ -179,5 +239,6 @@
     },
     {"description": "Primary Color", "id": "primary_color", "type": "Color", "gene": 2, "start": 0, "length": 24},
     {"description": "Secondary Color", "id": "secondary_color", "type": "Color", "gene": 1, "start": 0, "length": 24}
+	
 
 ]

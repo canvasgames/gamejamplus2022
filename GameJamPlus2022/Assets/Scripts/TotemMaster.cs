@@ -6,6 +6,12 @@ using TotemEntities;
 using TotemEntities.DNA;
 using TotemServices.DNA;
 #endif
+public class TotemDNACustomAvatar: TotemDNADefaultAvatar {
+
+        public string human_eyeball_color;
+        public string human_eye_color_dark ;
+        public string human_eye_color_light;
+}
 
 public class TotemMaster : MonoBehaviour
 {
@@ -78,7 +84,7 @@ public class TotemMaster : MonoBehaviour
                     //charData = curAvatar.human_hair_color.ToString();
                     //  DefineTotemSpritesAndColors(curAvatar.human_eye_color, curAvatar.human_hair_color, curAvatar.human_skin_color, curAvatar.hair_styles, index);
 
-                    FindObjectOfType<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eye_color, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
+                    FindObjectOfType<DemonAvatar>().DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.primary_color, curAvatar.secondary_color, curAvatar.hair_styles);
                 }
 
                 totemCore.GetUserItems<TotemDNADefaultItem>(user, TotemDNAFilter.DefaultItemFilter, (items) => {

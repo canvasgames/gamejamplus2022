@@ -193,9 +193,9 @@ public class DemonAvatar : MonoBehaviour
         dist += 10;
     }
 
-    public void DefinePartsTotem(bool sex, bool body_strenght, bool body_type, string eye_color, string hair_color, string skin_color, Color primary_color, Color secondary_color, string hair_style)
+    public void DefinePartsTotem(bool sex, bool body_strenght, bool body_type, string eyeball_color, string eye_color_dark, string eye_color_light, string hair_color, string skin_color, Color primary_color, Color secondary_color, string hair_style)
     {
-        Debug.Log("CREATING A DEMON!! SEX - " + sex + " EYE COLOR " + eye_color);
+        Debug.Log("CREATING A DEMON!! SEX - " + sex + " EYE COLOR " + eyeball_color);
         DemonAvatarBody newBody;
         myBody = new DemonAvatarBody();
         switch (sex)
@@ -219,7 +219,7 @@ public class DemonAvatar : MonoBehaviour
                 }
 
                 newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
-                //myBody.hair.sprite = femaleHairDictionary[hair_style];
+                myBody.hair.sprite = femaleHairDictionary[hair_style];
                 break;
 
             case false: // male
@@ -239,8 +239,8 @@ public class DemonAvatar : MonoBehaviour
                 {
                     myBody = maleBodies[(int)bodyTypes.thinWimp];
                 }
-                //myBody.hair.sprite = maleHairDictionary[hair_style];
                 newBody = Instantiate(myBody, transform.position, transform.rotation);
+                myBody.hair.sprite = maleHairDictionary[hair_style];
 
                 break;
         }
@@ -248,10 +248,25 @@ public class DemonAvatar : MonoBehaviour
         newBody.bodyClothes1.color = primary_color;
         newBody.bodyClothes2.color = secondary_color;
         newBody.hair.color = HexToColor(hair_color);
+        if (newBody.hair2 != null) newBody.hair2.color = HexToColor(hair_color);
         newBody.bodySkin.color = HexToColor(skin_color);
         newBody.arm1.color = HexToColor(skin_color);
 
+        newBody.eyeBall.color = HexToColor(eyeball_color); //tbd
+        if(IsEyeBallColorDark(eyeball_color))
+            newBody.eyeIris.color = HexToColor(eye_color_light);
+        else
+            newBody.eyeIris.color = HexToColor(eye_color_dark);
+
+ 
+
+
         dist += 10;
+    }
+
+    bool IsEyeBallColorDark(string eye_color)
+    {
+        return true;
     }
 
 
