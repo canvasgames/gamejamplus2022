@@ -115,16 +115,15 @@ public class LevelEndScreen : MonoBehaviour
         if (_nextLevel && ClientMaster.instance.currentLevel != 10)
         {
             ClientMaster.instance.currentLevel++;
-            _levelNumber++;
         }
         else if(!_nextLevel)
         {
             ClientMaster.instance.currentLevel = 1;
-            _levelNumber = 1;
+            _levelNumber = 0;
             ScoreController.instance.ResetScore();
             RoundController.instance.infinity = false;
         }
-               
+        _levelNumber++;
         ClientMaster.instance.InitLevel();
     }
 }
