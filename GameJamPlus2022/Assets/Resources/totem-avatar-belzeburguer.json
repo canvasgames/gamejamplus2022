@@ -205,7 +205,7 @@
             }
         ]
     },
-    {"description": "Primary Color", "id": "primary_color", "type": "map", "gene": 1, "start": 0, "length": 3,
+    {"description": "Primary Color", "id": "demon_primary_color", "type": "map", "gene": 1, "start": 0, "length": 3,
         "values": [
             {
                 "value": 0,
@@ -241,7 +241,7 @@
             }
         ]
     },
-    {"description": "Secondary Color", "id": "secondary_color", "type": "map", "gene": 1, "start": 0, "length": 2,
+    {"description": "Secondary Color", "id": "demon_secondary_color", "type": "map", "gene": 1, "start": 0, "length": 2,
         "values": [
             {
                 "value": 0,
