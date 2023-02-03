@@ -1758,7 +1758,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1687258584}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1865,7 +1865,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 920e119044ddc6e4bb08ba81b20f5785, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3267,8 +3267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 337.2, y: -85.4}
-  m_SizeDelta: {x: 75.6698, y: 42.724}
+  m_AnchoredPosition: {x: 405.54272, y: -108.31409}
+  m_SizeDelta: {x: 66.7055, y: 74.6982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238059655
 MonoBehaviour:
@@ -4676,7 +4676,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 47016223b49234f4d9a06f176f914f1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4796,7 +4796,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5db6f0bf4dc47334f82c56de807e5d81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5955,7 +5955,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 542d52574089460409ef2aae6947753b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6747,7 +6747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1368048907, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 92.100006
+      value: 92.099976
       objectReference: {fileID: 0}
     - target: {fileID: 1368048908, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
       propertyPath: m_margin.z
@@ -7129,6 +7129,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1687258584}
+    - target: {fileID: 3360389223437591781, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360389223437591781, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4210358378533640396, guid: 30f777b147ac8ee45a5d11b3be1d3e5b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -7783,7 +7791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9012651176294194993, guid: 014971c99bee90b40ac63b9eba160879, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9012651176294195004, guid: 014971c99bee90b40ac63b9eba160879, type: 3}
       propertyPath: mainAvatar
