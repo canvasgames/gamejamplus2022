@@ -220,7 +220,7 @@ public class DemonAvatar : MonoBehaviour
 
                 //newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
                 newBody = Instantiate(myBody, transform);
-                myBody.hair.sprite = femaleHairDictionary[hair_style];
+                newBody.hair.sprite = femaleHairDictionary[hair_style];
                 break;
 
             case false: // male
@@ -242,11 +242,15 @@ public class DemonAvatar : MonoBehaviour
                 }
                 //newBody = Instantiate(myBody, new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Quaternion.identity);
                 newBody = Instantiate(myBody, transform);
-                myBody.hair.sprite = maleHairDictionary[hair_style];
+                newBody.hair.sprite = maleHairDictionary[hair_style];
 
                 // hat color and afro exception
                 if (hair_style != "afro") 
+                { 
                     newBody.hatAll.color = HexToColor(primary_color);
+                    newBody.hatAll.gameObject.SetActive(true);
+                    newBody.hatAfro.gameObject.SetActive(false);
+                }
                 else 
                 {   
                     newBody.hatAfro.gameObject.SetActive(true);

@@ -6,23 +6,21 @@ using TotemEntities;
 using TotemEntities.DNA;
 using TotemServices.DNA;
 #endif
-public class TotemDNACustomAvatar: TotemDNADefaultAvatar {
+public class TotemDNACustomAvatar : TotemDNADefaultAvatar {
 
-        public string human_eyeball_color;
-        public string human_eye_color_dark ;
-        public string human_eye_color_light; 
-        public string demon_primary_color;
-        public string demon_secondary_color;
-        public override string ToString()
-        {
-            return $"sex_bio: {sex_bio} | body_strength: {body_strength} | human_skin_color: {human_skin_color} | human_hair_color: {human_hair_color} | " +
-                $"human_eye_color: {human_eyeball_color} | $human_eye_color_dark: {human_eye_color_dark} |  $human_eye_color_light: {human_eye_color_light} | hair_styles: {hair_styles} | " +
-                $"primary_color: {demon_primary_color} | secondary_color: {demon_secondary_color}";
-        }   
+    public string human_eyeball_color;
+    public string human_eye_color_dark;
+    public string human_eye_color_light;
+    public string demon_primary_color;
+    public string demon_secondary_color;
+    public override string ToString() {
+        return $"sex_bio: {sex_bio} | body_strength: {body_strength} | human_skin_color: {human_skin_color} | human_hair_color: {human_hair_color} | " +
+            $"human_eye_color: {human_eyeball_color} | $human_eye_color_dark: {human_eye_color_dark} |  $human_eye_color_light: {human_eye_color_light} | hair_styles: {hair_styles} | " +
+            $"primary_color: {demon_primary_color} | secondary_color: {demon_secondary_color}";
+    }
 }
 
-public class TotemMaster : MonoBehaviour
-{
+public class TotemMaster : MonoBehaviour {
 
 #if !USE_TOTEM
     private TotemCore totemCore;
@@ -41,19 +39,16 @@ public class TotemMaster : MonoBehaviour
     [SerializeField] GameObject bg;
 
     private bool watingLogin;
-    
-    void Awake()
-    {
+
+    void Awake() {
         instance = this;
         totemCore = new TotemCore(_gameId);
     }
 
-    void Start()
-    {
+    void Start() {
         ButtonsOff();
     }
-    public void OnLoginButtonClick()
-    {
+    public void OnLoginButtonClick() {
         StartCoroutine(WaitLogin(10));
         watingLogin = true;
 
@@ -64,20 +59,17 @@ public class TotemMaster : MonoBehaviour
     }
 
     public string charData = "";
-    private void OnUserLoggedIn(TotemUser user)
-    {
+    private void OnUserLoggedIn(TotemUser user) {
         watingLogin = false;
         loadingEffect.SetActive(false);
         TotemDNAFilter mdFilter = new TotemDNAFilter(Resources.Load<TextAsset>("totem-avatar-belzeburguer").text);
-        totemCore.GetUserAvatars<TotemDNACustomAvatar>(user, mdFilter, (avatars) =>
-        {
-            if(avatars.Count > 0){
+        totemCore.GetUserAvatars<TotemDNACustomAvatar>(user, mdFilter, (avatars) => {
+            if (avatars.Count > 0) {
                 //globals.s.IS_TOTEM_LOGGED_IN = true;
                 userAvatarCount = avatars.Count;
                 this.avatars = avatars;
 
-                for (int index = 0; index < avatars.Count; index++)
-                {
+                for (int index = 0; index < avatars.Count; index++) {
                     Debug.Log("Avatar:" + avatars[index].ToString());
 
                     TotemDNACustomAvatar curAvatar = avatars[index];
@@ -92,68 +84,71 @@ public class TotemMaster : MonoBehaviour
                     this.items = items;
 
                 });
-            }else{
+            }
+            else {
                 //Não tem nenhum avatar
                 //store_controller.s.loadingScreen.SetActive(false);
             }
         });
-        
+
     }
 
-    public void OnAvatarSelected()
-    {
+    public void OnAvatarSelected() {
         TotemDNACustomAvatar curAvatar = avatars[avatarList.GetComponentInChildren<ScrollSnapRect>()._currentPage];
         avatarList.SetActive(false);
         mainAvatar.DefinePartsTotem(curAvatar.sex_bio, curAvatar.body_strength, curAvatar.body_type, curAvatar.human_eyeball_color, curAvatar.human_eye_color_dark, curAvatar.human_eye_color_light, curAvatar.human_skin_color, curAvatar.human_skin_color, curAvatar.demon_primary_color, curAvatar.demon_secondary_color, curAvatar.hair_styles);
         mainAvatar.SetLayerOrderForMyBody();
-        if (curAvatar.sex_bio)
-        {
+        if (curAvatar.sex_bio) {
             mainAvatar.myBody.GetComponent<RectTransform>().localScale = Vector3.one;
             mainAvatar.myBody.GetComponent<RectTransform>().localPosition = Vector3.zero;
         }
-        else
-        {
+        else {
             mainAvatar.myBody.GetComponent<RectTransform>().localScale = new Vector3(1.388401f, 1.388401f, 1f);
-            if (curAvatar.body_type)
-                mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 3.55f, 1f);
-            else
-                mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 1.25f, 1f);
+            if (curAvatar.body_type) {
+                if (curAvatar.body_strength)  
+                    mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 3.55f, 1f);
+                else
+                    mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 5.36f, 1f);
+
+            }
+            else {
+                if (curAvatar.body_strength)  
+                    mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 1.25f, 1f);
+                else
+                    mainAvatar.myBody.GetComponent<RectTransform>().localPosition = new Vector3(0f, 1.25f, 1f);
+            }
         }
         defaultActiveDemon.SetActive(false);
         gameObject.SetActive(false);
         ButtonsOn();
     }
 
-    public void OnCloseButtonPressed()
-    {
+    public void OnCloseButtonPressed() {
         gameObject.SetActive(false);
         ButtonsOn();
     }
 
-    IEnumerator WaitLogin(float time)
-    {
+    IEnumerator WaitLogin(float time) {
         yield return new WaitForSeconds(time);
 
         //Muito tempo sem concluir login
-       //if(watingLogin)
-            //store_controller.s.loadingScreen.SetActive(false);
+        //if(watingLogin)
+        //store_controller.s.loadingScreen.SetActive(false);
     }
 
-    public void SaveLegacyEvent(string legacyData){
+    public void SaveLegacyEvent(string legacyData) {
         //if(globals.s.IS_TOTEM_LOGGED_IN)
-            //totemCore.AddLegacyRecord(avatars[globals.s.ACTUAL_TOTEM_SKIN_ID], legacyData, (record) =>
-               // { Debug.Log("Legacy Event Saved: " + legacyData); });
+        //totemCore.AddLegacyRecord(avatars[globals.s.ACTUAL_TOTEM_SKIN_ID], legacyData, (record) =>
+        // { Debug.Log("Legacy Event Saved: " + legacyData); });
     }
 
-    private void ButtonsOn()
-    {
+    private void ButtonsOn() {
         FoodSelector.instance.ActivateSelectButtons();
         DeckMaster.instance.ActivateShuffleButton();
         ShowIngredientList.instance.ActivateListButton();
     }
 
-    private void ButtonsOff()
-    {
+    private void ButtonsOff() {
         FoodSelector.instance.DeactivateSelectButtons();
         DeckMaster.instance.DeactivateShuffleButton();
         ShowIngredientList.instance.DeactivateListButton();
